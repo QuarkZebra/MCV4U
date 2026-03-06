@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +75,7 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 .ubody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
 .unit.open .ubody{grid-template-rows:1fr}
 .ubody-inner{overflow:hidden}
-.ucontent{padding:0;border-top:1px solid var(--bdr)}
+.ucontent{padding:0;border-top:1px solid var(--bdr);overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 /* Table inside unit */
 .ltable{width:100%;border-collapse:collapse;font-size:.84rem}
@@ -174,7 +173,7 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 @media(max-width:768px){
   .page{padding:2rem .75rem}header h1{font-size:2rem}
   .top-bar{margin:-2rem -.75rem 1.5rem;padding:.5rem .75rem}
-  .ltable .th-extra,.ltable td:last-child{display:none}
+  .ltable{min-width:700px}
   .fab{bottom:1rem;right:1rem}.hacts{display:none}
 }
 </style>
