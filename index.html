@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,9 @@
 <title>MCV4U — Calculus &amp; Vectors</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ═══════════════════════════════════════════════
+   LIGHT THEME (default)
+   ═══════════════════════════════════════════════ */
 :root{
   --bg:#f8f7f4;--white:#fff;--hover:#faf9f7;
   --blue:#1e3a5f;--accent:#2563eb;--accent-dim:rgba(37,99,235,.08);--accent-bdr:rgba(37,99,235,.2);
@@ -15,18 +19,39 @@
   --err:#dc2626;--amber:#d97706;--amber-dim:rgba(217,119,6,.06);
   --test-bg:rgba(196,92,92,.06);--quiz-bg:rgba(80,130,196,.05);--review-bg:rgba(90,155,100,.04);
   --r:10px;--sh:0 1px 2px rgba(0,0,0,.04);--sh2:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.03);
+  --topbar-bg:rgba(248,247,244,.88);--grid-color:rgba(30,58,95,.04);
+  --fab-sh:0 4px 20px rgba(37,99,235,.25);--fab-sh2:0 6px 28px rgba(37,99,235,.35);
+  --tip-bg:var(--text);--tip-color:#fff;--err-tip-bg:#fff;
 }
+
+/* ═══════════════════════════════════════════════
+   DARK THEME — Deep Navy
+   ═══════════════════════════════════════════════ */
+html.dark{
+  --bg:#12161e;--white:#1a1f2a;--hover:#212735;
+  --blue:#a8c4e0;--accent:#5b8def;--accent-dim:rgba(91,141,239,.09);--accent-bdr:rgba(91,141,239,.20);
+  --gold:#c8a850;--teal:#4db8a8;--rose:#d07070;--muted:#7080a0;--muted2:#4a5468;
+  --text:#d4dae4;--t2:#a0a8b8;--t3:#606878;--t4:#3e4452;
+  --bdr:#282e3a;--bdr2:#363e4e;
+  --err:#f06060;--amber:#e0a030;--amber-dim:rgba(224,160,48,.08);
+  --test-bg:rgba(208,112,112,.07);--quiz-bg:rgba(91,141,239,.05);--review-bg:rgba(77,184,168,.05);
+  --r:10px;--sh:0 1px 3px rgba(0,0,0,.2);--sh2:0 2px 8px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.15);
+  --topbar-bg:rgba(18,22,30,.92);--grid-color:rgba(91,141,239,.06);
+  --fab-sh:0 4px 20px rgba(0,0,0,.4);--fab-sh2:0 6px 28px rgba(0,0,0,.5);
+  --tip-bg:#d4dae4;--tip-color:#12161e;--err-tip-bg:#1a1f2a;
+}
+
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;
-  background-image:linear-gradient(rgba(30,58,95,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(30,58,95,.04) 1px,transparent 1px);
-  background-size:28px 28px;background-attachment:fixed}
+  background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+  background-size:28px 28px;background-attachment:fixed;transition:background .3s,color .3s}
 a{color:inherit;text-decoration:none}
 
 .page{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
 
 /* Top Bar */
-.top-bar{position:sticky;top:0;z-index:100;background:rgba(248,247,244,.88);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--bdr);margin:-2.5rem -1.5rem 2rem;padding:.6rem 1.5rem;display:flex;align-items:center;gap:.8rem}
+.top-bar{position:sticky;top:0;z-index:100;background:var(--topbar-bg);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--bdr);margin:-2.5rem -1.5rem 2rem;padding:.6rem 1.5rem;display:flex;align-items:center;gap:.8rem;transition:background .3s}
 .top-bar .lbl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
 .ptrack{flex:1;height:3px;background:var(--bdr);border-radius:2px;overflow:hidden}
 .pfill{height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:2px;transition:width .6s}
@@ -44,9 +69,15 @@ header{margin-bottom:2rem}
 header h1{font-size:2.5rem;font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--blue)}
 header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 
+/* Dark mode toggle */
+.dm-toggle{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--t3);cursor:pointer;background:var(--white);
+  border:1px solid var(--bdr);padding:.22rem .65rem;border-radius:100px;transition:all .2s;display:flex;align-items:center;gap:.3rem}
+.dm-toggle:hover{color:var(--t2);border-color:var(--bdr2);background:var(--hover)}
+.dm-icon{font-size:.8rem;line-height:1}
+
 /* Search */
 .sbar{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;padding:.55rem .9rem;background:var(--white);
-  border:1px solid var(--bdr);border-radius:var(--r);box-shadow:var(--sh);transition:border-color .2s,box-shadow .2s}
+  border:1px solid var(--bdr);border-radius:var(--r);box-shadow:var(--sh);transition:border-color .2s,box-shadow .2s,background .3s}
 .sbar:focus-within{border-color:var(--accent-bdr);box-shadow:0 0 0 3px var(--accent-dim)}
 .sbar .si{color:var(--t4);font-size:.9rem}
 .sbar input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'Outfit',sans-serif;font-size:.85rem}
@@ -87,12 +118,18 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 .ltable .th-hw{min-width:180px}
 .ltable .th-extra{min-width:180px}
 .ltable td{padding:.6rem 1rem;vertical-align:top;border-bottom:1px solid rgba(0,0,0,.03)}
+html.dark .ltable td{border-bottom:1px solid rgba(255,255,255,.03)}
 .ltable tr:last-child td{border-bottom:none}
 .ltable tr:hover{background:rgba(0,0,0,.01)}
+html.dark .ltable tr:hover{background:rgba(255,255,255,.02)}
 .ltable tr.is-test{background:var(--test-bg)}
 .ltable tr.is-test:hover{background:rgba(196,92,92,.09)}
 .ltable tr.is-quiz{background:var(--quiz-bg)}
 .ltable tr.is-review{background:var(--review-bg)}
+
+/* Staggered row reveal */
+.ltable tbody tr{opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+.unit.open .ltable tbody tr{opacity:1;transform:translateY(0)}
 
 .td-num{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--t4);text-align:center;width:2.5rem}
 .td-topic{font-weight:400}
@@ -127,13 +164,11 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 .hw-err{color:var(--err);font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;
   text-decoration:underline wavy var(--err);text-decoration-skip-ink:none;text-underline-offset:3px;cursor:help;position:relative}
 .hw-err .tip{display:none;position:absolute;left:50%;transform:translateX(-50%);
-  background:#fff;border:1px solid rgba(220,38,38,.2);color:var(--err);padding:.25rem .6rem;border-radius:6px;
+  background:var(--err-tip-bg);border:1px solid rgba(220,38,38,.2);color:var(--err);padding:.25rem .6rem;border-radius:6px;
   font-size:.65rem;font-family:'Outfit',sans-serif;white-space:nowrap;z-index:20;text-decoration:none;
   box-shadow:0 4px 12px rgba(220,38,38,.08);font-weight:500;pointer-events:none}
-/* Default: above */
 .hw-err .tip{bottom:calc(100% + 6px)}
 .hw-err .tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:rgba(220,38,38,.2)}
-/* Below variant for first rows */
 .hw-err .tip.below{bottom:auto;top:calc(100% + 6px)}
 .hw-err .tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:rgba(220,38,38,.2)}
 .hw-err:hover .tip{display:block}
@@ -141,23 +176,23 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 /* Completed note tooltip */
 .cn-wrap{position:relative;display:inline-flex}
 .cn-tip{display:none;position:absolute;left:50%;transform:translateX(-50%);
-  background:var(--text);color:#fff;padding:.2rem .55rem;border-radius:5px;font-size:.62rem;
+  background:var(--tip-bg);color:var(--tip-color);padding:.2rem .55rem;border-radius:5px;font-size:.62rem;
   font-family:'Outfit',sans-serif;white-space:nowrap;z-index:20;pointer-events:none}
 .cn-tip{bottom:calc(100% + 5px)}
-.cn-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--text)}
+.cn-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--tip-bg)}
 .cn-tip.below{bottom:auto;top:calc(100% + 5px)}
-.cn-tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--text)}
+.cn-tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--tip-bg)}
 .cn-wrap:hover .cn-tip{display:block}
 
 /* Note title tooltip */
 .nt-wrap{position:relative;display:inline}
 .nt-tip{display:none;position:absolute;left:50%;transform:translateX(-50%);
-  background:var(--text);color:#fff;padding:.2rem .55rem;border-radius:5px;font-size:.62rem;
+  background:var(--tip-bg);color:var(--tip-color);padding:.2rem .55rem;border-radius:5px;font-size:.62rem;
   font-family:'Outfit',sans-serif;white-space:nowrap;z-index:20;pointer-events:none}
 .nt-tip{bottom:calc(100% + 5px)}
-.nt-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--text)}
+.nt-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--tip-bg)}
 .nt-tip.below{bottom:auto;top:calc(100% + 5px)}
-.nt-tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--text)}
+.nt-tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--tip-bg)}
 .nt-wrap:hover .nt-tip{display:block}
 
 /* Legend & FAB */
@@ -166,15 +201,46 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 .legend-squig{color:var(--err);text-decoration:underline wavy var(--err);text-underline-offset:3px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600}
 .fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--accent);color:#fff;border:none;border-radius:100px;
   padding:.55rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;cursor:pointer;
-  box-shadow:0 4px 20px rgba(37,99,235,.25);transition:all .25s;display:none;align-items:center;gap:.35rem}
-.fab:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,99,235,.35)}
+  box-shadow:var(--fab-sh);transition:all .25s;display:none;align-items:center;gap:.35rem}
+.fab:hover{transform:translateY(-2px);box-shadow:var(--fab-sh2)}
 .fab.visible{display:flex}
 
+/* ═══════════════════════════════════════════════
+   MOBILE
+   ═══════════════════════════════════════════════ */
 @media(max-width:768px){
   .page{padding:2rem .75rem}header h1{font-size:2rem}
   .top-bar{margin:-2rem -.75rem 1.5rem;padding:.5rem .75rem}
   .ltable{min-width:700px}
-  .fab{bottom:1rem;right:1rem}.hacts{display:none}
+  .fab{bottom:1rem;right:1rem}
+  .hacts .hbtn{display:none}
+  /* Keep dark mode toggle visible on mobile */
+  .dm-toggle{font-size:.58rem;padding:.18rem .5rem}
+}
+
+/* ═══════════════════════════════════════════════
+   PRINT STYLESHEET
+   ═══════════════════════════════════════════════ */
+@media print{
+  *{color-adjust:exact;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html.dark{--bg:#fff;--white:#fff;--text:#000;--t2:#333;--t3:#666;--t4:#999;
+    --bdr:#ccc;--blue:#1e3a5f;--accent:#2563eb;--teal:#0b7d8c;--rose:#b05050;--err:#dc2626;
+    --tip-bg:#000;--tip-color:#fff;--err-tip-bg:#fff}
+  body{background:#fff!important;background-image:none!important}
+  .fab,.top-bar,.sbar,.hacts,.dm-toggle{display:none!important}
+  .page{max-width:100%;padding:0}
+  .unit{break-inside:avoid;page-break-inside:avoid;margin-bottom:1rem;border:1px solid #ccc;box-shadow:none!important;
+    opacity:1!important;transform:none!important}
+  .unit,.unit.open{display:block}
+  .ubody{display:block!important;grid-template-rows:1fr!important}
+  .ubody-inner{overflow:visible!important}
+  .unit.current{border-color:#ccc;box-shadow:none!important}
+  .ltable tbody tr{opacity:1!important;transform:none!important;transition:none!important}
+  .chev{display:none}
+  .legend{page-break-before:avoid}
+  header h1{font-size:2rem}
+  a{text-decoration:none!important}
+  .dlink:hover{text-decoration:none!important}
 }
 </style>
 </head>
@@ -191,6 +257,9 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
   <div class="htop">
     <span class="chip">MCV4U</span>
     <div class="hacts">
+      <button class="dm-toggle" id="dmBtn" onclick="toggleDark()">
+        <span class="dm-icon" id="dmIcon">☾</span> <span id="dmLabel">Dark</span>
+      </button>
       <button class="hbtn" onclick="toggleAll()" id="expBtn">Expand All</button>
     </div>
   </div>
@@ -218,51 +287,53 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
 
 <script>
 // ═══════════════════════════════════════════════
+// DARK MODE
+// ═══════════════════════════════════════════════
+function applyTheme(dark) {
+  document.documentElement.classList.toggle('dark', dark);
+  document.getElementById('dmIcon').textContent = dark ? '☀︎' : '☾';
+  document.getElementById('dmLabel').textContent = dark ? 'Light' : 'Dark';
+}
+function toggleDark() {
+  const going = !document.documentElement.classList.contains('dark');
+  applyTheme(going);
+  try { localStorage.setItem('mcv4u-dark', going ? '1' : '0'); } catch(e){}
+}
+(function(){
+  let dark = false;
+  try {
+    const saved = localStorage.getItem('mcv4u-dark');
+    if (saved !== null) { dark = saved === '1'; }
+    else { dark = window.matchMedia('(prefers-color-scheme: dark)').matches; }
+  } catch(e) {
+    dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  applyTheme(dark);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    try { if (localStorage.getItem('mcv4u-dark') !== null) return; } catch(ex){}
+    applyTheme(e.matches);
+  });
+})();
+
+// ═══════════════════════════════════════════════
 // CONFIG
 // ═══════════════════════════════════════════════
 const CURRENT_UNIT = 3;
 const TOTAL_UNITS = 7;
 
 // ═══════════════════════════════════════════════
-// ERRATA — from the textbook corrections spreadsheet
-// Format: { "section question": true }
-// These get squiggly underlines in the HW column
+// ERRATA
 // ═══════════════════════════════════════════════
-// ERRATA: keyed by "unit.day" → array of question numbers to squiggly-underline (without #)
-// Derived from the Course Plan doc (only the wrong-answer questions left in HW/Extra columns)
 const ERRATA_BY_DAY = {
-  // Unit 1
-  "1.2": ["7"],           // p. 9 #7
-  "1.4": ["16"],          // p. 29 #16
-  "1.7": ["10c"],         // p. 45 #10c
-  // Unit 2
-  "2.8": ["13"],          // p. 232 #13
-  "2.11":["7"],           // p. 260 #7 (HW)
-  "2.11x":["2a"],         // p. 260 #2a (Extra)
-  // Unit 3
-  "3.1": ["4b"],          // p. 127 #4b
-  "3.5": ["20"],          // p. 265 #20
-  // Unit 4
-  "4.3x":["9d"],          // p. 193 #9d (Extra)
-  "4.5": ["8a"],          // p. 205 #8a
-  "4.7": ["16"],          // p. 216 #16
-  // Unit 5
-  "5.2": ["2"],           // p. 279 #2
-  "5.4x":["4cd"],         // p. 298 #4cd (Extra)
-  "5.8x":["2"],           // p. 324 #2 (Extra)
-  // Unit 6
-  "6.1": ["5","4","10","13"], // p. 362 #5, p. 369 #4, 10, 13
-  "6.2": ["3"],           // p. 377 #3
-  "6.6": ["13"],          // p. 407 #13
-  "6.8": ["29"],          // p. 418 #29
-  // Unit 7
-  "7.1": ["10"],          // p. 433 #10
-  "7.8": ["4a"],          // p. 496 #4a
-  "7.15":["5"],           // p. 530 #5
-  "7.18":["9a","12a"],    // p. 552 #9a, 12a
+  "1.2": ["7"],"1.4": ["16"],"1.7": ["10c"],
+  "2.8": ["13"],"2.11":["7"],"2.11x":["2a"],
+  "3.1": ["4b"],"3.5": ["20"],
+  "4.3x":["9d"],"4.5": ["8a"],"4.7": ["16"],
+  "5.2": ["2"],"5.4x":["4cd"],"5.8x":["2"],
+  "6.1": ["5","4","10","13"],"6.2": ["3"],"6.6": ["13"],"6.8": ["29"],
+  "7.1": ["10"],"7.8": ["4a"],"7.15":["5"],"7.18":["9a","12a"],
 };
 
-// Apply squiggly underline to matching question numbers in a HW string
 function markErrata(text, unitIdx, dayN, isExtra) {
   const key = `${unitIdx+1}.${dayN}${isExtra ? 'x' : ''}`;
   const errs = ERRATA_BY_DAY[key];
@@ -270,7 +341,6 @@ function markErrata(text, unitIdx, dayN, isExtra) {
   let out = text;
   errs.forEach(q => {
     const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // Lookbehind: preceded by # or ", " — match question number + optional trailing letters
     const re = new RegExp(`(?<=[#,]\\s*)(${escaped}[a-z]*)(?=[,\\s·]|$)`, 'g');
     out = out.replace(re, `<span class="hw-err">$1<span class="tip">Textbook answer is incorrect</span></span>`);
   });
@@ -502,7 +572,6 @@ function renderExtra(items, unitIdx, dayN) {
   if (!items || items.length === 0) return '<span style="color:var(--t4)">—</span>';
   return `<div class="lgroup">${items.map(i => {
     if (!i.h) {
-      // Plain text extra — check for errata
       const marked = markErrata(i.t, unitIdx, dayN, true);
       return `<span style="font-size:.78rem;color:var(--t2)">${marked}</span>`;
     }
@@ -534,8 +603,8 @@ function renderUnit(unit, idx) {
   const rows = unit.days.map((day, di) => {
     const rc = day.type === 'test' ? 'is-test' : day.type === 'quiz' ? 'is-quiz' : day.type === 'review' ? 'is-review' : '';
     const tipDir = di === 0 ? 'below' : '';
+    const stagger = `style="transition-delay:${di * 0.03}s"`;
 
-    // Topic cell
     let topicHTML = '';
     if (day.type === 'test') {
       topicHTML = `<div class="topic-head"><span class="test-badge">${day.topic}</span><span class="lesson-date">${day.d}</span></div>`;
@@ -557,7 +626,7 @@ function renderUnit(unit, idx) {
       topicHTML = `<div class="topic-head">${titleLink}<span class="lesson-date">${day.d}</span></div>${completedHTML}`;
     }
 
-    return `<tr class="${rc}"><td class="td-num">${day.n}</td><td class="td-topic">${topicHTML}</td><td>${renderHW(day, idx)}</td><td>${renderExtra(day.extra, idx, day.n)}</td></tr>`;
+    return `<tr class="${rc}" ${stagger}><td class="td-num">${day.n}</td><td class="td-topic">${topicHTML}</td><td>${renderHW(day, idx)}</td><td>${renderExtra(day.extra, idx, day.n)}</td></tr>`;
   }).join('');
 
   return `<div class="unit${isCurrent ? ' current' : ''}" data-unit="${uIdx}">
