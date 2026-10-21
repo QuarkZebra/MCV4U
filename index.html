@@ -68,7 +68,6 @@ body.vc #vcur{display:block}
 #vcur.on{opacity:1}
 #vcur.hid{opacity:0}
 #vcur .glow{stroke-width:11;stroke-linecap:round;opacity:0}
-#vcur .curve{fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;opacity:0}
 #vcur .comp{fill:none;stroke-width:1.3;stroke-dasharray:3 4;opacity:0}
 #vcur .halo{stroke:var(--bg);stroke-width:5.5;stroke-linecap:round;opacity:.8}
 #vcur .shaft{stroke-width:2.3;stroke-linecap:round}
@@ -339,7 +338,7 @@ body.armed .fab{opacity:0;visibility:hidden;pointer-events:none;transform:transl
 <body>
 <div id="aurora" aria-hidden="true"></div>
 <canvas id="bg" aria-hidden="true"></canvas>
-<svg id="vcur" aria-hidden="true"><line class="glow"/><polyline class="curve"/><polyline class="comp"/><line class="halo"/><line class="shaft"/><g class="head"><polygon class="hp" points="0,0 -13,-5 -9.5,0 -13,5"/></g><text></text></svg>
+<svg id="vcur" aria-hidden="true"><line class="glow"/><polyline class="comp"/><line class="halo"/><line class="shaft"/><g class="head"><polygon class="hp" points="0,0 -13,-5 -9.5,0 -13,5"/></g><text></text></svg>
 <div class="page">
   <div class="top-bar" style="--i:0">
     <span class="lbl">Course</span>
@@ -1180,16 +1179,15 @@ if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
    On a mouse-and-trackpad machine the pointer becomes an arrow whose head sits
    exactly where the mouse is. It points the way you are moving and stretches
    with speed (a velocity vector). Over a link it grows bolder, takes the
-   link's colour, and shows its subject: on a calculus link a small curve
-   bends through the tip with the arrow as its tangent and the slope reads
-   out as f′; on a vectors link its components appear as dashed legs with the
-   vector in component form; anywhere else just |v|. Phones and tablets,
+   link's colour, and shows its subject: on a calculus link the slope of its
+   direction reads out as f′; on a vectors link its components appear as
+   dashed legs with the vector in component form; anywhere else just |v|. Phones and tablets,
    text boxes, and reduced-motion users keep the normal pointer. */
 (function(){
   if(!window.matchMedia("(hover:hover) and (pointer:fine)").matches||REDUCE)return;
   const svg=document.getElementById("vcur");
   const Q=c=>svg.querySelector(c);
-  const glow=Q(".glow"),curve=Q(".curve"),comp=Q(".comp"),halo=Q(".halo"),shaft=Q(".shaft"),head=Q(".head"),txt=Q("text");
+  const glow=Q(".glow"),comp=Q(".comp"),halo=Q(".halo"),shaft=Q(".shaft"),head=Q(".head"),txt=Q("text");
   const L0=26,LMAX=100,HEAD=13;
   const SEL='a,button,[role="link"],.dlink.pend,.tipwrap';
   let mx=-100,my=-100,px=mx,py=my,vx=0,vy=0,ang=-2.3,len=L0,boost=0;
@@ -1252,12 +1250,6 @@ if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
     glow.setAttribute("stroke",c);glow.style.opacity=.28*boost;
     head.setAttribute("fill",c);
     head.setAttribute("transform",`translate(${mx} ${my}) rotate(${ang*180/Math.PI}) scale(${1+.25*boost})`);
-    /* calculus: a curve through the tip, the arrow its tangent there */
-    if(kind==="calc"&&boost>.04){
-      const nx=-uy,ny=ux,a=22+8*boost,K=.02,pts=[];
-      for(let i=-6;i<=6;i++){const s=a*i/6;pts.push((mx+ux*s+nx*K*s*s).toFixed(1)+","+(my+uy*s+ny*K*s*s).toFixed(1))}
-      curve.setAttribute("points",pts.join(" "));curve.setAttribute("stroke",c);curve.style.opacity=boost*.9;
-    }else curve.style.opacity=0;
     /* vectors: the components as dashed legs */
     if(kind==="vec"&&boost>.04){
       comp.setAttribute("points",`${tx},${ty} ${mx},${ty} ${mx},${my}`);comp.setAttribute("stroke",c);comp.style.opacity=boost*.85;
