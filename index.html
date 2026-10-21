@@ -12,49 +12,71 @@
 /* ═══════════ MCV4U — CALCULUS & VECTORS ═══════════ */
 
 :root{
-  --bg:#f5f9f9;--surface:#ffffff;--hover:#f6fbfa;
-  --ink:#10211f;--t2:#3c5553;--t3:#6f8886;--t4:#a6bab8;
-  --bdr:#dde9e7;--bdr2:#c6d9d6;
-  --accent:#0f766e;--accent-2:#14b8a6;
-  --accent-dim:rgba(15,118,110,.07);--accent-bdr:rgba(15,118,110,.28);
+  --bg:#edf7f9;--bgrgb:237,247,249;--surface:#ffffff;--sf:255,255,255;--hover:#f2fafb;
+  --ink:#0b1f27;--t2:#33545f;--t3:#64838d;--t4:#9bb6bf;
+  --bdr:#d5e7ec;--bdr2:#bad4db;
+  --accent:#08798c;--accent-2:#1ccadd;
+  --accent-dim:rgba(8,121,140,.08);--accent-bdr:rgba(8,121,140,.3);
   --ans:#cc3344;--vid:#4553c9;--done:#1f8a63;--skills:#a8498f;
   --haz-bg:#fff6e5;--haz-fg:#9a5a00;--haz-bdr:rgba(190,120,0,.35);
   --warn-bg:#fff0f2;--warn-fg:#b32642;--warn-bdr:rgba(204,51,68,.3);
-  --test-bg:rgba(176,72,84,.06);--quiz-bg:rgba(15,118,110,.05);--pquiz-bg:rgba(15,118,110,.05);--review-bg:rgba(15,118,110,.035);
+  --test-bg:rgba(176,72,84,.07);--quiz-bg:rgba(8,121,140,.06);--pquiz-bg:rgba(8,121,140,.06);--review-bg:rgba(8,121,140,.04);
   --test-fg:#b04854;--test-dim:rgba(176,72,84,.09);--test-bdr:rgba(176,72,84,.35);
-  --r:10px;--sh:0 1px 2px rgba(16,33,31,.05);--sh2:0 1px 3px rgba(16,33,31,.05),0 6px 20px rgba(16,33,31,.06);
-  --topbar:rgba(245,249,249,.9);
-  --curve:15,118,110;--curve-a:.1;
+  --r:10px;--sh:0 1px 2px rgba(11,31,39,.05);--sh2:0 1px 3px rgba(11,31,39,.05),0 6px 20px rgba(11,31,39,.07);
+  --topbar:rgba(237,247,249,.8);
+  --curve:8,121,140;--curve-a:.16;--aur:.5;
+  --pal-tq:8,121,140;--pal-vi:104,76,214;--pal-co:214,66,86;--pal-am:196,120,0;--pal-li:52,142,60;--pal-sk:24,100,210;
   --sans:'Outfit',"Avenir Next","Segoe UI",system-ui,sans-serif;
   --mono:'IBM Plex Mono',"SF Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 :root[data-theme="dark"]{
-  --bg:#050a0a;--surface:#0b1514;--hover:#12201e;
-  --ink:#d6e6e3;--t2:#9db8b4;--t3:#62807c;--t4:#364d4a;
-  --bdr:#162926;--bdr2:#223a36;
-  --accent:#2dd4bf;--accent-2:#5eead4;
-  --accent-dim:rgba(45,212,191,.1);--accent-bdr:rgba(45,212,191,.32);
+  --bg:#04131b;--bgrgb:4,19,27;--surface:#0a1e27;--sf:10,30,39;--hover:#102a35;
+  --ink:#d9edf2;--t2:#9dbdc7;--t3:#5f8591;--t4:#36515a;
+  --bdr:#163139;--bdr2:#224550;
+  --accent:#2bd9e8;--accent-2:#8af0f8;
+  --accent-dim:rgba(43,217,232,.12);--accent-bdr:rgba(43,217,232,.34);
   --ans:#ff8f9d;--vid:#8b9cff;--done:#5fcf8a;--skills:#e58ad0;
   --haz-bg:#33260f;--haz-fg:#ffc65c;--haz-bdr:rgba(255,198,92,.35);
   --warn-bg:#351c26;--warn-fg:#ff9fae;--warn-bdr:rgba(255,143,157,.3);
-  --test-bg:rgba(224,122,140,.07);--quiz-bg:rgba(45,212,191,.06);--pquiz-bg:rgba(45,212,191,.06);--review-bg:rgba(45,212,191,.04);
+  --test-bg:rgba(224,122,140,.08);--quiz-bg:rgba(43,217,232,.07);--pquiz-bg:rgba(43,217,232,.07);--review-bg:rgba(43,217,232,.045);
   --test-fg:#e07a8c;--test-dim:rgba(224,122,140,.12);--test-bdr:rgba(224,122,140,.4);
   --sh:0 1px 3px rgba(0,0,0,.4);--sh2:0 2px 8px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
-  --topbar:rgba(5,10,10,.92);
-  --curve:45,212,191;--curve-a:.12;
+  --topbar:rgba(4,19,27,.8);
+  --curve:43,217,232;--curve-a:.15;--aur:.6;
+  --pal-tq:43,217,232;--pal-vi:170,145,255;--pal-co:255,122,135;--pal-am:255,190,80;--pal-li:140,232,122;--pal-sk:100,168,255;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg)}
 body{font-family:var(--sans);color:var(--ink);line-height:1.6;min-height:100vh;
-  background-image:radial-gradient(1000px 520px at 82% -8%,var(--accent-dim),transparent 70%);
+  background-image:radial-gradient(1000px 520px at 82% -8%,var(--accent-dim),transparent 70%),
+    radial-gradient(900px 640px at -6% 104%,rgba(var(--pal-vi),.07),transparent 70%);
   background-repeat:no-repeat;background-attachment:fixed;transition:background .3s,color .3s}
 a{color:inherit;text-decoration:none}
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;animation:fadein 1.4s both}
+/* Aurora: four blurred colour blobs breathing behind the canvas */
+#aurora{position:fixed;inset:-25%;z-index:0;pointer-events:none;filter:blur(70px);opacity:var(--aur);
+  background:radial-gradient(38% 42% at 22% 28%,rgba(var(--pal-tq),.55),transparent 70%),
+    radial-gradient(34% 36% at 78% 22%,rgba(var(--pal-vi),.45),transparent 70%),
+    radial-gradient(40% 38% at 72% 82%,rgba(var(--pal-co),.32),transparent 70%),
+    radial-gradient(30% 32% at 18% 86%,rgba(var(--pal-am),.3),transparent 70%);
+  animation:aurora 52s ease-in-out infinite alternate;transition:opacity .3s}
+@keyframes aurora{0%{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(4%,-3%) rotate(7deg) scale(1.08)}100%{transform:translate(-3%,3%) rotate(-6deg) scale(1.04)}}
+/* The cursor is a vector (see the script at the end): an SVG overlay above everything */
+#vcur{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:1000;pointer-events:none;overflow:visible;display:none;opacity:0;transition:opacity .2s}
+body.vc #vcur{display:block}
+#vcur.on{opacity:1}
+#vcur.hid{opacity:0}
+#vcur .halo{stroke:var(--bg);stroke-width:5.5;stroke-linecap:round;opacity:.8}
+#vcur .shaft{stroke-width:2.3;stroke-linecap:round}
+#vcur .hp{transform-origin:0 0;transition:transform .12s}
+#vcur.dn .hp{transform:scale(1.45)}
+#vcur text{font-family:var(--mono);font-size:10px;font-weight:600;paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round;transition:opacity .15s}
+@media(hover:hover) and (pointer:fine){body.vc,body.vc *{cursor:none!important}body.vc input,body.vc textarea{cursor:auto!important}}
 .page{max-width:1080px;margin:0 auto;padding:2.5rem 1.5rem 4rem;position:relative;z-index:1}
 
 /* Today hero — click it to jump to that day in the table */
-.hero{background:linear-gradient(135deg,var(--accent-dim),transparent 60%),var(--surface);
+.hero{background:linear-gradient(135deg,var(--accent-dim),transparent 60%),rgba(var(--sf),.9);
   border:1px solid var(--accent-bdr);border-radius:var(--r);padding:.9rem 1.35rem;margin-bottom:1.4rem;
   position:relative;overflow:hidden;box-shadow:var(--sh2);cursor:pointer;
   transition:transform .2s ease,box-shadow .2s ease}
@@ -102,7 +124,7 @@ header{margin-bottom:1.8rem}
 .help .hi .dlink,.help .hi .newp,.help .hi .xans{pointer-events:none}
 .help .hi small{color:var(--t3);font-size:.72rem}
 .help .swatch{width:14px;height:14px;border-radius:4px;background:var(--accent-dim);box-shadow:inset 3px 0 0 var(--accent);flex-shrink:0}
-.hbtn{font-family:var(--mono);font-size:.65rem;color:var(--t3);cursor:pointer;background:var(--surface);
+.hbtn{font-family:var(--mono);font-size:.65rem;color:var(--t3);cursor:pointer;background:rgba(var(--sf),.72);
   border:1px solid var(--bdr);padding:.24rem .7rem;border-radius:100px;transition:all .2s}
 .hbtn:hover{color:var(--t2);border-color:var(--bdr2);background:var(--hover)}
 .hbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -112,13 +134,13 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.35rem}
 /* Course essentials: the outline, the homework routine and the calculator list, pinned under the title */
 .ess{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.95rem}
 .ess a{display:inline-flex;align-items:center;gap:.42rem;font-size:.78rem;font-weight:600;padding:.42rem .9rem;border-radius:100px;
-  background:var(--surface);border:1px solid var(--bdr2);color:var(--t2);box-shadow:var(--sh);
+  background:rgba(var(--sf),.78);border:1px solid var(--bdr2);color:var(--t2);box-shadow:var(--sh);
   transition:transform .15s,border-color .15s,color .15s,box-shadow .15s}
 .ess a:hover{transform:translateY(-1px);border-color:var(--accent-bdr);color:var(--accent);box-shadow:var(--sh2)}
 .ess a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ess .ico{width:1.05em;height:1.05em}
 
-.sbar{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;padding:.55rem .9rem;background:var(--surface);
+.sbar{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;padding:.55rem .9rem;background:rgba(var(--sf),.72);
   border:1px solid var(--bdr);border-radius:var(--r);box-shadow:var(--sh);transition:border-color .2s,box-shadow .2s}
 .sbar:focus-within{border-color:var(--accent-bdr);box-shadow:0 0 0 3px var(--accent-dim)}
 .sbar .si{color:var(--t4);font-size:.9rem}
@@ -129,11 +151,17 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.35rem}
 .nomatch-msg{text-align:center;color:var(--t3);font-size:.85rem;padding:2rem 1rem;border:1px dashed var(--bdr2);border-radius:var(--r);margin-bottom:.55rem}
 .unit.nomatch{display:none}
 
-.unit{margin-bottom:.55rem;border:1px solid var(--bdr);border-radius:var(--r);background:var(--surface);
+/* Units are glass: the background shows through. Each row carries its own
+   opacity (--ra0, set per day in dayRow): today and test days are solid,
+   the days either side nearly so, the rest fade with distance, past days
+   most of all. Hovering a row firms it up. */
+@property --ra{syntax:"<number>";inherits:true;initial-value:.5}
+@property --tint{syntax:"<color>";inherits:true;initial-value:transparent}
+.unit{margin-bottom:.55rem;border:1px solid var(--bdr);border-radius:var(--r);background:rgba(var(--sf),.34);
   box-shadow:var(--sh);transition:border-color .25s,box-shadow .25s}
 .unit:hover{border-color:var(--bdr2);box-shadow:var(--sh2)}
 .unit.current{border-color:var(--accent-bdr);box-shadow:0 0 0 3px var(--accent-dim),var(--sh2)}
-.uhead{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.15rem;cursor:pointer;user-select:none;transition:background .15s,box-shadow .2s;width:100%;background:var(--surface);border:none;text-align:left;font-family:inherit;color:inherit;
+.uhead{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.15rem;cursor:pointer;user-select:none;transition:background .15s,box-shadow .2s;width:100%;background:rgba(var(--sf),.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:none;text-align:left;font-family:inherit;color:inherit;
   border-radius:var(--r);position:sticky;top:var(--tbh,44px);z-index:5}
 .unit.open .uhead{border-radius:var(--r) var(--r) 0 0}
 .uhead.stuck{box-shadow:inset 0 -1px 0 var(--bdr),0 8px 16px -10px rgba(0,0,0,.3)}
@@ -161,19 +189,20 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.35rem}
 
 .ltable{width:100%;border-collapse:collapse;font-size:.88rem}
 .ltable th{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--t3);padding:.55rem 1rem;text-align:left;border-bottom:1px solid var(--bdr);white-space:nowrap;background:var(--bg)}
+  color:var(--t3);padding:.55rem 1rem;text-align:left;border-bottom:1px solid var(--bdr);white-space:nowrap;background:rgba(var(--bgrgb),.55)}
 .ltable th:first-child{width:2.6rem;text-align:center}
 .th-topic{min-width:250px}.th-extra{min-width:220px}
-.ltable td{padding:.65rem 1rem;vertical-align:top;border-bottom:1px solid var(--bdr)}
+.ltable td{padding:.65rem 1rem;vertical-align:top;border-bottom:1px solid var(--bdr);
+  background:linear-gradient(var(--tint),var(--tint)),rgba(var(--sf),var(--ra))}
 .ltable tr:last-child td{border-bottom:none}
-.ltable tbody tr{transition:background .15s}
-.ltable tbody tr:hover{background:var(--hover)}
-.ltable tr.is-test{background:var(--test-bg)}
-.ltable tr.is-quiz{background:var(--quiz-bg)}
-.ltable tr.is-pquiz{background:var(--pquiz-bg)}
-.ltable tr.is-review{background:var(--review-bg)}
-.ltable tr.is-exam{background:var(--test-bg)}
-.ltable tr.is-today td{background:var(--accent-dim)}
+.ltable tbody tr{--ra:var(--ra0,.5);--tint:transparent;transition:--ra .2s,--tint .2s}
+.ltable tbody tr:hover{--ra:.9;--tint:var(--review-bg)}
+.ltable tr.is-test,.ltable tr.is-exam{--tint:var(--test-bg)}
+.ltable tr.is-quiz{--tint:var(--quiz-bg)}
+.ltable tr.is-pquiz{--tint:var(--pquiz-bg)}
+.ltable tr.is-review{--tint:var(--review-bg)}
+.ltable tbody tr.is-test,.ltable tbody tr.is-exam{--ra:.95}
+.ltable tbody tr.is-today{--ra:.97;--tint:var(--accent-dim)}
 .ltable tr.is-today td:first-child{box-shadow:inset 3px 0 0 var(--accent);border-radius:8px 0 0 8px}
 .ltable tr.is-today td:last-child{border-radius:0 8px 8px 0}
 .td-num{font-family:var(--mono);font-size:.72rem;color:var(--t4);text-align:center;font-variant-numeric:tabular-nums}
@@ -247,7 +276,7 @@ header .sub{color:var(--t3);font-size:.88rem;margin-top:.35rem}
 body.armed .fab{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px)}
 @keyframes sheetup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-@keyframes rowflash{0%{background:var(--accent-dim)}100%{background:transparent}}
+@keyframes rowflash{0%{--tint:rgba(var(--curve),.3)}100%{--tint:transparent}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes rowin{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
@@ -269,7 +298,7 @@ body.armed .fab{opacity:0;visibility:hidden;pointer-events:none;transform:transl
 @media(max-width:768px){
   .page{padding:2rem .75rem}header h1{font-size:1.9rem}
   .top-bar{margin:-2rem -.75rem 1.5rem;padding:.5rem .75rem}
-  #bg{opacity:.55}
+  #bg{opacity:.6}#aurora{opacity:calc(var(--aur)*.6)}
   .urange{display:none}
   .fab{bottom:1rem;right:1rem}
   .uhead{padding:.8rem .9rem;gap:.5rem;flex-wrap:wrap}
@@ -277,9 +306,10 @@ body.armed .fab{opacity:0;visibility:hidden;pointer-events:none;transform:transl
   .ucontent{overflow:visible}
   .ltable,.ltable tbody{display:block}
   .ltable thead{display:none}
-  .ltable tr{display:grid;grid-template-columns:auto 1fr;column-gap:.55rem;row-gap:.1rem;align-items:center;padding:.85rem .9rem .95rem;border-bottom:1px solid var(--bdr)}
+  .ltable tr{display:grid;grid-template-columns:auto 1fr;column-gap:.55rem;row-gap:.1rem;align-items:center;padding:.85rem .9rem .95rem;border-bottom:1px solid var(--bdr);
+    background:linear-gradient(var(--tint),var(--tint)),rgba(var(--sf),var(--ra))}
   .ltable tr:last-child{border-bottom:none}
-  .ltable td{display:block;padding:0;border:none}
+  .ltable td{display:block;padding:0;border:none;background:none}
   .td-num{grid-row:1;grid-column:1;width:auto;text-align:left;font-size:.62rem;padding:.08rem .5rem;border:1px solid var(--bdr);border-radius:100px;color:var(--t3)}
   .td-num::before{content:"Day "}
   .td-date{grid-row:1;grid-column:2;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
@@ -290,7 +320,7 @@ body.armed .fab{opacity:0;visibility:hidden;pointer-events:none;transform:transl
   .td-topic{grid-column:1/-1;margin-top:.4rem}
   .td-extra{grid-column:1/-1;margin-top:.5rem;padding-top:.5rem;border-top:1px dashed var(--bdr)}
   .td-extra.empty{display:none}
-  .ltable tr.is-today{background:var(--accent-dim);box-shadow:inset 3px 0 0 var(--accent)}
+  .ltable tr.is-today{box-shadow:inset 3px 0 0 var(--accent)}
   .ltable tr.is-today td,.ltable tr.is-today td:first-child,.ltable tr.is-today td:last-child{background:none;box-shadow:none;border-radius:0}
   .ltable tr.is-today .td-num{border-color:var(--accent-bdr);color:var(--accent)}
   .dlink{font-size:.86rem}.dlink.ans,.dlink.pend{font-size:.8rem}.dlink.vid,.dlink.doc,.dlink.eqao{font-size:.82rem}
@@ -304,7 +334,9 @@ body.armed .fab{opacity:0;visibility:hidden;pointer-events:none;transform:transl
 </style>
 </head>
 <body>
+<div id="aurora" aria-hidden="true"></div>
 <canvas id="bg" aria-hidden="true"></canvas>
+<svg id="vcur" aria-hidden="true"><line class="halo"/><line class="shaft"/><g class="head"><polygon class="hp" points="0,0 -13,-5 -9.5,0 -13,5"/></g><text></text></svg>
 <div class="page">
   <div class="top-bar" style="--i:0">
     <span class="lbl">Course</span>
@@ -479,13 +511,25 @@ function dayName(day){
   const c=(day.covers||"").trim();
   return k+(c?": "+c:"");
 }
+/* Glass opacity for a day: solid at today, nearly so either side, fading
+   with distance; past days thinnest. Quiz and review days a touch firmer.
+   Test, exam and today are pinned solid in CSS. */
+function rowAlpha(day,st){
+  if(!day.iso)return .5;
+  const n=Math.abs(daysAgo(day.iso));
+  let a=st==="past"?.4:.52;
+  if(n===1)a=.84;else if(n===2)a=.74;else if(n===3)a=.64;
+  if(day.flag==="quiz"||day.flag==="pquiz")a=Math.min(.9,a+.12);
+  if(day.flag==="review")a=Math.min(.9,a+.08);
+  return a;
+}
 function dayRow(day,i){
   const st=stateOf(day);
   const cls=[FLAGS[day.flag]||day.flag==="review"?"is-"+day.flag:"",st==="today"?"is-today":""].join(" ");
   const links=noteLinks(day);
   const extras=extrasHTML(day.extras||[]);
   const heroId=heroEntry&&day===heroEntry.day?' id="heroDayRow"':"";
-  return `<tr class="${cls}"${heroId} style="--i:${i}">
+  return `<tr class="${cls}"${heroId} style="--i:${i};--ra0:${rowAlpha(day,st)}">
     <td class="td-num">${day.d}</td>
     <td class="td-date">${fmtDate2(day.iso)}${st==="today"?'<br><span class="today-pill">Today</span>':""}</td>
     <td class="td-topic">${flagHTML(day)}${day.topic?`<span class="topic">${day.topic}</span>`:""}<div class="lgroup">${links.join("")}</div></td>
@@ -724,19 +768,24 @@ dmBtn.addEventListener("click",()=>{
 });
 render();renderEssentials();renderHero();syncBtn();
 
-/* ══════════ Animated background: calculus and vectors, built slowly ══════════
-   Calm vignettes from the course, one idea each: a secant swings into the
-   tangent as h shrinks to 0; f and f′ trace together, each turning point of f
-   dropping onto a zero of f′; two vectors add head to tail; a cross product
-   rises out of the plane of its two vectors. Each fades in, builds slowly,
-   rests, and fades away. No clicks, no cursor play. */
+/* ══════════ Animated background: calculus and vectors, in colour ══════════
+   Eight vignettes from the course, each in its own colours, five on screen
+   at a time: a secant swinging into the tangent as h → 0; a tangent riding a
+   curve, changing colour with the sign of f′; f over f′ with turning points
+   dropping onto zeros; a point moving on a curve with its velocity and
+   acceleration vectors; u + v head to tail; a × b rising from its
+   parallelogram; a plane turning under its normal; the projection of a onto
+   b as a swings. They build, rest, fade and are replaced, and drift gently
+   with the scroll. Behind them an aurora of the same colours breathes
+   (#aurora, CSS). No clicks. */
 const cv=document.getElementById("bg"),cx=cv.getContext("2d");
-let W,H,DPR,RGB="15,118,110",ALPHA=.1;
-const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W,H,DPR,ALPHA=.13,SCY=0;
+const PAL={};
+const reduce=REDUCE;
 const MONO="11px 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace";
 function bgColors(){
   const s=getComputedStyle(document.documentElement);
-  RGB=(s.getPropertyValue("--curve")||RGB).trim();
+  ["tq","vi","co","am","li","sk"].forEach(k=>PAL[k]=(s.getPropertyValue("--pal-"+k)||"8,121,140").trim());
   ALPHA=parseFloat(s.getPropertyValue("--curve-a"))||ALPHA;
   if(reduce&&vigs.length)drawStatic();
 }
@@ -750,13 +799,29 @@ const rnd=(a,b)=>a+Math.random()*(b-a);
 const clamp01=p=>Math.max(0,Math.min(1,p));
 const easeO=p=>1-Math.pow(1-clamp01(p),3);
 const easeIO=p=>{p=clamp01(p);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2};
-const col=a=>`rgba(${RGB},${Math.max(0,a)})`;
-const LINE=f=>Math.min(ALPHA*3,.36)*f;
+const col=(k,a)=>`rgba(${PAL[k]||k},${Math.max(0,Math.min(1,a))})`;
+const mix=(k1,k2,t)=>{const a=(PAL[k1]||k1).split(","),b=(PAL[k2]||k2).split(",");return a.map((x,i)=>Math.round(+x+(+b[i]-x)*t)).join(",")};
+const LINE=f=>Math.min(ALPHA*3,.44)*f;
+const BOLD=f=>Math.min(ALPHA*3.8,.54)*f;
 
-const T_IN=1400,T_OUT=2600,N_VIGS=3;
-const KINDS=["tangent","graphs","vectors","cross"];
+const T_IN=1200,T_OUT=2200,N_VIGS=window.innerWidth<700?3:5;
+const KINDS=["tangent","rider","graphs","motion","vectors","cross","plane","proj"];
+const KC={tangent:["tq","co"],rider:["tq","co"],graphs:["vi","tq"],motion:["sk","co","am"],
+          vectors:["am","vi","tq"],cross:["li","vi","co"],plane:["sk","li"],proj:["vi","am"]};
+const SIZE={tangent:[[220,300],[140,180]],rider:[[240,320],[140,180]],graphs:[[200,270],[180,230]],
+            motion:[[220,300],[180,240]],vectors:[[190,260],[140,190]],cross:[[200,260],[160,210]],
+            plane:[[230,310],[170,220]],proj:[[220,290],[150,190]]};
+const LOOPS={rider:1,motion:1,plane:1,proj:1};   // keep moving through the hold
 const vigs=[];
 
+/* ── makers: the geometry of one vignette, fitted to its box ── */
+function cubic(v){
+  const t1=rnd(.2,.4),t2=rnd(.6,.8),K=Math.random()<.5?1:-1;
+  const F=t=>K*(t*t*t/3-(t1+t2)*t*t/2+t1*t2*t),Fp=t=>K*(t-t1)*(t-t2);
+  let lo=1e9,hi=-1e9,mp=0;
+  for(let i=0;i<=60;i++){const t=i/60,y=F(t);lo=Math.min(lo,y);hi=Math.max(hi,y);mp=Math.max(mp,Math.abs(Fp(t)))}
+  return{F,Fp,lo,hi,mp,t1,t2};
+}
 function makeTangent(v){
   const a=rnd(.24,.32),k=rnd(3,4.2),ph=rnd(0,6.28),tilt=rnd(-.2,.2);
   v.f=t=>.5+a*Math.sin(k*t+ph)+tilt*(t-.5);
@@ -764,14 +829,22 @@ function makeTangent(v){
   v.t0=rnd(.38,.58);
   v.h0=(Math.random()<.5?-1:1)*rnd(.3,.36);
 }
+function makeRider(v){
+  const c=cubic(v),sc=.72/(c.hi-c.lo||1);
+  v.f=t=>.14+(c.F(t)-c.lo)*sc;v.fp=t=>c.Fp(t)*sc;v.turns=[c.t1,c.t2];
+}
 function makeGraphs(v){
-  const t1=rnd(.18,.4),t2=rnd(.6,.82),K=Math.random()<.5?1:-1;
-  const F=t=>K*(t*t*t/3-(t1+t2)*t*t/2+t1*t2*t),Fp=t=>K*(t-t1)*(t-t2);
-  let lo=1e9,hi=-1e9,mp=0;
-  for(let i=0;i<=60;i++){const t=i/60,y=F(t);lo=Math.min(lo,y);hi=Math.max(hi,y);mp=Math.max(mp,Math.abs(Fp(t)))}
-  v.f=t=>.1+.8*(F(t)-lo)/(hi-lo||1);
-  v.fp=t=>.5+.4*Fp(t)/(mp||1);
-  v.turns=[t1,t2];
+  const c=cubic(v);
+  v.f=t=>.1+.8*(c.F(t)-c.lo)/(c.hi-c.lo||1);
+  v.fp=t=>.5+.4*c.Fp(t)/(c.mp||1);
+  v.turns=[c.t1,c.t2];
+}
+function makeMotion(v){
+  const [a,b]=[[1,2],[2,3],[3,2],[1,3]][Math.floor(rnd(0,4))],d=rnd(0,3.14);
+  v.r=t=>[.5+.42*Math.sin(a*t+d),.5+.38*Math.sin(b*t)];
+  v.r1=t=>[.42*a*Math.cos(a*t+d),.38*b*Math.cos(b*t)];
+  v.r2=t=>[-.42*a*a*Math.sin(a*t+d),-.38*b*b*Math.sin(b*t)];
+  v.sv=.26/Math.max(.42*a,.38*b);v.sa=.2/Math.max(.42*a*a,.38*b*b);
 }
 function makeVectors(v){
   const au=rnd(-.15,.55),av=rnd(1.05,1.75),lu=rnd(.42,.55),lv=rnd(.34,.46);
@@ -795,25 +868,39 @@ function makeCross(v){
   v.S=p=>{const q=P(p,s);return[ox+q[0],oy+q[1]]};
   Object.assign(v,{a,b,n:[0,0,z*.75]});
 }
+function makePlane(v){
+  const a=[1,0,0],b=[rnd(.15,.45),rnd(.8,1),0],cc=[(a[0]+b[0])/2,(a[1]+b[1])/2];
+  const R=Math.max(...[[0,0],a,b,[a[0]+b[0],a[1]+b[1]]].map(q=>Math.hypot(q[0]-cc[0],q[1]-cc[1])));
+  const tilt=rnd(.4,.6),se=Math.sin(tilt),ce=Math.cos(tilt),nz=.8;
+  const S=Math.min((v.w-24)/(2*R),(v.h-24)/(2*R*se+nz*ce));
+  Object.assign(v,{a,b,cc,tilt,nz,S,dy:nz*ce*S/2,th0:rnd(0,6.28),w0:rnd(.00022,.00034)*(Math.random()<.5?1:-1)});
+}
+function makeProj(v){
+  const la=rnd(.62,.8),S=Math.min(v.w-28,(v.h-34)/la);
+  Object.assign(v,{la,S,thb:rnd(-.1,.1),th:rnd(.55,.95),ox:v.x+(v.w-S)/2,oy:v.y+v.h-16});
+  v.ph0=Math.asin((v.th-1.05)/.85);
+}
+const MAKE={tangent:makeTangent,rider:makeRider,graphs:makeGraphs,motion:makeMotion,vectors:makeVectors,cross:makeCross,plane:makePlane,proj:makeProj};
+
 function overlaps(a,list){
-  return list.some(b=>b&&a.x<b.x+b.w+60&&a.x+a.w+60>b.x&&a.y<b.y+b.h+60&&a.y+a.h+60>b.y);
+  return list.some(b=>b&&a.x<b.x+b.w+40&&a.x+a.w+40>b.x&&a.y<b.y+b.h+40&&a.y+a.h+40>b.y);
 }
 function spawn(i,now,delay){
   const used=vigs.filter((v,j)=>v&&j!==i).map(v=>v.kind);
   const pool=KINDS.filter(k=>!used.includes(k));
   const kind=pool[Math.floor(Math.random()*pool.length)]||KINDS[i%KINDS.length];
-  const size={tangent:[rnd(180,250),rnd(120,160)],graphs:[rnd(170,230),rnd(150,190)],
-              vectors:[rnd(160,220),rnd(120,160)],cross:[rnd(170,220),rnd(140,180)]}[kind];
+  const sz=SIZE[kind],w=rnd(sz[0][0],sz[0][1]),h=rnd(sz[1][0],sz[1][1]);
   let v;
-  for(let tries=0;tries<14;tries++){
-    v={kind,w:size[0],h:size[1],x:rnd(16,Math.max(17,W-size[0]-16)),y:rnd(40,Math.max(41,H-size[1]-30))};
+  for(let tries=0;tries<16;tries++){
+    v={kind,w,h,x:rnd(16,Math.max(17,W-w-16)),y:rnd(40,Math.max(41,H-h-30))};
     if(!overlaps(v,vigs.filter((_,j)=>j!==i)))break;
   }
+  v.c=KC[kind];
   v.born=now+(delay||0);
-  v.build=rnd(8000,10500);
-  v.hold=rnd(5000,8000);
+  v.build=rnd(5000,8000);
+  v.hold=LOOPS[kind]?rnd(9000,14000):rnd(4000,7000);
   v.life=T_IN+v.build+v.hold+T_OUT;
-  ({tangent:makeTangent,graphs:makeGraphs,vectors:makeVectors,cross:makeCross})[kind](v);
+  MAKE[kind](v);
   return v;
 }
 
@@ -824,14 +911,17 @@ function phase(v,t){
   const f=age<T_IN?age/T_IN:age>v.life-T_OUT?(v.life-age)/T_OUT:1;
   return{p:clamp01((age-T_IN*.4)/v.build),f:clamp01(f)};
 }
-function label(text,x,y,f){
-  cx.font="italic "+MONO;cx.fillStyle=col(Math.min(ALPHA*3.2,.34)*f);cx.fillText(text,x,y);
+
+/* ── drawing helpers; colours are palette keys or "r,g,b" strings ── */
+function label(text,x,y,f,k){
+  cx.font="italic "+MONO;cx.fillStyle=col(k,Math.min(ALPHA*3.4,.4)*f);cx.fillText(text,x,y);
 }
-function dot(x,y,r,a){cx.beginPath();cx.arc(x,y,r,0,Math.PI*2);cx.fillStyle=col(a);cx.fill()}
-function arrow(x1,y1,x2,y2,a,w){
+function dot(x,y,r,c){cx.beginPath();cx.arc(x,y,r,0,Math.PI*2);cx.fillStyle=c;cx.fill()}
+function seg(p,q){cx.beginPath();cx.moveTo(p[0],p[1]);cx.lineTo(q[0],q[1]);cx.stroke()}
+function arrow(x1,y1,x2,y2,c,w){
   const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);
   if(L<1)return;
-  cx.strokeStyle=col(a);cx.fillStyle=col(a);cx.lineWidth=w||1.8;cx.lineCap="round";
+  cx.strokeStyle=c;cx.fillStyle=c;cx.lineWidth=w||1.8;cx.lineCap="round";
   cx.beginPath();cx.moveTo(x1,y1);cx.lineTo(x2,y2);cx.stroke();
   const ux=dx/L,uy=dy/L,hs=Math.min(9,L*.4);
   cx.beginPath();cx.moveTo(x2,y2);
@@ -847,99 +937,218 @@ function trace(fn,px,py,t1){
   }
   cx.stroke();
 }
-function drawTangent(v,p,f){
-  const px=t=>v.x+t*v.w,py=y=>v.y+v.h-y*v.h;
-  cx.strokeStyle=col(ALPHA*1.6*f);cx.lineWidth=1.2;cx.lineCap="round";
+function axes(v,f,k){
+  cx.strokeStyle=col(k,ALPHA*1.5*f);cx.lineWidth=1.2;cx.lineCap="round";
   cx.beginPath();cx.moveTo(v.x,v.y);cx.lineTo(v.x,v.y+v.h);cx.lineTo(v.x+v.w,v.y+v.h);cx.stroke();
-  const cp=easeO(p/.3);
-  cx.strokeStyle=col(LINE(f));cx.lineWidth=2;trace(v.f,px,py,cp);
+}
+
+/* ── the vignettes ── */
+function drawTangent(v,p,f){
+  const [c0,c1]=v.c,px=t=>v.x+t*v.w,py=y=>v.y+v.h-y*v.h;
+  axes(v,f,c0);
+  cx.strokeStyle=col(c0,LINE(f));cx.lineWidth=2;trace(v.f,px,py,easeO(p/.3));
   if(p<.32)return;
-  const k=clamp01((p-.32)/.06);
-  const h=v.h0*(1-easeIO((p-.42)/.46));
+  const k=clamp01((p-.32)/.06),q=easeIO((p-.42)/.46);
+  const h=v.h0*(1-q);
   const t0=v.t0,t1=t0+h,y0=v.f(t0);
   const m=Math.abs(h)>.002?(v.f(t1)-y0)/h:v.fp(t0);
+  const lc=mix(c1,c0,q);                      // the secant's colour becomes the curve's as it becomes the tangent
   cx.save();cx.beginPath();cx.rect(v.x,v.y-10,v.w,v.h+10);cx.clip();
   cx.beginPath();cx.moveTo(px(-.1),py(y0+m*(-.1-t0)));cx.lineTo(px(1.1),py(y0+m*(1.1-t0)));
-  cx.strokeStyle=col(ALPHA*2*f*k);cx.lineWidth=1.4;cx.stroke();
+  cx.strokeStyle=col(lc,BOLD(f)*k*.9);cx.lineWidth=1.6;cx.stroke();
   cx.restore();
-  dot(px(t0),py(y0),3.2,ALPHA*3*f*k);
-  if(Math.abs(h)>.004)dot(px(t1),py(v.f(t1)),2.8,ALPHA*2.4*f*k*clamp01(Math.abs(h)/.03));
-  if(p>.42&&p<.9)label("h → 0",v.x+v.w-48,v.y+12,f*clamp01((p-.42)/.05)*clamp01((.9-p)/.05));
-  if(p>=.9)label("f′(a)",px(t0)+8,py(y0)-10,f*clamp01((p-.9)/.06));
+  dot(px(t0),py(y0),3.4,col(c0,BOLD(f)*k));
+  if(Math.abs(h)>.004)dot(px(t1),py(v.f(t1)),3,col(c1,BOLD(f)*k*clamp01(Math.abs(h)/.03)));
+  if(p>.42&&p<.9)label("h → 0",v.x+v.w-50,v.y+12,f*clamp01((p-.42)/.05)*clamp01((.9-p)/.05),c1);
+  if(p>=.9)label("f′(a)",px(t0)+8,py(y0)-10,f*clamp01((p-.9)/.06),c0);
+}
+function drawRider(v,p,f,hold){
+  const [c0,c1]=v.c,px=t=>v.x+t*v.w,py=y=>v.y+v.h-y*v.h;
+  axes(v,f,c0);
+  cx.strokeStyle=col(c0,LINE(f));cx.lineWidth=2;trace(v.f,px,py,easeO(p/.25));
+  if(p<.25)return;
+  const k=clamp01((p-.25)/.05);
+  let s;
+  if(p<1)s=easeIO((p-.25)/.75);
+  else{const ph=(hold/5500)%2;s=ph<1?easeIO(1-ph):easeIO(ph-1)}
+  s=.04+.92*s;
+  const x0=px(s),y0=py(v.f(s)),m=v.fp(s);
+  const dxs=v.w,dys=-m*v.h,Ln=Math.hypot(dxs,dys),ux=dxs/Ln,uy=dys/Ln,half=Math.min(v.w*.3,84);
+  const ck=m>=0?c0:c1;
+  cx.strokeStyle=col(ck,BOLD(f)*k);cx.lineWidth=1.8;cx.lineCap="round";
+  cx.beginPath();cx.moveTo(x0-ux*half,y0-uy*half);cx.lineTo(x0+ux*half,y0+uy*half);cx.stroke();
+  cx.setLineDash([2,4]);cx.strokeStyle=col(ck,ALPHA*1.4*f*k);cx.lineWidth=1;
+  seg([x0,y0],[x0,v.y+v.h]);cx.setLineDash([]);
+  dot(x0,y0,3.6,col(ck,BOLD(f)*k));
+  v.turns.forEach(tt=>{
+    const near=clamp01(1-Math.abs(s-tt)/.06);
+    if(near>0){dot(px(tt),py(v.f(tt)),5.5,col(c1,ALPHA*1.6*f*near));label("f′ = 0",px(tt)+9,py(v.f(tt))-11,f*near,c1)}
+  });
+  label(m>.015?"f′ > 0":m<-.015?"f′ < 0":"f′ = 0",v.x+v.w-54,v.y+12,f*k,ck);
 }
 function drawGraphs(v,p,f){
-  const gap=14,hh=(v.h-gap)/2,px=t=>v.x+t*v.w;
+  const [c0,c1]=v.c,gap=14,hh=(v.h-gap)/2,px=t=>v.x+t*v.w;
   const pyT=y=>v.y+hh-y*hh,pyB=y=>v.y+hh+gap+hh-y*hh;
-  cx.strokeStyle=col(ALPHA*1.6*f);cx.lineWidth=1.2;cx.lineCap="round";
+  cx.strokeStyle=col(c0,ALPHA*1.5*f);cx.lineWidth=1.2;cx.lineCap="round";
   cx.beginPath();cx.moveTo(v.x,v.y+hh);cx.lineTo(v.x+v.w,v.y+hh);cx.stroke();
-  cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(v.x,pyB(.5));cx.lineTo(v.x+v.w,pyB(.5));cx.stroke();cx.setLineDash([]);
+  cx.setLineDash([3,4]);cx.strokeStyle=col(c1,ALPHA*1.5*f);cx.beginPath();cx.moveTo(v.x,pyB(.5));cx.lineTo(v.x+v.w,pyB(.5));cx.stroke();cx.setLineDash([]);
   const tp=easeIO(p/.8);
-  cx.strokeStyle=col(LINE(f));cx.lineWidth=2;
-  trace(v.f,px,pyT,tp);trace(v.fp,px,pyB,tp);
+  cx.lineWidth=2;
+  cx.strokeStyle=col(c0,LINE(f));trace(v.f,px,pyT,tp);
+  cx.strokeStyle=col(c1,LINE(f));trace(v.fp,px,pyB,tp);
   v.turns.forEach(t=>{
     const k=clamp01((tp-t)/.06);
     if(k<=0)return;
     cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(px(t),pyT(v.f(t)));cx.lineTo(px(t),pyB(.5)+(pyT(v.f(t))-pyB(.5))*(1-k));
-    cx.strokeStyle=col(ALPHA*1.6*f);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
-    dot(px(t),pyT(v.f(t)),2.8,ALPHA*2.6*f);
-    if(k>=1)dot(px(t),pyB(.5),2.8,ALPHA*2.6*f);
+    cx.strokeStyle=col(c1,ALPHA*1.6*f);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
+    dot(px(t),pyT(v.f(t)),3,col(c0,BOLD(f)*.8));
+    if(k>=1)dot(px(t),pyB(.5),3,col(c1,BOLD(f)*.8));
   });
-  if(p>.05){label("f",v.x-12,v.y+10,f);label("f′",v.x-14,v.y+hh+gap+10,f)}
+  if(p>.05){label("f",v.x-12,v.y+10,f,c0);label("f′",v.x-14,v.y+hh+gap+10,f,c1)}
+}
+function drawMotion(v,p,f,hold){
+  const [c0,c1,c2]=v.c,px=x=>v.x+x*v.w,py=y=>v.y+v.h-y*v.h;
+  const cp=easeIO(p/.5)*Math.PI*2;
+  cx.strokeStyle=col(c0,ALPHA*1.5*f);cx.lineWidth=1.3;cx.setLineDash([2,5]);
+  cx.beginPath();for(let i=0;i<=140;i++){const q=v.r(cp*i/140);i?cx.lineTo(px(q[0]),py(q[1])):cx.moveTo(px(q[0]),py(q[1]))}cx.stroke();cx.setLineDash([]);
+  if(p<.5)return;
+  const k=clamp01((p-.5)/.08);
+  const T=(p<1?(p-.5)/.5*2.2:2.2)+hold*.00055;
+  const n=36,span=1.5;
+  cx.lineWidth=2.4;cx.lineCap="round";
+  for(let i=0;i<n;i++){
+    const t0=T-span+span*i/n,t1=T-span+span*(i+1)/n,q0=v.r(t0),q1=v.r(t1);
+    cx.strokeStyle=col(c0,LINE(f)*k*((i+1)/n));
+    seg([px(q0[0]),py(q0[1])],[px(q1[0]),py(q1[1])]);
+  }
+  const q=v.r(T),vv=v.r1(T),aa=v.r2(T),X=px(q[0]),Y=py(q[1]);
+  const Vx=px(q[0]+vv[0]*v.sv),Vy=py(q[1]+vv[1]*v.sv),Ax=px(q[0]+aa[0]*v.sa),Ay=py(q[1]+aa[1]*v.sa);
+  arrow(X,Y,Vx,Vy,col(c1,BOLD(f)*k),2.2);
+  arrow(X,Y,Ax,Ay,col(c2,BOLD(f)*k*.9),1.8);
+  dot(X,Y,3.8,col(c0,BOLD(f)*k));
+  label("v",Vx+(Vx>X?6:-12),Vy+(Vy>Y?12:-6),f*k,c1);
+  label("a",Ax+(Ax>X?6:-12),Ay+(Ay>Y?12:-6),f*k,c2);
+  if(p>.6)label("r(t)",v.x+4,v.y+12,f*clamp01((p-.6)/.06),c0);
 }
 function drawVectors(v,p,f){
-  const[ox,oy]=v.o,u=v.u,w=v.vv;
+  const [c0,c1,c2]=v.c,[ox,oy]=v.o,u=v.u,w=v.vv;
   const U=[ox+u[0],oy+u[1]],Wt=[ox+w[0],oy+w[1]],R=[U[0]+w[0],U[1]+w[1]];
-  cx.strokeStyle=col(ALPHA*1.2*f);cx.lineWidth=1;
+  cx.strokeStyle=col(c2,ALPHA*1.2*f);cx.lineWidth=1;
   cx.beginPath();cx.moveTo(ox-8,oy);cx.lineTo(Math.max(U[0],R[0])+8,oy);cx.moveTo(ox,oy+8);cx.lineTo(ox,Math.min(Wt[1],R[1])-8);cx.stroke();
   const pu=easeO(p/.2),pv=easeO((p-.2)/.2),ps=easeIO((p-.45)/.22),pr=easeO((p-.72)/.18);
-  if(pu>0)arrow(ox,oy,ox+u[0]*pu,oy+u[1]*pu,LINE(f),1.8);
-  if(pv>0){
-    const a=ps>0?ALPHA*1.4*f:LINE(f);
-    arrow(ox,oy,ox+w[0]*pv,oy+w[1]*pv,a,1.8);
-  }
-  if(ps>0)arrow(ox+u[0]*ps,oy+u[1]*ps,ox+u[0]*ps+w[0],oy+u[1]*ps+w[1],LINE(f),1.8);
-  if(pr>0)arrow(ox,oy,ox+(R[0]-ox)*pr,oy+(R[1]-oy)*pr,Math.min(ALPHA*3.6,.42)*f,2.4);
+  if(pu>0)arrow(ox,oy,ox+u[0]*pu,oy+u[1]*pu,col(c0,LINE(f)),1.9);
+  if(pv>0)arrow(ox,oy,ox+w[0]*pv,oy+w[1]*pv,col(c1,ps>0?ALPHA*1.4*f:LINE(f)),1.9);
+  if(ps>0)arrow(ox+u[0]*ps,oy+u[1]*ps,ox+u[0]*ps+w[0],oy+u[1]*ps+w[1],col(c1,LINE(f)),1.9);
+  if(pr>0)arrow(ox,oy,ox+(R[0]-ox)*pr,oy+(R[1]-oy)*pr,col(c2,BOLD(f)),2.5);
   if(pr>=1){
     cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(Wt[0],Wt[1]);cx.lineTo(R[0],R[1]);
-    cx.strokeStyle=col(ALPHA*1.4*f);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
+    cx.strokeStyle=col(c1,ALPHA*1.4*f);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
   }
-  if(pu>=1)label("u",ox+u[0]*.55+4,oy+u[1]*.55+14,f);
-  if(pv>=1&&ps<=0)label("v",ox+w[0]*.5-14,oy+w[1]*.5,f);
-  if(ps>=1)label("v",U[0]+w[0]*.5+6,U[1]+w[1]*.5,f);
-  if(pr>=1)label("u + v",R[0]+6,R[1]-4,f*clamp01((p-.9)/.06));
+  if(pu>=1)label("u",ox+u[0]*.55+4,oy+u[1]*.55+14,f,c0);
+  if(pv>=1&&ps<=0)label("v",ox+w[0]*.5-14,oy+w[1]*.5,f,c1);
+  if(ps>=1)label("v",U[0]+w[0]*.5+6,U[1]+w[1]*.5,f,c1);
+  if(pr>=1)label("u + v",R[0]+6,R[1]-4,f*clamp01((p-.9)/.06),c2);
 }
 function drawCross(v,p,f){
-  const S=v.S,O=S([0,0,0]);
-  cx.setLineDash([2,4]);cx.strokeStyle=col(ALPHA*1.2*f);cx.lineWidth=1;
+  const [c0,c1,c2]=v.c,S=v.S,O=S([0,0,0]);
+  cx.setLineDash([2,4]);cx.strokeStyle=col(c0,ALPHA*1.2*f);cx.lineWidth=1;
   [[1.25,0,0],[0,1.25,0],[0,0,.9]].forEach(e=>{const q=S(e);cx.beginPath();cx.moveTo(O[0],O[1]);cx.lineTo(q[0],q[1]);cx.stroke()});
   cx.setLineDash([]);
   const pa=easeO(p/.2),pb=easeO((p-.2)/.2),pf=easeO((p-.45)/.2),pn=easeO((p-.7)/.22);
   const A=S(v.a),B=S(v.b),AB=S([v.a[0]+v.b[0],v.a[1]+v.b[1],0]);
   if(pf>0){
     cx.beginPath();cx.moveTo(O[0],O[1]);cx.lineTo(A[0],A[1]);cx.lineTo(AB[0],AB[1]);cx.lineTo(B[0],B[1]);cx.closePath();
-    cx.fillStyle=col(ALPHA*.7*f*pf);cx.fill();
+    cx.fillStyle=col(mix(c0,c1,.5),ALPHA*.9*f*pf);cx.fill();
     cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(A[0],A[1]);cx.lineTo(AB[0],AB[1]);cx.lineTo(B[0],B[1]);
-    cx.strokeStyle=col(ALPHA*1.4*f*pf);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
+    cx.strokeStyle=col(c1,ALPHA*1.4*f*pf);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
   }
-  if(pa>0)arrow(O[0],O[1],O[0]+(A[0]-O[0])*pa,O[1]+(A[1]-O[1])*pa,LINE(f),1.8);
-  if(pb>0)arrow(O[0],O[1],O[0]+(B[0]-O[0])*pb,O[1]+(B[1]-O[1])*pb,LINE(f),1.8);
-  if(pn>0){const N=S([0,0,v.n[2]*pn]);arrow(O[0],O[1],N[0],N[1],Math.min(ALPHA*3.6,.42)*f,2.4)}
-  if(pa>=1)label("a",A[0]+4,A[1]+12,f);
-  if(pb>=1)label("b",B[0]+6,B[1]+2,f);
-  if(pn>=1){const N=S(v.n);label("a × b",N[0]+8,N[1]+4,f*clamp01((p-.92)/.06))}
+  if(pa>0)arrow(O[0],O[1],O[0]+(A[0]-O[0])*pa,O[1]+(A[1]-O[1])*pa,col(c0,LINE(f)),1.9);
+  if(pb>0)arrow(O[0],O[1],O[0]+(B[0]-O[0])*pb,O[1]+(B[1]-O[1])*pb,col(c1,LINE(f)),1.9);
+  if(pn>0){const N=S([0,0,v.n[2]*pn]);arrow(O[0],O[1],N[0],N[1],col(c2,BOLD(f)),2.5)}
+  if(pa>=1)label("a",A[0]+4,A[1]+12,f,c0);
+  if(pb>=1)label("b",B[0]+6,B[1]+2,f,c1);
+  if(pn>=1){const N=S(v.n);label("a × b",N[0]+8,N[1]+4,f*clamp01((p-.92)/.06),c2)}
 }
+function drawPlane(v,p,f,hold,age){
+  const [c0,c1]=v.c,th=v.th0+age*v.w0,ct=Math.cos(th),st=Math.sin(th),se=Math.sin(v.tilt),ce=Math.cos(v.tilt);
+  const S=v.S,cxp=v.x+v.w/2,cyp=v.y+v.h/2+v.dy;
+  const P=q=>{const x=q[0]-v.cc[0],y=q[1]-v.cc[1],X=x*ct-y*st,Y=x*st+y*ct;return[cxp+X*S,cyp+(-Y*se-q[2]*ce)*S]};
+  const a=v.a,b=v.b,corners=[[0,0,0],a,[a[0]+b[0],a[1]+b[1],0],b].map(P);
+  const po=easeO(p/.3),pf=easeO((p-.25)/.25),pg=easeO((p-.4)/.3),pn=easeO((p-.65)/.3);
+  if(pf>0){
+    cx.beginPath();corners.forEach((q,i)=>i?cx.lineTo(q[0],q[1]):cx.moveTo(q[0],q[1]));cx.closePath();
+    cx.fillStyle=col(c0,ALPHA*1.1*f*pf);cx.fill();
+  }
+  if(pg>0){
+    cx.strokeStyle=col(c0,ALPHA*1.5*f*pg);cx.lineWidth=1;cx.setLineDash([2,4]);
+    for(let i=1;i<4;i++){const u=i/4;
+      seg(P([a[0]*u,a[1]*u,0]),P([a[0]*u+b[0],a[1]*u+b[1],0]));
+      seg(P([b[0]*u,b[1]*u,0]),P([b[0]*u+a[0],b[1]*u+a[1],0]));
+    }
+    cx.setLineDash([]);
+  }
+  /* outline draws itself around the parallelogram */
+  cx.strokeStyle=col(c0,LINE(f));cx.lineWidth=1.9;cx.lineCap="round";cx.lineJoin="round";
+  const loop=[...corners,corners[0]];let left=po*4;
+  cx.beginPath();cx.moveTo(loop[0][0],loop[0][1]);
+  for(let i=0;i<4&&left>0;i++){
+    const k=Math.min(1,left),q0=loop[i],q1=loop[i+1];
+    cx.lineTo(q0[0]+(q1[0]-q0[0])*k,q0[1]+(q1[1]-q0[1])*k);left-=1;
+  }
+  cx.stroke();
+  if(po>=1){label("a",...P([a[0]*.5,a[1]*.5,0]).map((q,i)=>q+(i?14:-4)),f,c0);label("b",...P([b[0]*.5,b[1]*.5,0]).map((q,i)=>q+(i?-6:-14)),f,c0)}
+  if(pn>0){
+    const C=P([(a[0]+b[0])/2,(a[1]+b[1])/2,0]),N=P([(a[0]+b[0])/2,(a[1]+b[1])/2,v.nz*pn]);
+    arrow(C[0],C[1],N[0],N[1],col(c1,BOLD(f)),2.5);
+    dot(C[0],C[1],2.6,col(c1,BOLD(f)));
+    if(pn>=1)label("n = a × b",N[0]+9,N[1]+2,f,c1);
+  }
+}
+function drawProj(v,p,f,hold){
+  const [c0,c1]=v.c,S=v.S,ox=v.ox,oy=v.oy;
+  const th=p<1?v.th:1.05+.85*Math.sin(hold*.00045+v.ph0);
+  const bx=Math.cos(v.thb),by=Math.sin(v.thb),ax=Math.cos(th+v.thb),ay=Math.sin(th+v.thb);
+  const pb=easeO(p/.25),pa=easeO((p-.2)/.25),pd=easeO((p-.5)/.15),pp=easeO((p-.65)/.2),pl=easeO((p-.85)/.15);
+  const B=[ox+bx*S,oy-by*S],A=[ox+ax*S*v.la,oy-ay*S*v.la];
+  const sc=v.la*S*Math.cos(th),Pp=[ox+bx*sc,oy-by*sc];
+  if(sc<0&&pd>0){cx.setLineDash([2,4]);cx.strokeStyle=col(c0,ALPHA*1.4*f*pd);cx.lineWidth=1;seg([ox,oy],Pp);cx.setLineDash([])}
+  if(pb>0)arrow(ox,oy,ox+(B[0]-ox)*pb,oy+(B[1]-oy)*pb,col(c0,LINE(f)),1.9);
+  if(pa>0)arrow(ox,oy,ox+(A[0]-ox)*pa,oy+(A[1]-oy)*pa,col(c0,LINE(f)),1.9);
+  if(pd>0){cx.setLineDash([3,4]);cx.strokeStyle=col(c1,ALPHA*1.8*f*pd);cx.lineWidth=1;
+    seg(A,[A[0]+(Pp[0]-A[0])*pd,A[1]+(Pp[1]-A[1])*pd]);cx.setLineDash([])}
+  if(pp>0&&Math.abs(sc)>2)arrow(ox,oy,ox+(Pp[0]-ox)*pp,oy+(Pp[1]-oy)*pp,col(c1,BOLD(f)),2.6);
+  if(pl>0&&Math.abs(sc)>8){
+    /* right-angle mark at the foot of the perpendicular */
+    const s=7,dx=-bx*Math.sign(sc)*s,dy=by*Math.sign(sc)*s,nx=-by*s,ny=-bx*s;
+    cx.strokeStyle=col(c1,ALPHA*2.4*f*pl);cx.lineWidth=1;
+    cx.beginPath();cx.moveTo(Pp[0]+dx,Pp[1]+dy);cx.lineTo(Pp[0]+dx+nx,Pp[1]+dy+ny);cx.lineTo(Pp[0]+nx,Pp[1]+ny);cx.stroke();
+    cx.beginPath();cx.strokeStyle=col(c0,ALPHA*2*f*pl);cx.arc(ox,oy,20,-(th+v.thb),-v.thb);cx.stroke();
+    label("θ",ox+24*Math.cos((th+2*v.thb)/2)+2,oy-24*Math.sin((th+2*v.thb)/2)+4,f*pl,c0);
+    label(sc<0?"a · b < 0":"proj a on b",Pp[0]-(sc<0?44:22),oy+16,f*pl,c1);
+  }
+  if(pa>=1)label("a",A[0]+(ax>0?6:-12),A[1]-4,f,c0);
+  if(pb>=1)label("b",B[0]+6,B[1]+4,f,c0);
+}
+const DRAW={tangent:drawTangent,rider:drawRider,graphs:drawGraphs,motion:drawMotion,vectors:drawVectors,cross:drawCross,plane:drawPlane,proj:drawProj};
+
 function drawVig(v,t){
   if(t<v.born)return true;
-  if(!v.fixed&&t-v.born>v.life)return false;
+  const age=v.fixed?6000:t-v.born;
+  if(!v.fixed&&age>v.life)return false;
   const{p,f}=phase(v,t);
   if(f<=0)return true;
-  ({tangent:drawTangent,graphs:drawGraphs,vectors:drawVectors,cross:drawCross})[v.kind](v,p,f);
+  const hold=v.fixed?4000:Math.max(0,age-T_IN*.4-v.build);
+  /* parallax: the scene drifts up a tenth as fast as the page, wrapping */
+  const span=H+v.h+80,yy=(((v.y-SCY*.1)+v.h+40)%span+span)%span-v.h-40;
+  cx.save();cx.translate(0,yy-v.y);
+  DRAW[v.kind](v,p,f,hold,age);
+  cx.restore();
   return true;
 }
 function draw(t){
   cx.clearRect(0,0,W,H);
   for(let i=0;i<vigs.length;i++){
-    if(!drawVig(vigs[i],t))vigs[i]=spawn(i,t,900+Math.random()*2600);
+    if(!drawVig(vigs[i],t))vigs[i]=spawn(i,t,700+Math.random()*2200);
   }
 }
 let bgRaf=0;
@@ -949,11 +1158,12 @@ document.addEventListener("visibilitychange",()=>{
   if(document.hidden){cancelAnimationFrame(bgRaf);bgRaf=0}
   else if(!bgRaf)bgRaf=requestAnimationFrame(loop);
 });
+window.addEventListener("scroll",()=>{SCY=window.scrollY},{passive:true});
 sizeBg();bgColors();
 /* open mid-show: the first vignettes start at staggered stages */
 for(let i=0;i<N_VIGS;i++){
   const v=spawn(i,performance.now(),0);
-  v.born-=v.life*i*.28;
+  v.born-=v.life*i*.19;
   vigs.push(v);
 }
 window.addEventListener("resize",()=>{sizeBg();if(reduce)drawStatic()});
@@ -962,6 +1172,95 @@ function drawStatic(){
   draw(0);
 }
 if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
+
+/* ══════════ The cursor is a vector ══════════
+   On a mouse-and-trackpad machine the pointer becomes an arrow whose head sits
+   exactly where the mouse is. Moving, it points the way you are going and
+   stretches with speed (a velocity vector). Over a link its tail hooks onto
+   the link's left edge, so the vector grows and shrinks as you move across
+   the link, in that link's colour, with its magnitude printed beside it.
+   Phones and tablets, text boxes, and reduced-motion users keep the normal
+   pointer. */
+(function(){
+  if(!window.matchMedia("(hover:hover) and (pointer:fine)").matches||REDUCE)return;
+  const svg=document.getElementById("vcur");
+  const halo=svg.querySelector(".halo"),shaft=svg.querySelector(".shaft"),head=svg.querySelector(".head"),txt=svg.querySelector("text");
+  const L0=26,LMAX=96,HEAD=13;
+  const SEL='a,button,[role="link"],.dlink.pend,.tipwrap';
+  let mx=-100,my=-100,px=mx,py=my,vx=0,vy=0,ang=-2.3,len=L0,tx=0,ty=0;
+  let seen=false,tgt=null,tcol="",hide=false,raf=0,last=0,acc="",accN=0,was=false;
+  function accent(){
+    if(!accN--){accN=30;acc=getComputedStyle(document.documentElement).getPropertyValue("--accent").trim()}
+    return acc;
+  }
+  document.addEventListener("mousemove",e=>{
+    mx=e.clientX;my=e.clientY;
+    if(!seen){
+      seen=true;px=mx;py=my;tx=mx-Math.cos(ang)*L0;ty=my-Math.sin(ang)*L0;
+      document.body.classList.add("vc");svg.classList.add("on");
+    }
+    if(!raf)raf=requestAnimationFrame(tick);
+  },{passive:true});
+  document.addEventListener("mouseover",e=>{
+    const t=e.target.closest(SEL);
+    hide=!!e.target.closest("input,textarea,select");
+    if(t!==tgt){tgt=t;tcol=t&&t.matches(".dlink,.xans,.ess a,.btn,.tgo")?getComputedStyle(t).color:""}
+  });
+  document.addEventListener("mouseout",e=>{if(!e.relatedTarget){tgt=null;hide=false}});
+  document.documentElement.addEventListener("mouseleave",()=>{svg.classList.remove("on");tgt=null});
+  document.documentElement.addEventListener("mouseenter",()=>{if(seen){svg.classList.add("on");if(!raf)raf=requestAnimationFrame(tick)}});
+  window.addEventListener("blur",()=>svg.classList.remove("on"));
+  document.addEventListener("mousedown",()=>svg.classList.add("dn"));
+  document.addEventListener("mouseup",()=>svg.classList.remove("dn"));
+  function tick(now){
+    raf=0;
+    const dt=Math.min(now-last,64)||16;last=now;
+    const dx=mx-px,dy=my-py;px=mx;py=my;
+    vx+=(dx/dt*16-vx)*.4;vy+=(dy/dt*16-vy)*.4;   // px per 16 ms, smoothed
+    const sp=Math.hypot(vx,vy);
+    let anchored=false,ax=0,ay=0;
+    if(tgt&&!hide){
+      const r=tgt.getBoundingClientRect();
+      if(mx<r.left-6||mx>r.right+6||my<r.top-6||my>r.bottom+6)tgt=null;   // left it without a mouseout (view transitions eat them)
+      else if(r.width||r.height){
+        anchored=true;
+        const tall=r.height>64;
+        ax=tall?r.left+12:r.left-3;
+        ay=tall?Math.max(r.top+14,Math.min(r.bottom-14,my)):r.top+r.height/2;
+      }
+    }
+    if(anchored){
+      tx+=(ax-tx)*.32;ty+=(ay-ty)*.32;
+      ang=Math.atan2(my-ty,mx-tx);
+    }else{
+      if(was)len=Math.hypot(mx-tx,my-ty);      // leaving a link: shrink back, don't snap
+      if(sp>1.2){
+        const ta=Math.atan2(vy,vx);let d=ta-ang;d=Math.atan2(Math.sin(d),Math.cos(d));ang+=d*.3;
+      }
+      len+=(Math.min(LMAX,L0+sp*2.6)-len)*.18;
+      tx=mx-Math.cos(ang)*len;ty=my-Math.sin(ang)*len;
+    }
+    was=anchored;
+    const ddx=mx-tx,ddy=my-ty,D=Math.hypot(ddx,ddy)||1,ux=ddx/D,uy=ddy/D;
+    const hs=Math.min(HEAD,D*.7),sx=mx-ux*hs*.72,sy=my-uy*hs*.72;
+    const c=anchored&&tcol?tcol:accent();
+    halo.setAttribute("x1",tx);halo.setAttribute("y1",ty);halo.setAttribute("x2",sx);halo.setAttribute("y2",sy);
+    shaft.setAttribute("x1",tx);shaft.setAttribute("y1",ty);shaft.setAttribute("x2",sx);shaft.setAttribute("y2",sy);
+    shaft.setAttribute("stroke",c);
+    head.setAttribute("fill",c);
+    head.setAttribute("transform",`translate(${mx} ${my}) rotate(${Math.atan2(uy,ux)*180/Math.PI})`);
+    if(anchored&&D>34){
+      const k=ux>0?-1:1;              // label on the upper side of the vector
+      txt.textContent="|v| = "+Math.round(D);
+      txt.setAttribute("x",(tx+mx)/2+(-uy)*12*k);
+      txt.setAttribute("y",(ty+my)/2+ux*12*k+3);
+      txt.setAttribute("fill",c);
+      txt.style.opacity=1;
+    }else txt.style.opacity=0;
+    svg.classList.toggle("hid",hide);
+    if(svg.classList.contains("on"))raf=requestAnimationFrame(tick);
+  }
+})();
 </script>
 </body>
 </html>
