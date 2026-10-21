@@ -1,716 +1,967 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
 <title>MCV4U — Calculus &amp; Vectors</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════
-   LIGHT THEME (default)
-   ═══════════════════════════════════════════════ */
-:root{
-  --bg:#f8f7f4;--white:#fff;--hover:#faf9f7;
-  --blue:#1e3a5f;--accent:#2563eb;--accent-dim:rgba(37,99,235,.08);--accent-bdr:rgba(37,99,235,.2);
-  --gold:#a07808;--teal:#0b7d8c;--rose:#b05050;--muted:#7a7a8a;--muted2:#b0b0ba;
-  --text:#1a1a2e;--t2:#4a4a5a;--t3:#8a8a9a;--t4:#b8b8c4;
-  --bdr:#e5e3df;--bdr2:#d0cec8;
-  --err:#dc2626;--amber:#d97706;--amber-dim:rgba(217,119,6,.06);
-  --test-bg:rgba(196,92,92,.06);--quiz-bg:rgba(80,130,196,.05);--review-bg:rgba(90,155,100,.04);
-  --r:10px;--sh:0 1px 2px rgba(0,0,0,.04);--sh2:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.03);
-  --topbar-bg:rgba(248,247,244,.88);--grid-color:rgba(30,58,95,.04);
-  --fab-sh:0 4px 20px rgba(37,99,235,.25);--fab-sh2:0 6px 28px rgba(37,99,235,.35);
-  --tip-bg:var(--text);--tip-color:#fff;--err-tip-bg:#fff;
-}
+/* ═══════════ MCV4U — CALCULUS & VECTORS ═══════════ */
 
-/* ═══════════════════════════════════════════════
-   DARK THEME — Deep Navy
-   ═══════════════════════════════════════════════ */
-html.dark{
-  --bg:#12161e;--white:#1a1f2a;--hover:#212735;
-  --blue:#a8c4e0;--accent:#5b8def;--accent-dim:rgba(91,141,239,.09);--accent-bdr:rgba(91,141,239,.20);
-  --gold:#c8a850;--teal:#4db8a8;--rose:#d07070;--muted:#7080a0;--muted2:#4a5468;
-  --text:#d4dae4;--t2:#a0a8b8;--t3:#606878;--t4:#3e4452;
-  --bdr:#282e3a;--bdr2:#363e4e;
-  --err:#f06060;--amber:#e0a030;--amber-dim:rgba(224,160,48,.08);
-  --test-bg:rgba(208,112,112,.07);--quiz-bg:rgba(91,141,239,.05);--review-bg:rgba(77,184,168,.05);
-  --r:10px;--sh:0 1px 3px rgba(0,0,0,.2);--sh2:0 2px 8px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.15);
-  --topbar-bg:rgba(18,22,30,.92);--grid-color:rgba(91,141,239,.06);
-  --fab-sh:0 4px 20px rgba(0,0,0,.4);--fab-sh2:0 6px 28px rgba(0,0,0,.5);
-  --tip-bg:#d4dae4;--tip-color:#12161e;--err-tip-bg:#1a1f2a;
+:root{
+  --bg:#f5f9f9;--surface:#ffffff;--hover:#f6fbfa;
+  --ink:#10211f;--t2:#3c5553;--t3:#6f8886;--t4:#a6bab8;
+  --bdr:#dde9e7;--bdr2:#c6d9d6;
+  --accent:#0f766e;--accent-2:#14b8a6;
+  --accent-dim:rgba(15,118,110,.07);--accent-bdr:rgba(15,118,110,.28);
+  --ans:#cc3344;--vid:#4553c9;--done:#1f8a63;--skills:#a8498f;
+  --haz-bg:#fff6e5;--haz-fg:#9a5a00;--haz-bdr:rgba(190,120,0,.35);
+  --warn-bg:#fff0f2;--warn-fg:#b32642;--warn-bdr:rgba(204,51,68,.3);
+  --test-bg:rgba(176,72,84,.06);--quiz-bg:rgba(15,118,110,.05);--pquiz-bg:rgba(15,118,110,.05);--review-bg:rgba(15,118,110,.035);
+  --test-fg:#b04854;--test-dim:rgba(176,72,84,.09);--test-bdr:rgba(176,72,84,.35);
+  --r:10px;--sh:0 1px 2px rgba(16,33,31,.05);--sh2:0 1px 3px rgba(16,33,31,.05),0 6px 20px rgba(16,33,31,.06);
+  --topbar:rgba(245,249,249,.9);
+  --curve:15,118,110;--curve-a:.1;
+  --sans:'Outfit',"Avenir Next","Segoe UI",system-ui,sans-serif;
+  --mono:'IBM Plex Mono',"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root[data-theme="dark"]{
+  --bg:#050a0a;--surface:#0b1514;--hover:#12201e;
+  --ink:#d6e6e3;--t2:#9db8b4;--t3:#62807c;--t4:#364d4a;
+  --bdr:#162926;--bdr2:#223a36;
+  --accent:#2dd4bf;--accent-2:#5eead4;
+  --accent-dim:rgba(45,212,191,.1);--accent-bdr:rgba(45,212,191,.32);
+  --ans:#ff8f9d;--vid:#8b9cff;--done:#5fcf8a;--skills:#e58ad0;
+  --haz-bg:#33260f;--haz-fg:#ffc65c;--haz-bdr:rgba(255,198,92,.35);
+  --warn-bg:#351c26;--warn-fg:#ff9fae;--warn-bdr:rgba(255,143,157,.3);
+  --test-bg:rgba(224,122,140,.07);--quiz-bg:rgba(45,212,191,.06);--pquiz-bg:rgba(45,212,191,.06);--review-bg:rgba(45,212,191,.04);
+  --test-fg:#e07a8c;--test-dim:rgba(224,122,140,.12);--test-bdr:rgba(224,122,140,.4);
+  --sh:0 1px 3px rgba(0,0,0,.4);--sh2:0 2px 8px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  --topbar:rgba(5,10,10,.92);
+  --curve:45,212,191;--curve-a:.12;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;
-  background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
-  background-size:28px 28px;background-attachment:fixed;transition:background .3s,color .3s}
+html,body{background:var(--bg)}
+body{font-family:var(--sans);color:var(--ink);line-height:1.6;min-height:100vh;
+  background-image:radial-gradient(1000px 520px at 82% -8%,var(--accent-dim),transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed;transition:background .3s,color .3s}
 a{color:inherit;text-decoration:none}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;animation:fadein 1.4s both}
+.page{max-width:1080px;margin:0 auto;padding:2.5rem 1.5rem 4rem;position:relative;z-index:1}
 
-.page{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+/* Today hero — click it to jump to that day in the table */
+.hero{background:linear-gradient(135deg,var(--accent-dim),transparent 60%),var(--surface);
+  border:1px solid var(--accent-bdr);border-radius:var(--r);padding:.9rem 1.35rem;margin-bottom:1.4rem;
+  position:relative;overflow:hidden;box-shadow:var(--sh2);cursor:pointer;
+  transition:transform .2s ease,box-shadow .2s ease}
+@media(hover:hover){.hero:hover{transform:scale(1.013);box-shadow:0 0 0 3px var(--accent-dim),var(--sh2)}}
+.hero:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hero::after{content:"Δ";position:absolute;right:1rem;bottom:-1.3rem;font-size:5.5rem;font-weight:700;font-style:italic;
+  color:var(--accent);opacity:.07;font-family:Georgia,serif;pointer-events:none;transition:opacity .2s}
+.hero:hover::after{opacity:.13}
+.hero .eyebrow{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:.5rem}
+.hero .eyebrow .live{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-dim);position:relative}
+.hero .eyebrow .live::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid var(--accent);opacity:0;animation:livepulse 2.6s ease-out infinite}
+@keyframes livepulse{0%{transform:scale(.7);opacity:.7}70%{transform:scale(2.4);opacity:0}100%{transform:scale(2.4);opacity:0}}
+.hero h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:.25rem 0 .6rem;text-wrap:balance;transition:color .2s,letter-spacing .2s}
+.hero:hover h2{color:var(--accent);letter-spacing:0}
+.hero .acts{display:flex;flex-wrap:wrap;gap:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;padding:.45rem .95rem;border-radius:8px;
+  border:1px solid transparent;cursor:pointer;transition:transform .15s,opacity .15s;font-family:var(--sans)}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+.btn.pri{background:var(--accent);color:#fff}
+.btn.ansb{background:transparent;border-color:var(--warn-bdr);color:var(--ans)}
+.btn.ghost{background:transparent;border-color:var(--bdr2);color:var(--t2)}
+.btn.dis{background:transparent;border-color:var(--bdr);color:var(--t4);cursor:default}
+.btn.dis:hover{transform:none}
 
-/* Top Bar */
-.top-bar{position:sticky;top:0;z-index:100;background:var(--topbar-bg);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--bdr);margin:-2.5rem -1.5rem 2rem;padding:.6rem 1.5rem;display:flex;align-items:center;gap:.8rem;transition:background .3s}
-.top-bar .lbl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
+.top-bar{position:sticky;top:0;z-index:100;background:var(--topbar);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--bdr);margin:-2.5rem -1.5rem 2rem;padding:.6rem 1.5rem;
+  display:flex;align-items:center;gap:.8rem}
+.top-bar .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);white-space:nowrap}
 .ptrack{flex:1;height:3px;background:var(--bdr);border-radius:2px;overflow:hidden}
-.pfill{height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:2px;transition:width .6s}
-.ptxt{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--accent);font-weight:600;white-space:nowrap}
+.pfill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:2px;transition:width .6s}
+.ptxt{font-family:var(--mono);font-size:.65rem;color:var(--accent);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
 
-/* Header */
-header{margin-bottom:2rem}
-.htop{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem;flex-wrap:wrap}
-.chip{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);
+header{margin-bottom:1.8rem}
+.htop{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.6rem;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);
   padding:.22rem .65rem;border:1px solid var(--accent-bdr);border-radius:100px;background:var(--accent-dim);font-weight:600}
-.hacts{display:flex;gap:.4rem}
-.hbtn{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--t3);cursor:pointer;background:var(--white);
-  border:1px solid var(--bdr);padding:.22rem .65rem;border-radius:100px;transition:all .2s}
+.hacts{display:flex;gap:.4rem;position:relative}
+.help{position:absolute;right:0;top:calc(100% + 8px);z-index:150;width:min(320px,calc(100vw - 2rem));background:var(--surface);border:1px solid var(--bdr2);
+  border-radius:var(--r);box-shadow:var(--sh2);padding:.85rem 1rem;display:flex;flex-direction:column;gap:.55rem;font-size:.78rem;color:var(--t2);text-align:left;
+  opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top right;transition:opacity .15s,transform .15s,visibility 0s .15s}
+.help.open{opacity:1;visibility:visible;transform:none;transition:opacity .15s,transform .15s}
+.help .ht{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);font-weight:600;margin-bottom:.1rem}
+.help .hi{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.help .hi .dlink,.help .hi .newp,.help .hi .xans{pointer-events:none}
+.help .hi small{color:var(--t3);font-size:.72rem}
+.help .swatch{width:14px;height:14px;border-radius:4px;background:var(--accent-dim);box-shadow:inset 3px 0 0 var(--accent);flex-shrink:0}
+.hbtn{font-family:var(--mono);font-size:.65rem;color:var(--t3);cursor:pointer;background:var(--surface);
+  border:1px solid var(--bdr);padding:.24rem .7rem;border-radius:100px;transition:all .2s}
 .hbtn:hover{color:var(--t2);border-color:var(--bdr2);background:var(--hover)}
-header h1{font-size:2.5rem;font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--blue)}
-header .sub{color:var(--t3);font-size:.88rem;margin-top:.3rem;font-weight:400}
+.hbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header h1{font-size:2.5rem;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--ink);text-wrap:balance}
+header h1 em{font-style:normal;color:var(--accent)}
+header .sub{color:var(--t3);font-size:.88rem;margin-top:.35rem}
+/* Course essentials: the outline, the homework routine and the calculator list, pinned under the title */
+.ess{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.95rem}
+.ess a{display:inline-flex;align-items:center;gap:.42rem;font-size:.78rem;font-weight:600;padding:.42rem .9rem;border-radius:100px;
+  background:var(--surface);border:1px solid var(--bdr2);color:var(--t2);box-shadow:var(--sh);
+  transition:transform .15s,border-color .15s,color .15s,box-shadow .15s}
+.ess a:hover{transform:translateY(-1px);border-color:var(--accent-bdr);color:var(--accent);box-shadow:var(--sh2)}
+.ess a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ess .ico{width:1.05em;height:1.05em}
 
-/* Dark mode toggle */
-.dm-toggle{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--t3);cursor:pointer;background:var(--white);
-  border:1px solid var(--bdr);padding:.22rem .65rem;border-radius:100px;transition:all .2s;display:flex;align-items:center;gap:.3rem}
-.dm-toggle:hover{color:var(--t2);border-color:var(--bdr2);background:var(--hover)}
-.dm-icon{font-size:.8rem;line-height:1}
-
-/* Search */
-.sbar{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;padding:.55rem .9rem;background:var(--white);
-  border:1px solid var(--bdr);border-radius:var(--r);box-shadow:var(--sh);transition:border-color .2s,box-shadow .2s,background .3s}
+.sbar{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;padding:.55rem .9rem;background:var(--surface);
+  border:1px solid var(--bdr);border-radius:var(--r);box-shadow:var(--sh);transition:border-color .2s,box-shadow .2s}
 .sbar:focus-within{border-color:var(--accent-bdr);box-shadow:0 0 0 3px var(--accent-dim)}
 .sbar .si{color:var(--t4);font-size:.9rem}
-.sbar input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'Outfit',sans-serif;font-size:.85rem}
+.sbar input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-family:var(--sans);font-size:.85rem}
 .sbar input::placeholder{color:var(--t4)}
-.kbd{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--t4);background:var(--bg);border:1px solid var(--bdr);padding:.1rem .35rem;border-radius:4px}
+.sbar .sc{font-family:var(--mono);font-size:.62rem;color:var(--t3);white-space:nowrap}
+.sbar .sc:empty{display:none}
+.nomatch-msg{text-align:center;color:var(--t3);font-size:.85rem;padding:2rem 1rem;border:1px dashed var(--bdr2);border-radius:var(--r);margin-bottom:.55rem}
+.unit.nomatch{display:none}
 
-/* Units */
-.unit{margin-bottom:.5rem;border:1px solid var(--bdr);border-radius:var(--r);background:var(--white);box-shadow:var(--sh);
-  overflow:hidden;transition:all .3s ease;opacity:0;transform:translateY(20px)}
-.unit.revealed{opacity:1;transform:translateY(0)}
+.unit{margin-bottom:.55rem;border:1px solid var(--bdr);border-radius:var(--r);background:var(--surface);
+  box-shadow:var(--sh);transition:border-color .25s,box-shadow .25s}
 .unit:hover{border-color:var(--bdr2);box-shadow:var(--sh2)}
 .unit.current{border-color:var(--accent-bdr);box-shadow:0 0 0 3px var(--accent-dim),var(--sh2)}
-
-.uhead{display:flex;align-items:center;padding:.9rem 1.15rem;cursor:pointer;user-select:none;transition:background .15s;gap:.8rem}
+.uhead{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.15rem;cursor:pointer;user-select:none;transition:background .15s,box-shadow .2s;width:100%;background:var(--surface);border:none;text-align:left;font-family:inherit;color:inherit;
+  border-radius:var(--r);position:sticky;top:var(--tbh,44px);z-index:5}
+.unit.open .uhead{border-radius:var(--r) var(--r) 0 0}
+.uhead.stuck{box-shadow:inset 0 -1px 0 var(--bdr),0 8px 16px -10px rgba(0,0,0,.3)}
 .uhead:hover{background:var(--hover)}
-.unum{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--t4);font-weight:600;min-width:1.6rem}
+.uhead:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.unum{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);font-weight:600;white-space:nowrap}
 .current .unum{color:var(--accent)}
-.utitle{flex:1;font-size:1.02rem;font-weight:600;color:var(--text);letter-spacing:-.01em}
-.ucount{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--t4)}
-.utag{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;padding:.15rem .5rem;border-radius:100px;font-weight:600}
+.utitle{flex:1;font-size:1.02rem;font-weight:600;letter-spacing:-.01em}
+.urange{font-family:var(--mono);font-size:.6rem;color:var(--t4);white-space:nowrap}
+.umeta{font-family:var(--mono);font-size:.6rem;color:var(--t4);white-space:nowrap}
+.unit.current .umeta{color:var(--t3)}
+.utag{font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;padding:.16rem .5rem;border-radius:100px;font-weight:600;white-space:nowrap}
 .utag.active{background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-bdr)}
-.utag.done{background:rgba(13,148,136,.06);color:var(--teal)}
-.utag.upcoming{background:var(--bg);color:var(--t4)}
-.chev{width:16px;height:16px;color:var(--t4);transition:transform .4s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
+.utag.next{background:var(--bg);color:var(--t2);border:1px solid var(--bdr)}
+.utag.planned{background:var(--bg);color:var(--t4)}
+.utag.done{background:var(--review-bg);color:var(--done)}
+.utag.fresh{background:var(--accent);color:var(--accent-fg,#fff);border:1px solid transparent}
+.chev{width:16px;height:16px;color:var(--t4);transition:transform .35s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
 .unit.open .chev{transform:rotate(180deg);color:var(--t3)}
 .ubody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
 .unit.open .ubody{grid-template-rows:1fr}
-.ubody-inner{overflow:hidden}
-.ucontent{padding:0;border-top:1px solid var(--bdr);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ubody-inner{overflow:hidden;border-radius:0 0 var(--r) var(--r);opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .3s}
+.unit.open .ubody-inner{opacity:1;transform:none;transition-delay:.06s}
+.ucontent{border-top:1px solid var(--bdr);overflow-x:auto;-webkit-overflow-scrolling:touch}
 
-/* Table inside unit */
-.ltable{width:100%;border-collapse:collapse;font-size:.84rem}
-.ltable thead tr{background:var(--bg)}
-.ltable th{font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--t3);padding:.55rem 1rem;text-align:left;border-bottom:1px solid var(--bdr);white-space:nowrap}
-.ltable th:first-child{width:2.5rem;text-align:center}
-.ltable .th-topic{min-width:220px}
-.ltable .th-hw{min-width:180px}
-.ltable .th-extra{min-width:180px}
-.ltable td{padding:.6rem 1rem;vertical-align:top;border-bottom:1px solid rgba(0,0,0,.03)}
-html.dark .ltable td{border-bottom:1px solid rgba(255,255,255,.03)}
+.ltable{width:100%;border-collapse:collapse;font-size:.88rem}
+.ltable th{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--t3);padding:.55rem 1rem;text-align:left;border-bottom:1px solid var(--bdr);white-space:nowrap;background:var(--bg)}
+.ltable th:first-child{width:2.6rem;text-align:center}
+.th-topic{min-width:250px}.th-extra{min-width:220px}
+.ltable td{padding:.65rem 1rem;vertical-align:top;border-bottom:1px solid var(--bdr)}
 .ltable tr:last-child td{border-bottom:none}
-.ltable tr:hover{background:rgba(0,0,0,.01)}
-html.dark .ltable tr:hover{background:rgba(255,255,255,.02)}
+.ltable tbody tr{transition:background .15s}
+.ltable tbody tr:hover{background:var(--hover)}
 .ltable tr.is-test{background:var(--test-bg)}
-.ltable tr.is-test:hover{background:rgba(196,92,92,.09)}
 .ltable tr.is-quiz{background:var(--quiz-bg)}
+.ltable tr.is-pquiz{background:var(--pquiz-bg)}
 .ltable tr.is-review{background:var(--review-bg)}
+.ltable tr.is-exam{background:var(--test-bg)}
+.ltable tr.is-today td{background:var(--accent-dim)}
+.ltable tr.is-today td:first-child{box-shadow:inset 3px 0 0 var(--accent);border-radius:8px 0 0 8px}
+.ltable tr.is-today td:last-child{border-radius:0 8px 8px 0}
+.td-num{font-family:var(--mono);font-size:.72rem;color:var(--t4);text-align:center;font-variant-numeric:tabular-nums}
+.is-today .td-num{color:var(--accent);font-weight:600}
+.td-date{font-family:var(--mono);font-size:.7rem;color:var(--t2);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.td-date .dow{display:block;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--t4);line-height:1.3}
+.td-date .dt{display:block}
+.today-pill{display:inline-block;margin-top:.2rem;font-family:var(--mono);font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent-bdr);background:var(--accent-dim);border-radius:100px;padding:.05rem .4rem;font-weight:600}
+.topic{display:block;font-weight:600;font-size:.98rem;letter-spacing:-.01em}
+/* Assessment flag — top of the cell: "PRACTICE QUIZ: topics", then a gap, then the day's topic */
+.flag{display:flex;width:fit-content;max-width:100%;align-items:baseline;flex-wrap:wrap;gap:.1rem .4rem;
+  padding:.24rem .6rem;border-radius:6px;line-height:1.35;margin-bottom:.45rem;
+  background:var(--accent-dim);border:1px solid var(--accent-bdr);color:var(--accent)}
+.flag .fk{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap}
+.flag .fc{font-size:.8rem;font-weight:400}
+.flag.test,.flag.exam{background:var(--test-dim);border-color:var(--test-bdr);color:var(--test-fg)}
+.flag+.lgroup{margin-top:0}
+.hero .flag{margin:.5rem 0 .55rem;padding:.3rem .7rem}
+.hero .flag .fk{font-size:.64rem}.hero .flag .fc{font-size:.95rem}
+.lgroup{display:flex;flex-direction:column;gap:.22rem;margin-top:.25rem}
+.ico{width:.95em;height:.95em;flex-shrink:0;display:inline-block;vertical-align:-.12em;transition:transform .15s}
+.dlink{display:inline-flex;align-items:center;gap:.3rem;font-size:.8rem;line-height:1.35;transition:opacity .15s}
+.dlink .lt{background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/0 1px;transition:background-size .2s;padding-bottom:1px}
+.dlink:hover{opacity:.85}
+.dlink:hover .lt{background-size:100% 1px}
+.dlink:hover .ico.arrow{transform:translate(1px,-1px)}
+.dlink:hover .ico.play{transform:scale(1.15)}
+.dlink:hover .ico.pencil{transform:rotate(-8deg)}
+.dlink.ans:hover{opacity:1;color:var(--warn-fg)}
+.lrow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.newp{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+  color:var(--accent-fg,#fff);background:var(--accent);border-radius:100px;padding:.1rem .45rem;line-height:1.4}
+.xitem{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem}
+.xans{display:inline-flex;align-items:center;gap:.25rem;font-size:.64rem;font-weight:600;color:var(--ans);padding:.06rem .5rem .06rem .4rem;
+  border:1px solid var(--warn-bdr);border-radius:100px;background:var(--warn-bg);line-height:1.5;transition:transform .15s,box-shadow .15s}
+.xans:hover{transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.xans:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dlink:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.dlink.note{color:var(--accent);font-weight:600}
+.dlink.ans{color:var(--ans);font-size:.76rem;font-weight:500}
+.dlink.pend{color:var(--t4);cursor:default;font-size:.76rem}
+.dlink.pend:hover{opacity:1}
+.dlink.pend .lt{background:none}
+.dlink.vid{color:var(--vid);font-size:.78rem}
+.dlink.doc{color:var(--t2);font-size:.78rem}
+.dlink.skills{color:var(--skills);font-size:.78rem;font-weight:600}
+.dlink:hover .ico.layers{transform:translateY(-1px)}
 
-/* Staggered row reveal */
-.ltable tbody tr{opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
-.unit.open .ltable tbody tr{opacity:1;transform:translateY(0)}
+/* Hover tooltips */
+.tipwrap{position:relative;display:inline-flex}
+.tip{display:flex;position:absolute;top:calc(100% + 6px);left:0;z-index:30;white-space:nowrap;
+  padding:.28rem .6rem;border-radius:6px;font-size:.64rem;font-weight:500;font-family:var(--sans);
+  pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.12);align-items:center;gap:.35rem;
+  opacity:0;visibility:hidden;transform:translateY(-4px) scale(.96);transform-origin:top left;transition:opacity .12s,transform .12s,visibility 0s .12s}
+.tip.info{background:var(--ink);color:var(--bg)}
+.tip.warn{background:var(--warn-bg);color:var(--warn-fg);border:1px solid var(--warn-bdr)}
+.tip.hazard{background:var(--haz-bg);color:var(--haz-fg);border:1px solid var(--haz-bdr)}
+.tip.hazard .ico.haz{width:1rem;height:1rem;flex-shrink:0}
+.tip.hazard .tgo{background:var(--haz-fg)}
+.tip .skull{width:1rem;height:1rem;flex-shrink:0}
+.tip.up{top:auto;bottom:calc(100% + 6px);transform:translateY(4px) scale(.96);transform-origin:bottom left}
+.tip .tgo{display:none;font:inherit;font-weight:700;font-size:.7rem;background:var(--warn-fg);color:#fff;border:none;border-radius:6px;padding:.3rem .7rem;cursor:pointer;white-space:nowrap}
+@media(hover:hover){.tipwrap:hover .tip{opacity:1;visibility:visible;transform:none;transition:opacity .12s,transform .12s}}
+.tipwrap:focus-within .tip{opacity:1;visibility:visible;transform:none;transition:opacity .12s,transform .12s}
+/* Armed on touch: the warning becomes a fixed sheet at the bottom with a Continue button */
+.tipwrap.armed .tip{opacity:1;visibility:visible;pointer-events:auto;position:fixed;left:.75rem;right:.75rem;top:auto;bottom:1rem;z-index:400;
+  transform:none;white-space:normal;max-width:none;padding:.75rem .9rem;font-size:.82rem;gap:.6rem;box-shadow:0 12px 32px rgba(0,0,0,.25);border-radius:12px;
+  animation:sheetup .22s cubic-bezier(.2,.7,.2,1) backwards}
+.tipwrap.armed .tip .tgo{display:inline-block;margin-left:auto}
+body.armed .fab{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px)}
+@keyframes sheetup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-.td-num{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--t4);text-align:center;width:2.5rem}
-.td-topic{font-weight:400}
+@keyframes rowflash{0%{background:var(--accent-dim)}100%{background:transparent}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes rowin{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+.top-bar,header,.hero,.sbar,.unit{animation:rise .45s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0)*45ms)}
+.unit.open tbody tr{animation:rowin .3s ease-out backwards;animation-delay:calc(min(var(--i,0),16)*22ms + .08s)}
+.unit.open tbody tr.fin{animation:fadein .25s both}
+.unit.open tbody tr.flash{animation:rowflash 1.8s ease-out}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
 
-/* Link groups */
-.lgroup{display:flex;flex-direction:column;gap:.25rem}
-.dlink{display:inline-flex;align-items:center;gap:.3rem;font-size:.8rem;transition:opacity .15s;line-height:1.35}
-.dlink:hover{opacity:.7;text-decoration:underline}
-.dlink.note-link{color:var(--accent);font-weight:500}
-.dlink.completed-link{color:var(--teal);font-size:.72rem;font-weight:500;position:relative}
-.dlink.completed-link.soon{color:var(--t4);cursor:default}
-.dlink.completed-link.soon:hover{opacity:1;text-decoration:none}
-.dlink.soln{color:var(--teal);font-size:.72rem}
-.dlink.vid{color:var(--rose);font-size:.72rem}
-.dlink.extra{color:var(--muted);font-size:.72rem}
-.dlink.hw-link{color:var(--t2);font-size:.8rem}
-.licon{width:11px;height:11px;flex-shrink:0;opacity:.7}
 
-/* Date next to topic */
-.topic-head{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.15rem}
-.lesson-date{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--t4);white-space:nowrap;margin-left:auto}
-
-/* Test badge */
-.test-badge{display:inline-block;background:#c45c5c;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.62rem;
-  letter-spacing:.06em;text-transform:uppercase;padding:.18rem .5rem;border-radius:3px;font-weight:500}
-
-/* HW tag */
-.hw-tag{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--t4);background:var(--bg);
-  padding:.06rem .28rem;border-radius:3px;font-weight:600;vertical-align:1px;margin-right:.2rem}
-
-/* Squiggly error */
-.hw-err{color:var(--t2);font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;
-  text-decoration:underline wavy rgba(220,38,38,.3);text-decoration-skip-ink:none;text-underline-offset:3px;cursor:help;position:relative}
-.hw-err .tip{display:none;position:absolute;left:50%;transform:translateX(-50%);
-  background:var(--err-tip-bg);border:1px solid rgba(220,38,38,.2);color:var(--err);padding:.25rem .6rem;border-radius:6px;
-  font-size:.65rem;font-family:'Outfit',sans-serif;white-space:nowrap;z-index:20;text-decoration:none;
-  box-shadow:0 4px 12px rgba(220,38,38,.08);font-weight:500;pointer-events:none}
-.hw-err .tip{bottom:calc(100% + 6px)}
-.hw-err .tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:rgba(220,38,38,.2)}
-.hw-err .tip.below{bottom:auto;top:calc(100% + 6px)}
-.hw-err .tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:rgba(220,38,38,.2)}
-.hw-err:hover .tip{display:block}
-
-/* Completed note tooltip */
-.cn-wrap{position:relative;display:inline-flex}
-.cn-tip{display:none;position:absolute;left:50%;transform:translateX(-50%);
-  background:var(--tip-bg);color:var(--tip-color);padding:.2rem .55rem;border-radius:5px;font-size:.62rem;
-  font-family:'Outfit',sans-serif;white-space:nowrap;z-index:20;pointer-events:none}
-.cn-tip{bottom:calc(100% + 5px)}
-.cn-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--tip-bg)}
-.cn-tip.below{bottom:auto;top:calc(100% + 5px)}
-.cn-tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--tip-bg)}
-.cn-wrap:hover .cn-tip{display:block}
-
-/* Note title tooltip */
-.nt-wrap{position:relative;display:inline}
-.nt-tip{display:none;position:absolute;left:50%;transform:translateX(-50%);
-  background:var(--tip-bg);color:var(--tip-color);padding:.2rem .55rem;border-radius:5px;font-size:.62rem;
-  font-family:'Outfit',sans-serif;white-space:nowrap;z-index:20;pointer-events:none}
-.nt-tip{bottom:calc(100% + 5px)}
-.nt-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--tip-bg)}
-.nt-tip.below{bottom:auto;top:calc(100% + 5px)}
-.nt-tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--tip-bg)}
-.nt-wrap:hover .nt-tip{display:block}
-
-/* Legend & FAB */
-.legend{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--bdr);display:flex;flex-wrap:wrap;gap:1.5rem;font-size:.75rem;color:var(--t4)}
-.legend-item{display:flex;align-items:center;gap:.4rem}
-.legend-squig{color:var(--t2);text-decoration:underline wavy rgba(220,38,38,.3);text-underline-offset:3px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600}
 .fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--accent);color:#fff;border:none;border-radius:100px;
-  padding:.55rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;cursor:pointer;
-  box-shadow:var(--fab-sh);transition:all .25s;display:none;align-items:center;gap:.35rem}
-.fab:hover{transform:translateY(-2px);box-shadow:var(--fab-sh2)}
-.fab.visible{display:flex}
+  padding:.55rem 1rem;font-family:var(--mono);font-size:.68rem;font-weight:600;cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,0,0,.25);display:flex;align-items:center;gap:.35rem;
+  opacity:0;visibility:hidden;transform:translateY(14px);pointer-events:none;transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .25s,visibility 0s .3s}
+.fab.visible{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .25s}
+.fab.visible:hover{transform:translateY(-2px)}
+.fab:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
 
-/* ═══════════════════════════════════════════════
-   MOBILE
-   ═══════════════════════════════════════════════ */
 @media(max-width:768px){
-  .page{padding:2rem .75rem}header h1{font-size:2rem}
+  .page{padding:2rem .75rem}header h1{font-size:1.9rem}
   .top-bar{margin:-2rem -.75rem 1.5rem;padding:.5rem .75rem}
-  .ltable{min-width:700px}
+  #bg{opacity:.55}
+  .urange{display:none}
   .fab{bottom:1rem;right:1rem}
-  .hacts .hbtn{display:none}
-  /* Keep dark mode toggle visible on mobile */
-  .dm-toggle{font-size:.58rem;padding:.18rem .5rem}
+  .uhead{padding:.8rem .9rem;gap:.5rem;flex-wrap:wrap}
+  .umeta{flex-basis:100%;order:10;margin-top:-.2rem}
+  .ucontent{overflow:visible}
+  .ltable,.ltable tbody{display:block}
+  .ltable thead{display:none}
+  .ltable tr{display:grid;grid-template-columns:auto 1fr;column-gap:.55rem;row-gap:.1rem;align-items:center;padding:.85rem .9rem .95rem;border-bottom:1px solid var(--bdr)}
+  .ltable tr:last-child{border-bottom:none}
+  .ltable td{display:block;padding:0;border:none}
+  .td-num{grid-row:1;grid-column:1;width:auto;text-align:left;font-size:.62rem;padding:.08rem .5rem;border:1px solid var(--bdr);border-radius:100px;color:var(--t3)}
+  .td-num::before{content:"Day "}
+  .td-date{grid-row:1;grid-column:2;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+  .td-date br{display:none}
+  .td-date .dow,.td-date .dt{display:inline;font-size:.7rem;color:var(--t2);text-transform:none;letter-spacing:0}
+  .td-date .dow::after{content:", "}
+  .today-pill{margin:0 0 0 .15rem}
+  .td-topic{grid-column:1/-1;margin-top:.4rem}
+  .td-extra{grid-column:1/-1;margin-top:.5rem;padding-top:.5rem;border-top:1px dashed var(--bdr)}
+  .td-extra.empty{display:none}
+  .ltable tr.is-today{background:var(--accent-dim);box-shadow:inset 3px 0 0 var(--accent)}
+  .ltable tr.is-today td,.ltable tr.is-today td:first-child,.ltable tr.is-today td:last-child{background:none;box-shadow:none;border-radius:0}
+  .ltable tr.is-today .td-num{border-color:var(--accent-bdr);color:var(--accent)}
+  .dlink{font-size:.86rem}.dlink.ans,.dlink.pend{font-size:.8rem}.dlink.vid,.dlink.doc,.dlink.eqao{font-size:.82rem}
+  .xans{font-size:.68rem}
+  .hero .acts .btn{flex:1 1 auto;justify-content:center}
+  .ess a{flex:1 1 auto;justify-content:center}
 }
-
-/* ═══════════════════════════════════════════════
-   PRINT STYLESHEET
-   ═══════════════════════════════════════════════ */
-@media print{
-  *{color-adjust:exact;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  html.dark{--bg:#fff;--white:#fff;--text:#000;--t2:#333;--t3:#666;--t4:#999;
-    --bdr:#ccc;--blue:#1e3a5f;--accent:#2563eb;--teal:#0b7d8c;--rose:#b05050;--err:#dc2626;
-    --tip-bg:#000;--tip-color:#fff;--err-tip-bg:#fff}
-  body{background:#fff!important;background-image:none!important}
-  .fab,.top-bar,.sbar,.hacts,.dm-toggle{display:none!important}
-  .page{max-width:100%;padding:0}
-  .unit{break-inside:avoid;page-break-inside:avoid;margin-bottom:1rem;border:1px solid #ccc;box-shadow:none!important;
-    opacity:1!important;transform:none!important}
-  .unit,.unit.open{display:block}
-  .ubody{display:block!important;grid-template-rows:1fr!important}
-  .ubody-inner{overflow:visible!important}
-  .unit.current{border-color:#ccc;box-shadow:none!important}
-  .ltable tbody tr{opacity:1!important;transform:none!important;transition:none!important}
-  .chev{display:none}
-  .legend{page-break-before:avoid}
-  header h1{font-size:2rem}
-  a{text-decoration:none!important}
-  .dlink:hover{text-decoration:none!important}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
 }
 </style>
 </head>
 <body>
+<canvas id="bg" aria-hidden="true"></canvas>
 <div class="page">
-
-<div class="top-bar">
-  <span class="lbl">Course</span>
-  <div class="ptrack"><div class="pfill" id="pf"></div></div>
-  <span class="ptxt" id="pt"></span>
-</div>
-
-<header>
-  <div class="htop">
-    <span class="chip">MCV4U</span>
-    <div class="hacts">
-      <button class="dm-toggle" id="dmBtn" onclick="toggleDark()">
-        <span class="dm-icon" id="dmIcon">☾</span> <span id="dmLabel">Dark</span>
-      </button>
-      <button class="hbtn" onclick="toggleAll()" id="expBtn">Expand All</button>
-    </div>
+  <div class="top-bar" style="--i:0">
+    <span class="lbl">Course</span>
+    <div class="ptrack"><div class="pfill" id="pf"></div></div>
+    <span class="ptxt" id="pt"></span>
   </div>
-  <h1>Calculus &amp; Vectors</h1>
-  <div class="sub">Grade 12 · University Preparation</div>
-</header>
 
-<div class="sbar">
-  <span class="si">⌕</span>
-  <input type="text" placeholder="Filter lessons..." id="si" oninput="filterL(this.value)">
-  <span class="kbd">⌘K</span>
-</div>
-
-<div id="units"></div>
-
-<div class="legend">
-  <div class="legend-item"><span class="legend-squig">Ex</span><span>Textbook answer is wrong (hover)</span></div>
-  <div class="legend-item"><span class="dlink note-link" style="pointer-events:none;font-size:.72rem">↗ Link</span><span>Blank note</span></div>
-  <div class="legend-item"><span class="dlink soln" style="pointer-events:none">✓ Soln</span><span>Solution</span></div>
-  <div class="legend-item"><span class="dlink vid" style="pointer-events:none">▶ Video</span><span>Video</span></div>
-</div>
-</div>
-
-<button class="fab" id="fab" onclick="jumpC()">↑ Current Unit</button>
-
-<script>
-// ═══════════════════════════════════════════════
-// DARK MODE
-// ═══════════════════════════════════════════════
-function applyTheme(dark) {
-  document.documentElement.classList.toggle('dark', dark);
-  document.getElementById('dmIcon').textContent = dark ? '☀︎' : '☾';
-  document.getElementById('dmLabel').textContent = dark ? 'Light' : 'Dark';
-}
-function toggleDark() {
-  const going = !document.documentElement.classList.contains('dark');
-  applyTheme(going);
-  try { localStorage.setItem('mcv4u-dark', going ? '1' : '0'); } catch(e){}
-}
-(function(){
-  let dark = false;
-  try {
-    const saved = localStorage.getItem('mcv4u-dark');
-    if (saved !== null) { dark = saved === '1'; }
-    else { dark = window.matchMedia('(prefers-color-scheme: dark)').matches; }
-  } catch(e) {
-    dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-  applyTheme(dark);
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    try { if (localStorage.getItem('mcv4u-dark') !== null) return; } catch(ex){}
-    applyTheme(e.matches);
-  });
-})();
-
-// ═══════════════════════════════════════════════
-// CONFIG
-// ═══════════════════════════════════════════════
-const CURRENT_UNIT = 7;
-const TOTAL_UNITS = 7;
-
-// ═══════════════════════════════════════════════
-// ERRATA
-// ═══════════════════════════════════════════════
-const ERRATA_BY_DAY = {
-  "1.2": ["7"],"1.4": ["16"],"1.7": ["10c"],
-  "2.8": ["13"],"2.11":["7"],"2.11x":["2a"],
-  "3.1": ["4b"],"3.5": ["20"],
-  "4.3x":["9d"],"4.5": ["8a"],"4.7": ["16"],
-  "5.2": ["2"],"5.4x":["4cd"],"5.8x":["2"],
-  "6.1": ["5","4","10","13"],"6.2": ["3"],"6.6": ["13"],"6.8": ["29"],
-  "7.1": ["10"],"7.8": ["4a"],"7.15":["5"],"7.18":["9a","12a"],
-};
-
-function markErrata(text, unitIdx, dayN, isExtra) {
-  const key = `${unitIdx+1}.${dayN}${isExtra ? 'x' : ''}`;
-  const errs = ERRATA_BY_DAY[key];
-  if (!errs) return text;
-  let out = text;
-  errs.forEach(q => {
-    const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp(`(?<=[#,]\\s*)(${escaped}[a-z]*)(?=[,\\s·]|$)`, 'g');
-    out = out.replace(re, `<span class="hw-err">$1<span class="tip">Textbook answer is incorrect</span></span>`);
-  });
-  return out;
-};
-
-// ═══════════════════════════════════════════════
-// ICONS
-// ═══════════════════════════════════════════════
-const IC = {
-  doc: `<svg class="licon" viewBox="0 0 16 16" fill="currentColor"><path d="M4 4h5v2H4zm0 3h8v2H4zm0 3h6v2H4zm9-9H3a1 1 0 00-1 1v12a1 1 0 001 1h10a1 1 0 001-1V5l-4-4z"/></svg>`,
-  vid: `<svg class="licon" viewBox="0 0 16 16" fill="currentColor"><path d="M6 3l7 5-7 5V3z"/></svg>`,
-  soln: `<svg class="licon" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg>`,
-  link: `<svg class="licon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.7 8.7l1.4-1.4 2.6 2.6-1.4 1.4A2 2 0 014.7 8.7zm6.6-6.6A2 2 0 008.7 4.7L7.3 6.1l2.6 2.6 1.4-1.4a2 2 0 000-2.6zM3.3 11.3a3 3 0 004.2 0l1.4-1.4-1.4-1.4-1.4 1.4a1 1 0 01-1.4-1.4l1.4-1.4-1.4-1.4-1.4 1.4a3 3 0 000 4.2z"/></svg>`,
-};
-
-function mkLink(text, href, type) {
-  if (!href) return `<span style="font-size:.78rem;color:var(--t2)">${text}</span>`;
-  let cls = 'dlink extra', icon = IC.doc;
-  if (type === 'vid') { cls = 'dlink vid'; icon = IC.vid; }
-  else if (type === 'soln') { cls = 'dlink soln'; icon = IC.soln; }
-  else if (type === 'extra') { cls = 'dlink extra'; icon = IC.doc; }
-  else { cls = 'dlink extra'; icon = IC.link; }
-  return `<a href="${href}" target="_blank" class="${cls}">${icon}${text}</a>`;
-}
-
-// ═══════════════════════════════════════════════
-// COURSE DATA
-// ═══════════════════════════════════════════════
-const C = [
-{id:"u1",title:"Introduction to Calculus",status:"done",days:[
-{n:1,d:"Mon Feb 2",topic:"Introduction to Calculus",blank:"https://drive.google.com/file/d/1CEOkaTlwz_rbUQmDKeoHELp7gapxonGP/view",filled:"https://drive.google.com/file/d/12SEUzVHsx8DiDAXhtTcJ_eWQMX-g5Ow_/view",
-  hw:[{t:"Practice Questions on Today's Note"}],
-  extra:[{t:"Prerequisite Skills Practice",h:"https://drive.google.com/file/d/1pLMiGwVR55y2MVe2E7NLnV_2FuLWa-n7/view"},{t:"Course Outline",h:"https://docs.google.com/document/d/1_yPYKXsN6wgVb81CfnmPASnRtV5SGs60zj137Hijr2k/edit"},{t:"Textbook Corrections",h:"https://drive.google.com/file/d/1PmkAOQ8REabLz63bUSB__bqUDjxpb2o_/view"},{t:"Ch 1 Solutions",h:"https://drive.google.com/file/d/1rsD-yTdrHZ7j80flmT-HgWNYYWyHvFzV/view",y:"soln"},{t:"TVO Learn",h:"https://tvolearn.com/collections/courses/products/mcv4u-calculus-and-vectors"},{t:"Ms. Havrot's Videos",h:"https://www.youtube.com/c/MsHavrotsCanadianUniversityMathPrerequisites/playlists",y:"vid"}]},
-{n:2,d:"Tues Feb 3",topic:"Rationalising",blank:"https://drive.google.com/file/d/1tFgsyRUnaa69TM-Uk8jU1WJAYYquzlwM/view",filled:"https://drive.google.com/file/d/1tz5bq51ajTdxCZn3nz72G0CS3qnClTQH/view",
-  hw:[{t:"§1.1 p. 9 #3adf, 4b, 7"}],hwSoln:[],
-  extra:[{t:"Vid: What are These Symbols?",h:"https://www.youtube.com/watch?v=fUCEg3HznX4",y:"vid"},{t:"Khan: Rationalising",h:"https://www.youtube.com/watch?v=ENIUcjdPO54",y:"vid"}]},
-{n:3,d:"Weds Feb 4",topic:"Slope of a Tangent",blank:"https://drive.google.com/file/d/1tW2Ldvmn59l9axOxtGeP9OAn5N9yc4uL/view",filled:"https://drive.google.com/file/d/1OjUodFfi3iVK9s7oMX2a17zYHCyPTMA3/view",
-  hw:[{t:"§1.2 p. 18 #1a, 3d, 8ac, 10ab, 11e, 15"}],
-  extra:[{t:"Tangent Line Sim",h:"https://www.desmos.com/calculator/8gstpreekm"},{t:"More Prerequisite Skills",h:"https://drive.google.com/file/d/1pGeXlevOSndqIZAXqKWpsm9HraN3KsNR/view"}]},
-{n:4,d:"Thurs Feb 5",topic:"Rates of Change",blank:"https://drive.google.com/file/d/1uBDaDgLu3bhVx0Qd9G-dSJ2x-S_xKaGM/view",filled:"https://drive.google.com/file/d/1nDwWtyFy5rLu6RjUodpBhcJUuwY0wH0P/view",
-  hw:[{t:"§1.3 p. 29 #1, 8, 12, 16, 18"}],hwSoln:[{t:"Soln: #18",h:"https://drive.google.com/file/d/1BRNaBPA7aa9bzGiRR73kDrf7uNcbyt8V/view",y:"soln"}],
-  extra:[{t:"Vid: Avg & Instantaneous ROC",h:"https://www.youtube.com/watch?v=4Up5gsDeluw",y:"vid"}]},
-{n:5,d:"Fri Feb 6",topic:"Limits",blank:"https://drive.google.com/file/d/1uEUSt4RQX3emj7VOQP1Tw2GU-Z47KJff/view",filled:"https://drive.google.com/file/d/1syIwx1LsmS31--SEsOoK13Q94TGNNgFw/view",
-  hw:[{t:"§1.4 p. 37 #4def, 7, 10adf, 13, 14"}],hwSoln:[{t:"Soln: #14",h:"https://drive.google.com/file/d/1P9f2nyURSO3DUSWeW5ks71nsITsLGeyl/view",y:"soln"}],
-  extra:[{t:"Vid: Problems with Zero",h:"https://www.youtube.com/watch?v=BRRolKTlF6Q",y:"vid"},{t:"Vid: Opposite of Infinity",h:"https://www.youtube.com/watch?v=WYijIV5JrKg",y:"vid"}]},
-{n:6,d:"Mon Feb 9",topic:"Practice Quiz",blank:"https://drive.google.com/file/d/1pzpVuPs58kvyIB8LqKDXi0MByN4RWoMA/view",filled:"https://drive.google.com/file/d/1jv1F5natfbP8Qjn_pp5BVy6JRrpQGDgG/view",type:"quiz",
-  hw:[],extra:[{t:"Evaluating Limits Extra Practice",h:"https://drive.google.com/file/d/1rD_lrCh5fhuQ2iwDGK5xfXkXETs5uWZt/view"}]},
-{n:7,d:"Tues Feb 10",topic:"Properties of Limits",blank:"https://drive.google.com/file/d/1uP5myW9rRMsUK4Z_vMwazzNEm5sFv6QA/view",filled:"https://drive.google.com/file/d/1nbjGKZT4L0V4WLb-0PmN4HUnJ5sss0hV/view",
-  hw:[{t:"§1.5 p. 45 #1, 4ae, 6, 7cef, 8ade, 9e, 10c, 14, 15"}],hwSoln:[{t:"Soln: #8ad",h:"https://drive.google.com/file/d/1AWm1PQlP3Zprsm2tEdDw21pbsKnVHz73/view",y:"soln"}],
-  extra:[{t:"Common Math Symbols",h:"https://drive.google.com/file/d/14gKLpT3TMJgeAkocJ7890DwQfmMMZb0h/view"}]},
-{n:8,d:"Weds Feb 11",topic:"Continuity",blank:"https://drive.google.com/file/d/1i6OAn2cZpPKZTIKbghLmqPoh3Yq74p6K/view",filled:"https://drive.google.com/file/d/1ugLaO7OsA9H7WWxxkjfbya_scXr22DS3/view",
-  hw:[{t:"§1.6 p. 52 #4ef, 5, 15"}],extra:[]},
-{n:9,d:"Thurs Feb 12",topic:"Review",blank:"https://drive.google.com/file/d/1rNxkxs933dvsMMETiJ6nxTZWWm02CFl9/view",filled:"https://drive.google.com/file/d/1rzH-5ZQmLChfVvTXnauF_z8U6P47-7e9/view",type:"review",
-  hw:[{t:"p. 56 #2c, 3, 6, 7, 10, 11"}],
-  extra:[{t:"Skills Review (with answers)",h:"https://docs.google.com/document/d/1AynOO93RVlHficYtW8Ps4RIoUGRKZZYKzmqNIlTUtgw/edit"},{t:"Previous Student Questions",h:"https://docs.google.com/document/d/1O5LZEoQb12ocqthvjrkq0ShN1t_1hxv2VdfhSVloovI/edit"}]},
-{n:10,d:"Tues Feb 17",topic:"Limits Test",type:"test",hw:[],extra:[]},
-]},
-
-{id:"u2",title:"Derivatives",status:"active",days:[
-{n:1,d:"Weds Feb 18",topic:"Derivatives",blank:"https://drive.google.com/file/d/1v4xibSx6duoRAYxIHfA_sTCHUzAty2Tj/view",filled:"https://drive.google.com/file/d/1ek8OcYEhrwtbQb31Q4nmQznvahQyQ14g/view",
-  hw:[{t:"§2.1 p. 73 #1, 5bc, 6bd, 11, 15, 17"}],
-  extra:[{t:"Ch 2 Solutions",h:"https://drive.google.com/file/d/1rikiKVz8YBCvsK11eg_yPFwcqdhgwu10/view",y:"soln"},{t:"Vid: How you could have come up with Calculus",h:"https://www.youtube.com/watch?v=WUvTyaaNkzM",y:"vid"},{t:"Vid: Derivatives – Physics Perspective",h:"https://www.youtube.com/watch?v=ObHJJYvu3RE",y:"vid"}]},
-{n:2,d:"Thurs Feb 19",topic:"Power Rule",blank:"https://drive.google.com/file/d/1vQhkXEc2fRh_aMjEK3sDQAskK9HR2OD7/view",filled:"https://drive.google.com/file/d/1Gx0B3XG-Zl4Q0ByLpQc7GRLHGKAR2Ysk/view",
-  hw:[{t:"§2.2 p. 82 #2ace, 3df, 4f, 5b, 7d, 9f, 12, 13, 16"}],hwSoln:[{t:"Pic: 3f",h:"https://drive.google.com/file/d/1MTF15RzlH2f1I-FJe49PFYXeZ-2Ii5iz/view",y:"soln"},{t:"Pic: 9d",h:"https://drive.google.com/file/d/1mWUDEIlx7cFC-Wq-djCuo6Y01Ev67GCT/view",y:"soln"},{t:"Vid: #13",h:"https://youtu.be/llnpE7M36lY",y:"vid"}],
-  extra:[{t:"Extra: p. 82 #3c, 5c, 7b, 9cd, 11"},{t:"Khan: Power Rule",h:"https://www.youtube.com/watch?v=bRZmfc1YFsQ",y:"vid"},{t:"Vid: Power Rule Intuitive Proof",h:"https://www.youtube.com/watch?v=_yDsJ-P_X9g",y:"vid"},{t:"Vid: Power Rule Proof (Binomial)",h:"https://www.youtube.com/watch?v=OSDutJBx_TM",y:"vid"}]},
-{n:3,d:"Fri Feb 20",topic:"Product Rule",blank:"https://drive.google.com/file/d/1vUgCbhmTSx9bCH4mSVReob9fI2J148rJ/view",filled:"https://drive.google.com/file/d/1oFf06I7RfoFEgF47M9x_ks52C6ETzZuC/view",
-  hw:[{t:"§2.3 p. 90 #1d, 5e, 7b, 8b, 9, 12"}],hwSoln:[{t:"Pic: 2a",h:"https://drive.google.com/file/d/1n_62LUePQEZv0HDKmYc5qs_aFNK0lwxW/view",y:"soln"},{t:"Pic: 5e",h:"https://drive.google.com/file/d/1a9zHfReL0wq7IMJfURroBafQIjv6S2vh/view",y:"soln"},{t:"Vid: #12",h:"https://youtu.be/AiG3THgqFcE",y:"vid"}],
-  extra:[{t:"Extra: p. 90 #2bd, 3, 5b, 6"}]},
-{n:4,d:"Mon Feb 23",topic:"Speed Quiz I",blank:"https://drive.google.com/file/d/1_0jigd-QkYzePAd8AEp1p6ROrCuy3Idr/view",filled:"https://drive.google.com/file/d/1xlzkIQ7x2R3xXtOmr4iDetoY84LaYoId/view",type:"quiz",hw:[],extra:[]},
-{n:5,d:"Tues Feb 24",topic:"Quotient Rule",blank:"https://drive.google.com/file/d/1BDPrjwJA_k28PLU01tvkvMvwQXTdIWye/view",filled:"https://drive.google.com/file/d/1vv5iTBlEmz-pBvj8YozUKT1zUmaJLjGW/view",
-  hw:[{t:"§2.4 p. 97 #4e, 5d, 7, 13"}],
-  extra:[{t:"Extra: p. 97 #4ac, 5a, 8"},{t:"Extra Quotient Practice",h:"https://drive.google.com/file/d/1nHE41aCVRnZ6ukcvCEiSHP2XILvNeYtE/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1HEyi7EWp1wmjKERy8tueDUI2Jyl490hd/view",y:"soln"}]},
-{n:6,d:"Weds Feb 25",topic:"Chain Rule",blank:"https://drive.google.com/file/d/1wDFuzQBrroYIHmnaq0nAYt5fph1ScF1Y/view",filled:"https://drive.google.com/file/d/1wF0SzI9QP9UVh4hAsZrwXex8HHtVAPxS/view",
-  hw:[{t:"§2.5 p. 105 #1be, 5c, 8c, 13b, 19"}],hwSoln:[{t:"Pic: 19",h:"https://drive.google.com/file/d/1BPnjxnysRJaIPydaaAgVUL7D5fbI6VZK/view",y:"soln"},{t:"Vid: 5e",h:"https://youtu.be/sQN52nrejlE",y:"vid"}],
-  extra:[{t:"Extra: p. 105 #4df, 5e, 7, 8a, 16, 17"},{t:"Extra Chain Rule Practice",h:"https://drive.google.com/file/d/1KLYOO7w4c005uNGD1pgZyjwymiZcBo3K/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1b-D3wOwm4IQZ9xMzbM7yMAeiWUDPZU33/view",y:"soln"}]},
-{n:7,d:"Thurs Feb 26",topic:"Chapter 2 Review",blank:"https://drive.google.com/file/d/1zlv0dxqaYKtuXVxCW3LVB-unBTUKWqHM/view",filled:"https://drive.google.com/file/d/1Bdunu6LZ-G8dmZeY7wtWNjHIQ75vEED0/view",type:"review",
-  hw:[{t:"p. 110 #5d, 12, 15, 21, 23"}],
-  extra:[{t:"Speed Quiz II",h:"https://drive.google.com/file/d/1zoCUcBJ7jHENWyVXivyPoMWDj07S1OtL/view"},{t:"SQ II Solutions",h:"https://drive.google.com/file/d/1zxIC6odN_zmEr5PbHDt88SKV3D3T85ey/view",y:"soln"},{t:"Extra: p. 110 #4e, 5a, 17"},{t:"Review Exercises",h:"https://docs.google.com/document/d/17lUJ8kHOadJnKZwr_ykgJ0Kh9saQNnjy7Ag4YVqDiO4/edit"}]},
-{n:8,d:"Fri Feb 27",topic:"Exponentials & Logarithms",blank:"https://drive.google.com/file/d/1wIE_7TENi1ZPy58EqKnVD_kLiqM1sKrC/view",filled:"https://drive.google.com/file/d/1Gnl1Sm14U3QLH5hLK13NP4sj9nY05eNT/view",
-  hw:[{t:"§5.1 p. 232 #2bf, 3f, 5a, 13"}],hwSoln:[{t:"Pic: 13",h:"https://drive.google.com/file/d/1CcwioXmNsXPoG6vfRTL2PZmDGFtDxnb0/view",y:"soln"}],
-  extra:[{t:"Ch 5 Solutions",h:"https://drive.google.com/file/d/16wpF1_xi-dJ9M8JeoMsF_xuxkzc6DZ-t/view",y:"soln"},{t:"Extra: p. 232 #2e, 3cd, 4bc"}]},
-{n:9,d:"Mon Mar 2",topic:"General Exponentials",blank:"https://drive.google.com/file/d/1wRiPgi70eqqC7rj9k-DudFycb61A9VdA/view",filled:"https://drive.google.com/file/d/1G0U1eKBv93tBNDKLWHNT4cep1GImb3Da/view",
-  hw:[{t:"§5.2 p. 240 #2ac, 4, 8"}],
-  extra:[{t:"Extra: p. 240 #1bf, 2d, 4, 6"},{t:"Proof of (1+1/x)^x",h:"https://drive.google.com/file/d/1Cj0_pUpGPiYXTIHVsvmsspSek5H2jd9_/view"}]},
-{n:10,d:"Tues Mar 3",topic:"Derivatives of Sine & Cosine",blank:"https://drive.google.com/file/d/1wgq_ufQNbXiqne4ezdKdcKYepguWB9hD/view",filled:"https://drive.google.com/file/d/1UQC9xftsAEm87ScIbJ0W4bfnoaDh9txI/view",
-  hw:[{t:"§5.4 p. 256 #1cj, 2d, 3d, 6c, 9"}],extra:[{t:"Extra: p. 256 #1gh, 2bc, 3ab, 10"}]},
-{n:11,d:"Weds Mar 4",topic:"Derivatives of Tangent",blank:"https://drive.google.com/file/d/1wxxjecR4X6DsCa8vqeLJ0JC-VHX01G4h/view",filled:"https://drive.google.com/file/d/1HWtIn6AC8gasDG7ojTXty3K3QmDs86zy/view",
-  hw:[{t:"§5.5 p. 260 #1f, 3df, 6, 7"}],extra:[{t:"Extra: p. 260 #1d, 2a, 8, 10"}]},
-{n:12,d:"Thurs Mar 5",topic:"Review",type:"review",
-  hw:[{t:"p. 264 #13–16, 23"}],
-  extra:[{t:"Derivative Formulas to Memorize",h:"https://drive.google.com/file/d/1k_IdgAP7xrH45xMA3RRzH7ka4opjBIJN/view"},{t:"Extra Trig Practice",h:"https://drive.google.com/file/d/1ilMbm-KD56rqVjnH4sI3KiOy-gbyX_QT/view"},{t:"Trig Soln",h:"https://drive.google.com/file/d/1_P_STikhKcXJsnM8UrzzbQiCWreOQ-GN/view",y:"soln"},{t:"Extra Exp Practice",h:"https://drive.google.com/file/d/1QXxqfs03QDVBDVOGYbFjHJf8Ng8ijhCA/view"},{t:"Exp Soln",h:"https://drive.google.com/file/d/16gRUV4SJQComYa952G8PXUYT01dQaGLu/view",y:"soln"}]},
-{n:13,d:"Fri Mar 6",topic:"Review",type:"review",hw:[],
-  extra:[{t:"Practice Test",h:"https://drive.google.com/file/d/1QYJWazCWoPL_vErJcLlWilBbJTMtNEX0/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1gPOEyUnMeT7dp3onjSM48Rd_LRfYplQx/view",y:"soln"}]},
-{n:14,d:"Mon Mar 9",topic:"Derivatives Test",type:"test",hw:[],extra:[]},
-]},
-
-{id:"u3",title:"Applications",status:"upcoming",days:[
-{n:1,d:"Tues Mar 10",topic:"Second Derivatives",blank:"https://drive.google.com/file/d/1xFSxR-PTyrbFBcAcTYa0-PrXr_zgGvWZ/view",filled:"https://drive.google.com/file/d/1-Uq9_D4R_FtZia08zedjT7sra1yHuDWf/view?",
-  hw:[{t:"§3.1 p. 127 #2c, 3f, 4b, 8, 15"}],
-  extra:[{t:"Higher Order Practice",h:"https://drive.google.com/file/d/1HrNbVYMf5v3Dx1ANZekynJP5S20LrTcm/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1aiSS6RqFO7e8VLdwR8M5BidXkaH9jR0T/view",y:"soln"},{t:"Ch 3 Solutions",h:"https://drive.google.com/file/d/1rnxv-ca48bouLZfIpg-abLJP4MiVyI3W/view",y:"soln"},{t:"Vid: Half Derivatives?",h:"https://www.youtube.com/watch?v=2dwQUUDt5Is",y:"vid"}]},
-{n:2,d:"Weds Mar 11",topic:"Extrema",blank:"https://drive.google.com/file/d/1xndbnNp7D7qtrdjGoHm8bDy6dIEJlanS/view",filled:"https://drive.google.com/file/d/1Xt_iGWGBn3jyseiMos3vI0SM--OfT1ss/view?",
-  hw:[{t:"§3.2 p. 135 #2b, 7, 14"}],extra:[{t:"Extra: p. 135 #2cd, 4de, 6, 12"}]},
-{n:3,d:"Thurs Mar 12",topic:"Optimization",blank:"https://drive.google.com/file/d/1c7-cUTrrHatYajuCiFCz2EkqPsuUrAQu/view",filled:"https://drive.google.com/file/d/1h4KZs63Wp15yRe5Y3-huAdlMNpCPEkXJ/view?",
-  hw:[{t:"§3.3/3.4 p. 145 #7, 11, 20 · p. 151 #4, 7, 17"}],hwSoln:[{t:"Pic: p.151 #17",h:"https://drive.google.com/file/d/1C4IJiwG78w3Pb8HehZDPCqbzrxXyFCl6/view",y:"soln"}],
-  extra:[{t:"Extra: p. 145 #5, 9, 16 · p. 151 #1, 12"}]},
-{n:4,d:"Fri Mar 13",topic:"Practice Quiz",blank:"https://drive.google.com/file/d/1yeucg4kBUfdvKWWcurzGovBJsRXUbNRr/view",filled:"https://drive.google.com/file/d/1yfi0YJbgGxadKgm1boHGb16CfUJ4Zn8t/view",type:"quiz",hw:[],extra:[]},
-{n:5,d:"Mon Mar 23",topic:"Optimization with Trigonometry",blank:"https://drive.google.com/file/d/1yhni2-yiJlC2qkjjHPWQLl2lufQfxbo4/view", filled:"https://drive.google.com/file/d/1nJzDrB8P9NMjWuejyaio0OrsYP9W7Yvw/view",
-  hw:[{t:"p. 265 #18, 19, 20"}],extra:[{t:"Extra: p. 265 #22"}]},
-{n:6,d:"Tues Mar 24",topic:"Optimization with Exponentials",blank:"https://drive.google.com/file/d/1z-YAj0pjaOd7W90kShuXTQYK2PfaCAKR/view", filled:"https://drive.google.com/file/d/1-ati9vHR7gihvNEErP2OYYJKO3tunqVq/view",
-  hw:[{t:"§5.3 p. 245 #3, 6, 14"}],hwSoln:[{t:"Pic: 3abc",h:"https://drive.google.com/file/d/1D6Owq42fw5HQiYiK9B4qvY_EbX8rShTG/view",y:"soln"},{t:"Pic: 8",h:"https://drive.google.com/file/d/1DEXqYF-vSA17kzCeif9jo8FZxMsfZWKP/view",y:"soln"},{t:"Pic: 14",h:"https://drive.google.com/file/d/1DDXS3bCJLW9Ozu6DFZVSmXpGCtJvh66a/view",y:"soln"}],
-  extra:[{t:"Extra: p. 245 #5, 8, 13"},{t:"Optimization Word Problems I & II",h:"https://drive.google.com/file/d/1yxtVhmDwH00taEaJOox6PBVd8ty5cPC_/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1zC-vMk7Z8qysGfmtlQeE6Ljl8nsCY6et/view",y:"soln"}]},
-{n:7,d:"Weds Mar 25",topic:"Review",blank:"https://docs.google.com/document/d/1fuiOIl16YLOVZimFPP_Blt873vaLHQKWoDWdY8XQIeo/edit",filled:"https://drive.google.com/file/d/1cS398rWCOZK1cFzF2A31KmBSHBKcjs3_/view",type:"review",
-  hw:[{t:"p. 156 #1, 4, 6, 10a, 19, 26a · p. 264 #11, 21"}],
-  extra:[{t:"Review II",h:"https://drive.google.com/file/d/1zCxuo5GLJ9S4UoF52uM_fYdHDB6Xo1jm/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1V86ZRh3K8emmQ0r7lBBiAoyQD2O-CdaY/view",y:"soln"},{t:"Challenge Questions",h:"https://drive.google.com/file/d/1Nu439TXCEewUXg0-TUMxj4-CwknZphow/view"},{t:"Challenge Soln",h:"https://drive.google.com/file/d/1z03bafYRWDlhEeE8fMRPQ2TQBpB2f_ET/view",y:"soln"}]},
-{n:8,d:"Thurs Mar 26",topic:"Review",type:"review",hw:[],extra:[]},
-{n:9,d:"Fri Mar 27",topic:"Applications Test",type:"test",hw:[],extra:[]},
-]},
-
-{id:"u4",title:"Curve Sketching",status:"upcoming",days:[
-{n:1,d:"Mon Mar 30",topic:"Increasing & Decreasing",blank:"https://drive.google.com/file/d/1z_kWVUoSxeVfKHwtd3Ir9DEKEXyGGtYE/view",filled:"https://drive.google.com/file/d/1zsAK35mJJI4CvZSuTp8xP1Wd9y6Mc3AF/view",
-  hw:[{t:"§4.1 p. 169 #5, 7, 14"}],extra:[{t:"Ch 4 Solutions",h:"https://drive.google.com/file/d/1rm9n4p-m-U65H0T5ktX73Lm8apFrZLuq/view",y:"soln"},{t:"Extra: p. 169 #6, 9ac"}]},
-{n:2,d:"Tues Mar 31",topic:"Critical Points",blank:"https://drive.google.com/file/d/1gu3n4VSk7zb6F6DwTRT7hpF91FrTdDUN/view",filled:"https://drive.google.com/file/d/1dGj_5oYCQbeEBqZq8-HoQWIFzjRSsjGd/view",
-  hw:[{t:"§4.2 p. 178 #3a, 5c, 10, 14c"}],extra:[{t:"Extra: p. 178 #3b, 7ac, 12, 14ab"}]},
-{n:3,d:"Weds Apr 1",topic:"Asymptotes",blank:"https://drive.google.com/file/d/1And3s2piB753FpP-0vqUS-sNpGjzLGkA/view",filled:"https://drive.google.com/file/d/11wWIiUbIM1oXUrJwa9ZEe8vEN4Kin6w2/view",
-  hw:[{t:"§4.3 p. 193 #3a, 4b, 5c, 7a, 12b"}],extra:[{t:"Extra: p. 193 #4d, 5b, 9d"}]},
-{n:4,d:"Thurs Apr 2",topic:"Asymptotes II",blank:"https://drive.google.com/file/d/1-2Fa4qiE82m8CRKYGyFN__qBoLAuZSnf/view",filled:"https://drive.google.com/file/d/1qvy5mVSn5ThQGMn8P09SxcuJP8ZJ0njz/view",
-  hw:[{t:"p. 193 #4d, 5d, 7d, 14"}],extra:[{t:"Asymptotes Practice",h:"https://drive.google.com/file/d/1c2q2sy5jw6G17XPACSTZxmSAg8tbBVux/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1yVA_nV_tFp1dZk5ia34MEojye4wOWLGE/view",y:"soln"}]},
-{n:5,d:"Tues Apr 7",topic:"Concavity",blank:"https://drive.google.com/file/d/1-FpRpyYLCvB2BoY1hDv2xkixLsgVoM2J/view",filled:"https://drive.google.com/file/d/1NxU1c8Z9sudj7ZqmGhtfmEcEOmxyVb3x/view",
-  hw:[{t:"§4.4 p. 205 #1a, 2b, 8a, 11"}],extra:[{t:"Extra: p. 205 #2d, 9"},{t:"Challenging Practice Quiz",h:"https://drive.google.com/file/d/15S57bgBwoHGkS04tM2TrMakWxe5Ob54l/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1ZDBYulHCn_6zPoeauIt1o3nfZRmZH6es/view",y:"soln"}]},
-{n:6,d:"Weds Apr 8",topic:"Curve Sketching",blank:"https://drive.google.com/file/d/1-T1FAbEbGGrqhPySQ6Pys5d0Fy1YLJjq/view",filled:"https://drive.google.com/file/d/1wr7YYX9mv5VesccnrRjr5EOzJNj2xzum/view",
-  hw:[{t:"§4.5 p. 212 #4d, 8, 11"}],extra:[{t:"Extra: p. 212 #4g, 9"}]},
-{n:7,d:"Thurs Apr 9",topic:"Review",blank:"https://drive.google.com/file/d/1dolNwktLUw9psuDpA4ksjwVE01ayT4e3/view",filled:"https://drive.google.com/file/d/1vg64JZ4pkj_HzjVqGImNScqBNoDl3YwW/view",type:"review",
-  hw:[{t:"p. 216 #2, 4a, 5a, 7, 10bd, 16"}],extra:[{t:"Practice Quiz",h:"https://drive.google.com/file/d/11Bjd-RSbIrHciqqZZSMuu9WFYF92vWyv/view"},{t:"Solutions",h:"https://drive.google.com/file/d/13ik3Rlhka0QkTiQz9VAJfGIKExxNua4u/view",y:"soln"}]},
-{n:8,d:"Fri Apr 10",topic:"Curve Sketching Test",type:"test",hw:[],extra:[]},
-{n:9,d:"Mon Apr 13",topic:"Calculus Review",type:"review",hw:[{t:"Cumulative Review of Calculus (p. 267)"}],
-  extra:[{t:"Calculus Review",h:"https://drive.google.com/file/d/1mwrm_cdvX2IXKYitJrkPRhEtu9j-hwBt/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1lGUAdxWaxME6i-LYV6KfvyAT7cLWHr3t/view",y:"soln"}]},
-{n:10,d:"Tues Apr 14",topic:"Calculus Review",type:"review",hw:[],extra:[{t:"Practice Exam (JensenMath)",h:"https://drive.google.com/file/d/1-65vDr5nXfgCjtvJV3uRlvpto45x9Z1k/view"},{t:"Video Solutions",h:"https://www.youtube.com/watch?v=-bykU5Y9Y48&t=32s",y:"vid"}]},
-{n:11,d:"Weds Apr 15",topic:"Calculus Midterm",type:"test",hw:[],extra:[]},
-]},
-
-{id:"u5",title:"Vectors",status:"upcoming",days:[
-{n:1,d:"Thurs Apr 16",topic:"Trig Review",blank:"https://drive.google.com/file/d/10IIac6K5kPlR-9vyDN1RFKczrbHqurMy/view",filled:"https://drive.google.com/file/d/179VlM2ZdlAOfeiLkXjibchuw_sj_NUkc/view",
-  hw:[{t:"Questions from today's note"}],extra:[{t:"Right Angle Triangle Practice",h:"https://drive.google.com/file/d/16Y5Un-D4I7pXI2ggoLVH6Xxhk7G8K5II/view"},{t:"Sine & Cosine Law Practice",h:"https://drive.google.com/file/d/16bL0usKH6n0dYL9N4L8ikaoSNCJcnVIN/view"}]},
-{n:2,d:"Fri Apr 17",topic:"Vectors",blank:"https://drive.google.com/file/d/113EHHxNeVcMAYUvYHEigEAi7hcWGvpP-/view",filled:"https://drive.google.com/file/d/1TEfGGit4rR_nw_oFkLvUqAz0ndYj4kO7/view",
-  hw:[{t:"§6.1 p. 279 #1, 2, 4, 5bce, 8ab, 9, 10"}],extra:[{t:"Vid: What is a Vector?",h:"https://www.youtube.com/watch?v=ml4NSzCQobk",y:"vid"},{t:"Vid: What is a Tensor?",h:"https://www.youtube.com/watch?v=f5liqUk0ZTw",y:"vid"}]},
-{n:3,d:"Mon Apr 20",topic:"Vector Addition",blank:"https://drive.google.com/file/d/11MODQg2eYf5sqgE3y367CCdx_0a7QJ0a/view",filled:"https://drive.google.com/file/d/1lOQ_VMY8z1cJKKTEjBF81zmjjthSqs8U/view",
-  hw:[{t:"§6.2 p. 290 #4, 6, 8, 14"}],extra:[{t:"Vid: Adding Vectors Made Simple",h:"https://www.youtube.com/watch?v=Emphi2zDMTo",y:"vid"}]},
-{n:4,d:"Tues Apr 21",topic:"Scalar Multiplication",blank:"https://drive.google.com/file/d/11ogdKC98zG3PmpJ3SBNztEa1gjNyHWtG/view",filled:"https://drive.google.com/file/d/11uoXqMd1_4msm7349vu3L4s6BkoA5faw/view",
-  hw:[{t:"§6.3 p. 298 #1, 5bc, 12, 20"}],extra:[{t:"Extra: p. 298 #4cde, 7, 16, 21"}]},
-{n:5,d:"Weds Apr 22",topic:"Properties of Vectors",blank:"https://drive.google.com/file/d/11v4F0Gu4nAiiOAGkxKkd4eo6_oSOXp48/view",filled:"https://drive.google.com/file/d/12C4op8b22hBMBIlpcUbMwNZ6-q4XBQ3z/view",
-  hw:[{t:"§6.4 p. 306 #2, 4, 8a"}],extra:[{t:"Vid: Properties of Vectors",h:"https://www.youtube.com/watch?v=9F1cZUwQg9A",y:"vid"}]},
-{n:6,d:"Thurs Apr 23",topic:"Dimensions",blank:"https://drive.google.com/file/d/12NlA5ODYTAErgRvpSow06FszPcokCTu5/view",filled:"https://drive.google.com/file/d/12ZThAPdKG3dbQEcMm8FCA0qXP7VJj0cp/view",
-  hw:[{t:"§6.5 p. 316 #2, 6, 9, 14, 19"}],extra:[{t:"3D Desmos",h:"https://www.desmos.com/3d"}]},
-{n:7,d:"Fri Apr 24",topic:"Practice Quiz",blank:"https://drive.google.com/file/d/12aZUBLJ-ghzV7b8Iks_6cH4qlNg0_mdG/view",filled:"https://drive.google.com/file/d/19Ym81X8Mr3VkheJk-GNkO1CWUUaBOtJS/view",type:"quiz",hw:[],extra:[]},
-{n:8,d:"Tues Apr 28",topic:"Operations with Vectors",blank:"https://drive.google.com/file/d/12sPsNYuT7pCyoUNpdeoIjxZH9HBRRyS_/view",filled:"https://drive.google.com/file/d/1sLh7tPpwVEzZ18irK3X6W8vpuEwD1zAM/view",
-  hw:[{t:"§6.6/6.7 p. 324 #4, 5, 7b, 15 · p. 332 #3, 5b, 8"}],extra:[{t:"Extra: p. 324 #1, 2, 11 · p. 332 #2, 4ac, 14"}]},
-{n:9,d:"Weds Apr 29",topic:"Linear Combinations",blank:"https://drive.google.com/file/d/12wnnhVoazEt4RvQVSyLnaG_jiGLEmHds/view",filled:"https://drive.google.com/file/d/1xnYbsJaHXov3F-zT1mCDYzBon4lagELG/view",
-  hw:[{t:"§6.8 p. 340 #2, 6, 10, 11, 14"}],extra:[{t:"Vid: Lin. Combos, Span & Basis",h:"https://www.youtube.com/watch?v=k7RM-ot2NWY",y:"vid"},{t:"Extra: p. 340 #1, 7b, 13a"}]},
-{n:10,d:"Thurs Apr 30",topic:"Review",blank:"https://drive.google.com/file/d/130Rt6ltSbQmULNJaOFhRi_4aIT5gf2Fv/view",filled:"https://drive.google.com/file/d/19khpDzZhkdkNR0w5dTuIt7fpIt7trQjC/view",type:"review",
-  hw:[{t:"p. 344 #1, 2a, 4, 10, 17"}],extra:[]},
-{n:11,d:"Fri May 1",topic:"Vectors Test",type:"test",hw:[],extra:[]},
-]},
-
-{id:"u6",title:"Vector Products",status:"upcoming",days:[
-{n:1,d:"Mon May 4",topic:"Forces & Velocities",blank:"https://drive.google.com/file/d/13txrYRDKrh8wBJpzwFC3LJkl1nA-e4We/view",filled:"https://drive.google.com/file/d/11Mi81KGuE39WfXgginGITO9vZZV7mLLh/view",
-  hw:[{t:"§7.1/7.2 p. 362 #1, 3, 5, 6, 11 · p. 369 #1, 2, 4, 6, 10, 13"}],extra:[]},
-{n:2,d:"Tues May 5",topic:"The Dot Product",blank:"https://drive.google.com/file/d/13zw1cjFH-GzX9ut8RmAGeNMoL10xN188/view",filled:"https://drive.google.com/file/d/14LSQ2QZ-00bvW1uCpRQgjQOGcI5t7Bd9/view",
-  hw:[{t:"§7.3 p. 377 #3, 5, 7c, 12a, 16"}],extra:[{t:"Vid: Dot Products & Duality",h:"https://www.youtube.com/watch?v=LyGKycYT2v0",y:"vid"}]},
-{n:3,d:"Weds May 6",topic:"Dot Product Algebraically",blank:"https://drive.google.com/file/d/14Q9Y2qqMPNSl048dnpsI0e9Pbwi1pHXu/view",filled:"https://drive.google.com/file/d/14Vh2HXB7_glfjEuJ8qeVEqvx2rhmV47e/view",
-  hw:[{t:"§7.4 p. 385 #1, 6d, 7a, 14, 19"}],extra:[]},
-{n:4,d:"Thurs May 7",topic:"Vector Projections",blank:"https://drive.google.com/file/d/14gv6YYktZimiaZg6jYJim0gbm53LArh3/view",filled:"https://drive.google.com/file/d/14kSY4-5TtS4GKZSWVqMlcOddg4shRLpk/view",
-  hw:[{t:"§7.5 p. 398 #1, 8a, 11, 14"}],extra:[{t:"Extra: p. 398 #3, 7b, 10, 15a"}]},
-{n:5,d:"Fri May 8",topic:"Practice Quiz",blank:"https://drive.google.com/file/d/14hyEHvxYPAHXHHs7vItm7i-OkuExJIoL/view",filled:"https://drive.google.com/file/d/1BPpMFlXB0Lq5s4JaHP6fS6bcl_H1NUWS/view",type:"quiz",hw:[],extra:[]},
-{n:6,d:"Mon May 11",topic:"Cross Product",blank:"https://drive.google.com/file/d/15-nOksqdc7j2FCb0cwIApqP8MNah1vWb/view",filled:"https://drive.google.com/file/d/1bzxT-Fagfn3SzgIWVIsdwppbyuEvXmRd/view",
-  hw:[{t:"§7.6 p. 407 #1, 4c, 5, 13"}],extra:[{t:"Extra: p. 407 #4f, 7, 9ac"},{t:"Cross Product Interactive",h:"http://mechanicsmap.psu.edu/websites/A1_vector_math/A1-4_crossproduct/crossproduct.html"},{t:"Vid: Cross Product Explained",h:"https://www.youtube.com/watch?v=eu6i7WJeinw",y:"vid"},{t:"Determinant Ref",h:"https://drive.google.com/file/d/19ORhXlqzssFFUJC-xJXSF4NhRKjcMDbu/view"}]},
-{n:7,d:"Tues May 12",topic:"Applications of Products",blank:"https://drive.google.com/file/d/14vDlsJ62JlYjTuhf7VImB_JJlp2yGclv/view",filled:"https://drive.google.com/file/d/1BiQV3zoE7Vpzw225Fu6ADskhQOvzzaoc/view",
-  hw:[{t:"§7.7 p. 414 #1, 2, 5a, 8"}],extra:[]},
-{n:8,d:"Weds May 13",topic:"Review",blank:"https://drive.google.com/file/d/150hS1T6hvDfYsFcW8byP8mc3iJA1jOES/view",filled:"https://drive.google.com/file/d/152xAlm5y05rQIi8DR-Ii57xCXaqBTPdk/view",type:"review",
-  hw:[{t:"p. 418 #1, 2ad, 5, 7, 9, 13, 16a, 22, 29, 32"}],extra:[{t:"Play Connections",h:"https://quarkzebra.github.io/Vectors-Connections/"}]},
-{n:9,d:"Thurs May 14",topic:"Work Period",hw:[],extra:[]},
-{n:10,d:"Fri May 15",topic:"Vector Products Test",type:"test",hw:[],extra:[]},
-]},
-
-{id:"u7",title:"Lines & Planes",status:"upcoming",days:[
-{n:1,d:"Tues May 19",topic:"Vector & Parametric Equations of Lines 2D",blank:"https://drive.google.com/file/d/15hIfYVHW3f04gqJsWHyO-EVK0JCi294b/view",filled:"https://drive.google.com/file/d/1Cw7r5ufPSa8zf1uGPtTBJYhkkbxmBusy/view",
-  hw:[{t:"§8.1 p. 433 #1, 4, 5a, 10"}],extra:[{t:"Extra: p. 433 #2, 7, 14"}]},
-{n:2,d:"Weds May 20",topic:"Cartesian Equation of a Line",blank:"https://drive.google.com/file/d/1AAwbGf6JdmXnvj9MFRJ2xLGtVMdBV-RA/view",filled:"https://drive.google.com/file/d/16oYynjqdINW085V8P4eJnLzCL8OjEJd5/view",
-  hw:[{t:"§8.2 p. 443 #1, 3c, 8, 14"}],extra:[{t:"Extra: p. 443 #4ad, 5, 6"}]},
-{n:3,d:"Thurs May 21",topic:"Equations of a Line in 3D",blank:"https://drive.google.com/file/d/16x1702EolgWHddTUr4axImlv7reK5Sdt/view",filled:"https://drive.google.com/file/d/14nmYsKXU9XjVebyaj0ZBK40VQxtmlxiu/view",
-  hw:[{t:"§8.3 p. 449 #1d, 4, 6, 13"}],extra:[{t:"Extra: p. 449 #1ef, 8"}]},
-{n:4,d:"Fri May 22",topic:"Vector & Parametric Equations of a Plane",blank:"https://drive.google.com/file/d/171rekGZDHg1c6QlG8eB33qt_3AVTtFTG/view",filled:"https://drive.google.com/file/d/17GIGsVerhTia1JNEefNrSIKGycVFAEya/view",
-  hw:[{t:"§8.4 p. 459 #3, 5, 7, 15"}],extra:[{t:"Practice Quiz",h:"https://drive.google.com/file/d/17Cbnx_ZLIZG3oSNi7saBv2iodAjTsQ3q/view"},{t:"Solutions",h:"https://drive.google.com/file/d/17CAb6US3US1C6IIaOL0YV1vSJIiDWdZv/view",y:"soln"},{t:"Extra: p. 459 #1, 4a, 10"}]},
-{n:5,d:"Mon May 25",topic:"Cartesian Equation of a Plane",blank:"https://drive.google.com/file/d/17iO69BbOo7LMacXwRUYPlksJAQkMuuCW/view",filled:"https://drive.google.com/file/d/1bBdMCsqhT7MqH-qB-tQEfFMcgWzThlv2/view",
-  hw:[{t:"§8.5 p. 468 #1ab, 4a, 7, 14"}],extra:[{t:"Extra: p. 468 #2ab, 8, 9a"}]},
-{n:6,d:"Tues May 26",topic:"Sketching Planes in R³",blank:"https://drive.google.com/file/d/17k4tRm0K99PfEDJ3_uWr_cBqY_BfSY7z/view",filled:"https://drive.google.com/file/d/18-KJ8OEWTOqhZTS4_zO_NW8USc4X1XMx/view",
-  hw:[{t:"§8.6 p. 476 #1, 2, 3, 6, 7, 8ad, 9"}],extra:[]},
-{n:7,d:"Weds May 27",topic:"Intersection of a Line & Plane",blank:"https://drive.google.com/file/d/18-JQFWC7likYHvylLLcUOn6yyAlw1pwR/view",filled:"https://drive.google.com/file/d/1VgtzEfMVBP0BdGDoRK8QaHSQXIRdWBCv/view",
-  hw:[{t:"§9.1 p. 496 #2b, 4a, 7a, 10"}],extra:[]},
-{n:8,d:"Thurs May 28",topic:"Intersection of Two Lines",blank:"https://drive.google.com/file/d/18MOHSOe0-y1Y1e3Mwi3p3OMGvJfN5Y8T/view",filled:"https://drive.google.com/file/d/18Qpsb1KeHy0xNJS3iNtaOdYOFPdco0hH/view",
-  hw:[{t:"§9.1 p. 496 #8b, 9, 10, 11a, 15, 18"}],hwSoln:[{t:"Soln: #18",h:"https://drive.google.com/file/d/1dcDnXJG4GZL68pFjKWbRx1KAN-CCcv4v/view",y:"soln"}],extra:[]},
-{n:9,d:"Fri May 29",topic:"Review",type:"review",hw:[{t:"p. 480 #2, 3a, 4, 8, 14d, 15a, 17, 22, 25, 34"}],extra:[]},
-{n:10,d:"Mon Jun 1",topic:"Mid-Unit Test",type:"test",hw:[],extra:[]},
-{n:11,d:"Tues Jun 2",topic:"Systems of Equations",blank:"https://drive.google.com/file/d/18KybVNxvDGAqR6Drl2w8p73jEgjFqdmd/view",filled:"https://drive.google.com/file/d/1GcjhE2x1exp3xiJS1bKlmRCc6aPI2iDV/view",
-  hw:[{t:"§9.2 p. 507 #1, 2, 5b, 9, 12f, 14"}],extra:[]},
-{n:12,d:"Weds Jun 3",topic:"Matrices",blank:"https://drive.google.com/file/d/18XwTf7woL21BPHB3VktITLGwXDK07htb/view",filled:"https://drive.google.com/file/d/19YFCTeHKkBBmMu5MejtOKWmUS4Sq3Xzt/view",hw:[],
-  extra:[{t:"More Practice with Matrices",h:"https://drive.google.com/file/d/18YkKECAEe3U6FTtBPYeMootarpuCuMZN/view"},{t:"Solutions",h:"https://drive.google.com/file/d/18n-yq8Yvj4NwiXKQeWTrvRrs1docIyu7/view",y:"soln"}]},
-{n:13,d:"Thurs Jun 4",topic:"Intersection of 2 Planes",blank:"https://drive.google.com/file/d/19OKY5cF5y7hgVYHctwwVPqzpsZ8JCBZo/view",filled:"https://drive.google.com/file/d/19TJe8tCS-KzwBkJO4-UfaDKqwyD948NL/view",
-  hw:[{t:"§9.3 p. 516 #1, 2, 6c"}],extra:[{t:"Practice Quiz",h:"https://drive.google.com/file/d/19JDfGQqcm11PBiA4y3PjY5TVo0_PYN4G/view"},{t:"Solutions",h:"https://drive.google.com/file/d/1JeVGr8m41_M-Gpi8FAaI6BqrVWQshZJd/view",y:"soln"}]},
-{n:14,d:"Fri Jun 5",topic:"Work Period",hw:[{t:"p. 540 #1b, 4a"}],extra:[{t:"Extra: p. 540 #3a"}]},
-{n:15,d:"Mon Jun 8",topic:"Intersection of 3 Planes",blank:"https://drive.google.com/file/d/19KVhHAiPv0LVo7bclHvZ7BE2gb0NSys9/view",filled:"https://drive.google.com/file/d/19ZJ-apfS2hOJAOF4yopMsxXOIJQAnb1Y/view",
-  hw:[{t:"§9.4 p. 530 #5, 8a, 12ad, 15"}],extra:[{t:"Solving Systems CHALLENGE",h:"https://drive.google.com/file/d/19W0uQHlFyymTTNrW6E94LNb0th5dEWOh/view"},{t:"Answers",h:"https://docs.google.com/document/d/10BHpgiAC_tfiFoGN0NU9d9i34dlbkDC9iIsTBQaQXYU/edit",y:"soln"}]},
-{n:16,d:"Tues Jun 9",topic:"Distance From a Point to a Line",blank:"https://drive.google.com/file/d/19Z7xW1buepDwJI0Fekz68GJriNUeW8E6/view",filled:"https://drive.google.com/file/d/1o-CIImKzSpcpbN6kLdB5LWkJQuI5QxFe/view",
-  hw:[{t:"§9.5 p. 549 #1, 2ae, 3, 5, 8"}],extra:[]},
-{n:17,d:"Weds Jun 10",topic:"Distance From a Point to a Plane",blank:"https://drive.google.com/file/d/19bepoY_dpLJAxxuS9XT65antDYnJP0ft/view",filled:"https://drive.google.com/file/d/1SHg7g7Jp4MVmZ1hsHb4RmbKw2jguNlKq/view",
-  hw:[],extra:[]},
-{n:18,d:"Thurs Jun 11",topic:"Review",type:"review",hw:[{t:"p. 552 #1–4, 7, 9a, 12a, 15, 18, 22"}],extra:[]},
-{n:19,d:"Fri Jun 12",topic:"Lines & Planes Test",type:"test",hw:[],extra:[]},
-{n:20,d:"Mon Jun 15",topic:"Vectors Review",type:"review",hw:[{t:"p. 557 #1–36"}],extra:[{t:"Exam Formula Sheet",h:"https://docs.google.com/document/d/1kkkWaVCGbptvDGI6uiT07nEnfIGNbgxHkbkKxhdalOg/edit"}]},
-{n:21,d:"Tues Jun 16",topic:"Vectors Review",type:"review",hw:[],extra:[{t:"Exam Review",h:"https://drive.google.com/file/d/19tioWMQ5SWh0fnnhh7EMr_Ov-XGLXE9f/view"},{t:"Solutions",h:"https://drive.google.com/file/d/19tYrv9IdZYuSKWCNX2duux7YpI9NbkHz/view",y:"soln"}]},
-{n:22,d:"Weds Jun 17",topic:"Vectors Review",type:"review",hw:[],extra:[]},
-]},
-];
-
-// ═══════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════
-
-function renderExtra(items, unitIdx, dayN) {
-  if (!items || items.length === 0) return '<span style="color:var(--t4)">—</span>';
-  return `<div class="lgroup">${items.map(i => {
-    if (!i.h) {
-      const marked = markErrata(i.t, unitIdx, dayN, true);
-      return `<span style="font-size:.78rem;color:var(--t2)">${marked}</span>`;
-    }
-    return mkLink(i.t, i.h, i.y);
-  }).join('')}</div>`;
-}
-
-function renderHW(day, unitIdx) {
-  const parts = [];
-  if (day.hw && day.hw.length > 0) {
-    day.hw.forEach(h => {
-      const marked = markErrata(h.t, unitIdx, day.n, false);
-      parts.push(`<span style="font-size:.82rem"><span class="hw-tag">HW</span>${marked}</span>`);
-    });
-  }
-  if (day.hwSoln && day.hwSoln.length > 0) {
-    day.hwSoln.forEach(s => parts.push(mkLink(s.t, s.h, s.y)));
-  }
-  if (parts.length === 0) return '<span style="color:var(--t4)">—</span>';
-  return `<div class="lgroup">${parts.join('')}</div>`;
-}
-
-function renderUnit(unit, idx) {
-  const uIdx = idx + 1;
-  const isCurrent = uIdx === CURRENT_UNIT;
-  const status = isCurrent ? 'active' : (uIdx < CURRENT_UNIT ? 'done' : 'upcoming');
-  const statusLabel = isCurrent ? 'Current' : (uIdx < CURRENT_UNIT ? 'Done' : 'Upcoming');
-
-  const rows = unit.days.map((day, di) => {
-    const rc = day.type === 'test' ? 'is-test' : day.type === 'quiz' ? 'is-quiz' : day.type === 'review' ? 'is-review' : '';
-    const tipDir = di === 0 ? 'below' : '';
-    const stagger = `style="transition-delay:${di * 0.03}s"`;
-
-    let topicHTML = '';
-    if (day.type === 'test') {
-      topicHTML = `<div class="topic-head"><span class="test-badge">${day.topic}</span><span class="lesson-date">${day.d}</span></div>`;
-    } else {
-      let titleLink = '';
-      if (day.blank) {
-        titleLink = `<span class="nt-wrap"><a href="${day.blank}" target="_blank" class="dlink note-link">${IC.doc}${day.topic}</a><span class="nt-tip ${tipDir}">Click to view blank note</span></span>`;
-      } else {
-        titleLink = `<span style="font-size:.84rem;font-weight:500">${day.topic}</span>`;
-      }
-      let completedHTML = '';
-      if (day.type !== 'test') {
-        if (day.filled) {
-          completedHTML = `<span class="cn-wrap"><a href="${day.filled}" target="_blank" class="dlink completed-link">${IC.soln}Completed Note</a></span>`;
-        } else if (day.blank) {
-          completedHTML = `<span class="cn-wrap"><span class="dlink completed-link soon">${IC.doc}Completed Note</span><span class="cn-tip ${tipDir}">Coming soon</span></span>`;
-        }
-      }
-      topicHTML = `<div class="topic-head">${titleLink}<span class="lesson-date">${day.d}</span></div>${completedHTML}`;
-    }
-
-    return `<tr class="${rc}" ${stagger}><td class="td-num">${day.n}</td><td class="td-topic">${topicHTML}</td><td>${renderHW(day, idx)}</td><td>${renderExtra(day.extra, idx, day.n)}</td></tr>`;
-  }).join('');
-
-  return `<div class="unit${isCurrent ? ' current' : ''}" data-unit="${uIdx}">
-    <div class="uhead" onclick="toggleU(this)">
-      <span class="unum">${String(uIdx).padStart(2,'0')}</span>
-      <span class="utitle">${unit.title}</span>
-      <span class="ucount">${unit.days.length} days</span>
-      <span class="utag ${status}">${statusLabel}</span>
-      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  <header style="--i:1">
+    <div class="htop">
+      <span class="chip">MCV4U</span>
+      <div class="hacts">
+        <button class="hbtn" id="dmBtn"></button>
+        <button class="hbtn" id="expBtn">Expand All</button>
+        <button class="hbtn" id="helpBtn" aria-expanded="false" aria-controls="help" aria-label="What the links and colours mean">?</button>
+        <div class="help" id="help" role="dialog" aria-label="Legend"></div>
+      </div>
     </div>
-    <div class="ubody"><div class="ubody-inner"><div class="ucontent">
-      <table class="ltable">
-        <thead><tr><th>#</th><th class="th-topic">Topic</th><th class="th-hw">Homework</th><th class="th-extra">Extra Practice / Resources</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div></div></div>
-  </div>`;
+    <h1>Calculus &amp; <em>Vectors</em></h1>
+    <div class="sub" id="subTitle"></div>
+    <nav class="ess" id="ess" aria-label="Course essentials"></nav>
+  </header>
+
+  <section class="hero" id="hero" hidden style="--i:2"></section>
+
+  <div class="sbar" style="--i:3">
+    <span class="si" id="siIco"></span>
+    <input type="text" placeholder="Filter lessons…" id="si">
+    <span class="sc" id="sc"></span>
+  </div>
+
+  <div id="units"></div>
+  <div class="nomatch-msg" id="nomatch" hidden>No lessons match. Try a topic word.</div>
+
+</div>
+
+<button class="fab" id="fab"></button>
+
+<script src="data.js"></script>
+<script>
+/* ══════════ Date & state ══════════ */
+function todayISO(){
+  const p=new URLSearchParams(location.search).get("today");
+  if(p&&/^\d{4}-\d{2}-\d{2}$/.test(p))return p; // debug: ?today=2026-09-10
+  const d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+const TODAY=todayISO();
+function stateOf(day){
+  if(!day.iso)return "undated";
+  return day.iso<TODAY?"past":day.iso===TODAY?"today":"future";
+}
+function fmtDate(iso){
+  if(!iso)return "—";
+  return new Date(iso+"T12:00:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"});
+}
+function fmtDate2(iso){
+  if(!iso)return "—";
+  const d=new Date(iso+"T12:00:00");
+  return `<span class="dow">${d.toLocaleDateString("en-US",{weekday:"short"})}</span><span class="dt">${d.toLocaleDateString("en-US",{month:"short",day:"numeric"})}</span>`;
+}
+function fmtShort(iso){
+  return new Date(iso+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});
+}
+const UNO=[];COURSE.units.reduce((n,u,i)=>(UNO[i]=u.noNumber?0:n+1,u.noNumber?n:n+1),0);
+function unitLabel(u,i){return u.noNumber?u.name:"Unit "+UNO[i];}
+function unitRange(u){
+  const dated=u.days.filter(d=>d.iso);
+  if(!dated.length)return "";
+  return fmtShort(dated[0].iso)+" – "+fmtShort(dated[dated.length-1].iso);
 }
 
-// Build
-const container = document.getElementById('units');
-container.innerHTML = C.map((u, i) => renderUnit(u, i)).join('');
+/* which unit is current: the one containing today or the next class */
+const allDated=COURSE.units.flatMap((u,i)=>u.days.filter(d=>d.iso).map(d=>({u:i,iso:d.iso,day:d})));
+allDated.sort((a,b)=>a.iso<b.iso?-1:1);
+const heroEntry=allDated.find(e=>e.iso===TODAY)||allDated.find(e=>e.iso>TODAY)||null;
+const currentUnit=heroEntry?heroEntry.u:COURSE.units.length-1;
+const daysDone=allDated.filter(e=>e.iso<=TODAY).length;
+const daysTotal=COURSE.units.reduce((n,u)=>n+u.days.length,0);
 
-// ── Toggle ──
-function toggleU(h) { h.parentElement.classList.toggle('open'); }
 
-let allExp = false;
-function toggleAll() {
-  allExp = !allExp;
-  document.querySelectorAll('.unit').forEach(u => allExp ? u.classList.add('open') : u.classList.remove('open'));
-  document.getElementById('expBtn').textContent = allExp ? 'Collapse All' : 'Expand All';
-  if (!allExp) { const c = document.querySelector(`.unit[data-unit="${CURRENT_UNIT}"]`); if (c) c.classList.add('open'); }
+/* ══════════ Icons (inline SVG so they look the same on every phone) ══════════ */
+const ICONS={
+  arrow:'<path d="M7 17L17 7M9 7h8v8"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  play:'<path d="M7 5.5v13l11-6.5z" fill="currentColor" stroke="none"/>',
+  pencil:'<path d="M4 20l4-1L18.5 8.5a2.1 2.1 0 0 0-3-3L5 16l-1 4z"/>',
+  search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+  up:'<path d="M12 19V5M5 12l7-7 7 7"/>',
+  skull:'<path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 2a8 8 0 0 0-8 8c0 2.6 1.2 4.6 3 6v3a1 1 0 0 0 1 1h1v-2h2v2h2v-2h2v2h1a1 1 0 0 0 1-1v-3c1.8-1.4 3-3.4 3-6a8 8 0 0 0-8-8zM8.5 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>',
+  layers:'<path d="M12 3.5l9 4.5-9 4.5-9-4.5z"/><path d="M3 12.5l9 4.5 9-4.5"/><path d="M3 16.5l9 4.5 9-4.5"/>',
+  doc:'<path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9.5 13h6M9.5 17h6"/>',
+  list:'<path d="M10 6.5h10M10 12h10M10 17.5h10"/><path d="M4 6.5l1.2 1.2 2.3-2.4M4 12l1.2 1.2 2.3-2.4M4 17.5l1.2 1.2 2.3-2.4"/>',
+  calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/>',
+  haz:'<path d="M12 3.5L2.5 20h19z"/><path d="M12 9.5v4.5M12 17h.01"/>',
+};
+function ico(name,cls){
+  return `<svg class="ico ${name}${cls?" "+cls:""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name]}</svg>`;
 }
 
-// ── Search ──
-function filterL(q) {
-  q = q.toLowerCase().trim();
-  document.querySelectorAll('.unit').forEach(u => {
-    if (!q) { u.style.display = ''; return; }
-    const m = u.textContent.toLowerCase().includes(q);
-    u.style.display = m ? '' : 'none';
-    if (m && q.length > 1) u.classList.add('open');
+/* ══════════ Link rendering ══════════ */
+const WARN=ico("skull","skull")+'<span>Do not look if you haven’t done the practice</span><button class="tgo" type="button">Continue</button>';
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function live(t,url,cls,icon,warn){
+  const a=`<a class="dlink ${cls}" href="${esc(url)}" target="_blank" rel="noopener"${warn?' data-warn':''}>${ico(icon)}<span class="lt">${t}</span></a>`;
+  return warn?`<span class="tipwrap">${a}<span class="tip warn">${WARN}</span></span>`:a;
+}
+function pend(t,icon){
+  return `<span class="tipwrap"><span class="dlink pend" tabindex="0">${ico(icon)}<span class="lt">${t}</span></span><span class="tip info">Coming soon</span></span>`;
+}
+function extraLink(e){
+  const[t,url,kind]=e;
+  if(kind==="vid")return live(t,url,"vid","play",false);
+  if(kind==="ans")return live(t,url,"ans","check",true);
+  if(kind==="skills")return live(t,url,"skills","layers",false);
+  return live(t,url,"doc","arrow",false);
+}
+/* A worksheet's answers ride along as a chip on the same line instead of a stray "Answers" row */
+function extrasHTML(list){
+  const items=[];
+  list.forEach(e=>{
+    if(!e)return;
+    const kind=e[2];
+    if(kind==="ans"&&items.length&&items[items.length-1].kind!=="ans"){items[items.length-1].ans.push(e);return}
+    items.push({kind,e,ans:[]});
+  });
+  return items.map(it=>{
+    const main=extraLink(it.e);
+    if(!it.ans.length)return main;
+    const chips=it.ans.map(a=>`<span class="tipwrap"><a class="xans" data-warn href="${esc(a[1])}" target="_blank" rel="noopener">${ico("check")}${a[0]}</a><span class="tip warn">${WARN}</span></span>`).join("");
+    return `<div class="xitem">${main}${chips}</div>`;
+  }).join("");
+}
+/* Keys released today or in the last few days get a pill so students can see what is new */
+function daysAgo(iso){return Math.round((new Date(TODAY+"T12:00:00")-new Date(iso+"T12:00:00"))/864e5)}
+function ansState(day){
+  if(!day.ans||!day.iso)return "";
+  const n=daysAgo(day.iso);
+  return n===0?"today":(n>0&&n<=3)?"new":"";
+}
+function newPill(day){
+  const s=ansState(day);
+  return s==="today"?'<span class="newp">Posted today</span>':s==="new"?'<span class="newp">New</span>':"";
+}
+function noteLinks(day){
+  const links=[];
+  const hasNote=day.num||day.noteLabel;
+  if(hasNote){
+    const label=day.noteLabel||`${day.num} Blank Note & Practice Problems`;
+    links.push(day.note?live(label,day.note,"note","arrow",false):pend(label,"arrow"));
+    const ansLabel=day.ansLabel||"Answers";
+    if(day.ans)links.push(`<span class="lrow">${live(ansLabel,day.ans,"ans","check",true)}${newPill(day)}</span>`);
+    else links.push(pend(ansLabel,"check"));
+  }
+  return links;
+}
+
+/* ══════════ Render units ══════════ */
+const FLAGS={test:"Test",quiz:"Quiz",pquiz:"Practice Quiz",exam:"Exam"};
+/* The flag sits at the top of a day: "PRACTICE QUIZ: Current Topic + …". covers is optional. */
+function flagHTML(day){
+  const k=FLAGS[day.flag];
+  if(!k)return "";
+  const c=(day.covers||"").trim();
+  return `<div class="flag ${day.flag}"><span class="fk">${k}${c?":":""}</span>${c?`<span class="fc">${c}</span>`:""}</div>`;
+}
+/* What to call a day that has no topic of its own (a pure quiz/test day) */
+function dayName(day){
+  if(day.topic)return day.topic;
+  const k=FLAGS[day.flag]||"";
+  const c=(day.covers||"").trim();
+  return k+(c?": "+c:"");
+}
+function dayRow(day,i){
+  const st=stateOf(day);
+  const cls=[FLAGS[day.flag]||day.flag==="review"?"is-"+day.flag:"",st==="today"?"is-today":""].join(" ");
+  const links=noteLinks(day);
+  const extras=extrasHTML(day.extras||[]);
+  const heroId=heroEntry&&day===heroEntry.day?' id="heroDayRow"':"";
+  return `<tr class="${cls}"${heroId} style="--i:${i}">
+    <td class="td-num">${day.d}</td>
+    <td class="td-date">${fmtDate2(day.iso)}${st==="today"?'<br><span class="today-pill">Today</span>':""}</td>
+    <td class="td-topic">${flagHTML(day)}${day.topic?`<span class="topic">${day.topic}</span>`:""}<div class="lgroup">${links.join("")}</div></td>
+    <td class="td-extra${extras?"":" empty"}"><div class="lgroup">${extras}</div></td>
+  </tr>`;
+}
+function unitMeta(u){
+  const dated=u.days.filter(d=>d.iso);
+  const done=dated.filter(d=>d.iso<=TODAY).length;
+  const res=u.days.reduce((n,d)=>n+(d.note?1:0)+(d.ans?1:0)+(d.extras||[]).filter(Boolean).length,0);
+  return `${done} / ${u.days.length} days · ${res} resource${res===1?"":"s"}`;
+}
+function freshTag(u){
+  const n=u.days.filter(ansState).length;
+  return n?`<span class="utag fresh">${n} new</span>`:"";
+}
+function unitTag(u,i){
+  const lastIso=u.days.filter(d=>d.iso).map(d=>d.iso).pop();
+  if(i===currentUnit)return '<span class="utag active">Current</span>';
+  if(lastIso&&lastIso<TODAY)return '<span class="utag done">Done</span>';
+  if(i===currentUnit+1)return '<span class="utag next">Up Next</span>';
+  return '<span class="utag planned">Planned</span>';
+}
+function render(){
+  document.getElementById("subTitle").textContent=COURSE.sub;
+  document.getElementById("units").innerHTML=COURSE.units.map((u,i)=>{
+    const open=i===currentUnit?"open":"";
+    const cur=i===currentUnit?"current":"";
+    return `<section class="unit ${open} ${cur}" id="u${i}" style="--i:${i+4}">
+      <button class="uhead" aria-expanded="${i===currentUnit}" onclick="toggleU(this)">
+        ${u.noNumber?"":`<span class="unum">Unit ${UNO[i]}</span>`}
+        <span class="utitle">${u.name}</span>
+        <span class="urange">${unitRange(u)}</span>
+        <span class="umeta">${unitMeta(u)}</span>
+        ${freshTag(u)}${unitTag(u,i)}
+        <svg class="chev" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="ubody"><div class="ubody-inner">
+        <div class="ucontent"><table class="ltable">
+          <thead><tr><th>Day</th><th>Date</th><th class="th-topic">Topic · Note &amp; Practice Problems</th><th class="th-extra">Extra Practice &amp; Resources</th></tr></thead>
+          <tbody>${u.days.map(dayRow).join("")}</tbody>
+        </table></div>
+      </div></div>
+    </section>`;
+  }).join("");
+}
+function toggleU(btn){
+  const u=btn.closest(".unit");u.classList.toggle("open");
+  btn.setAttribute("aria-expanded",u.classList.contains("open"));
+}
+
+/* ══════════ Course essentials ══════════
+   COURSE.essentials = [[label, url, kind, warn?], ...]; kind is "outline",
+   "routine" or "calc". A warn string rides on the link as a hazard tip (the
+   pill itself stays plain): hover on desktop, and on a phone the first tap
+   raises it as a sheet with Continue (the same data-warn mechanism the answer
+   keys use). */
+function renderEssentials(){
+  const el=document.getElementById("ess");
+  const list=(COURSE.essentials||[]).filter(Boolean);
+  if(!list.length){el.hidden=true;return}
+  const ICO={outline:"doc",routine:"list",calc:"calc"};
+  el.innerHTML=list.map(e=>{
+    const[t,url,kind,warn]=e;
+    const a=`<a href="${esc(url)}" target="_blank" rel="noopener"${warn?' data-warn':''}>${ico(ICO[kind]||"arrow")}<span>${t}</span></a>`;
+    return warn?`<span class="tipwrap">${a}<span class="tip hazard">${ico("haz","haz")}<span>${esc(warn)}</span><button class="tgo" type="button">Continue</button></span></span>`:a;
+  }).join("");
+}
+
+/* ══════════ Hero ══════════ */
+function renderHero(){
+  const h=document.getElementById("hero");
+  if(!heroEntry){h.hidden=true;return}
+  const {u,day}=heroEntry;
+  const isToday=day.iso===TODAY;
+  const label=isToday?"Today":"Next class";
+  const btns=[];
+  const hasNote=day.num||day.noteLabel;
+  if(hasNote){
+    const nl=day.noteLabel||`${day.num} Blank Note & Practice Problems`;
+    btns.push(day.note
+      ?`<a class="btn pri" href="${esc(day.note)}" target="_blank" rel="noopener">${ico("arrow")} ${nl}</a>`
+      :`<span class="tipwrap"><span class="btn dis">${ico("arrow")} ${nl}</span><span class="tip info up">Coming soon</span></span>`);
+    // Answers only appears here once it's actually linked
+    if(day.ans){
+      const al=day.ansLabel||"Answers";
+      btns.push(`<span class="tipwrap"><a class="btn ansb" data-warn href="${esc(day.ans)}" target="_blank" rel="noopener">${ico("check")} ${al}</a><span class="tip warn up">${WARN}</span></span>`);
+    }
+  }
+  // Until today's key is up, the most recently released key is one tap away
+  if(!day.ans){
+    const latest=[...allDated].reverse().find(e=>e.iso<=TODAY&&e.day.ans);
+    if(latest){
+      const ll=latest.day.num?`Latest answers · ${latest.day.num}`:`Latest answers · ${latest.day.ansLabel||latest.day.topic}`;
+      btns.push(`<span class="tipwrap"><a class="btn ghost" data-warn href="${esc(latest.day.ans)}" target="_blank" rel="noopener">${ico("check")} ${ll}</a><span class="tip warn up">${WARN}</span></span>`);
+    }
+  }
+  h.hidden=false;
+  h.setAttribute("role","link");
+  h.setAttribute("tabindex","0");
+  h.setAttribute("aria-label",`Jump to ${dayName(day)} in the course table`);
+  h.innerHTML=`
+    <div class="eyebrow"><span class="live"></span>${label} · ${fmtDate(day.iso)} · ${unitLabel(COURSE.units[u],u)}, Day ${day.d}</div>
+    ${flagHTML(day)}${day.topic?`<h2>${day.topic}</h2>`:""}
+    ${btns.length?`<div class="acts">${btns.join("")}</div>`:""}`;
+  function jump(){
+    const unit=document.getElementById("u"+u);
+    if(unit&&!unit.classList.contains("open")){
+      unit.classList.add("open");
+      unit.querySelector(".uhead").setAttribute("aria-expanded","true");
+    }
+    const row=document.getElementById("heroDayRow");
+    if(row){
+      row.scrollIntoView({behavior:"smooth",block:"center"});
+      row.classList.remove("flash");
+      requestAnimationFrame(()=>row.classList.add("flash"));
+    }
+  }
+  h.addEventListener("click",e=>{if(!e.target.closest("a"))jump()});
+  h.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();jump()}});
+}
+
+const LEGEND_HTML=`<div class="ht">What the links mean</div><div class="hi"><span class="dlink note">${ico("arrow")}<span class="lt">1.4 Blank Note &amp; Practice Problems</span></span><small>the day's note</small></div><div class="hi"><span class="dlink ans">${ico("check")}<span class="lt">Answers</span></span><small>posted after class · do the practice first</small></div><div class="hi"><span class="dlink vid">${ico("play")}<span class="lt">Video</span></span></div><div class="hi"><span class="dlink doc">${ico("arrow")}<span class="lt">Worksheet</span></span><span class="xans">${ico("check")}Answers</span><small>a resource with its own answers</small></div><div class="hi"><span class="dlink skills">${ico("layers")}<span class="lt">Prerequisite Skills</span></span><small>earlier-course skills a unit leans on · answers on the sheet</small></div><div class="hi"><span class="dlink pend">${ico("arrow")}<span class="lt">Greyed out</span></span><small>coming soon</small></div><div class="hi"><span class="newp">New</span><small>answers released in the last few days</small></div><div class="hi"><span class="swatch"></span><small>today's lesson</small></div>`;
+/* ══════════ Controls ══════════ */
+document.getElementById("expBtn").addEventListener("click",function(){
+  const units=[...document.querySelectorAll(".unit")];
+  const anyClosed=units.some(u=>!u.classList.contains("open"));
+  units.forEach(u=>{u.classList.toggle("open",anyClosed);u.querySelector(".uhead").setAttribute("aria-expanded",anyClosed)});
+  this.textContent=anyClosed?"Collapse All":"Expand All";
+});
+const sc=document.getElementById("sc"),nomatch=document.getElementById("nomatch");
+document.getElementById("si").addEventListener("input",function(){
+  const q=this.value.trim().toLowerCase();
+  let n=0;
+  document.querySelectorAll(".unit").forEach(u=>{
+    let hits=0;
+    u.querySelectorAll(".ltable tbody tr").forEach(tr=>{
+      const show=!q||tr.textContent.toLowerCase().includes(q);
+      tr.style.display=show?"":"none";
+      tr.classList.remove("fin");
+      if(q&&show){void tr.offsetWidth;tr.classList.add("fin");hits++}
+    });
+    n+=hits;
+    u.classList.toggle("nomatch",!!q&&hits===0);
+    if(q&&hits){u.classList.add("open");u.querySelector(".uhead").setAttribute("aria-expanded","true")}
+  });
+  sc.textContent=q&&n?`${n} lesson${n===1?"":"s"}`:"";
+  nomatch.hidden=!(q&&n===0);
+});
+const pfill=document.getElementById("pf"),ptxt=document.getElementById("pt");
+const REDUCE=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+requestAnimationFrame(()=>{pfill.style.width=(daysDone/daysTotal*100)+"%"});
+function setProg(n){ptxt.textContent=`Day ${n} / ${daysTotal} · ${unitLabel(COURSE.units[currentUnit],currentUnit)}`}
+if(daysDone===0)ptxt.textContent=`Starts ${fmtShort(allDated[0].iso)}`;
+else if(daysDone>=daysTotal)ptxt.textContent="Course complete";
+else if(REDUCE)setProg(daysDone);
+else{
+  const t0=performance.now(),dur=700;
+  (function tick(now){
+    const k=Math.min((now-t0)/dur,1);
+    setProg(Math.round(daysDone*(1-Math.pow(1-k,3))));
+    if(k<1)requestAnimationFrame(tick);
+  })(t0);
+}
+const fab=document.getElementById("fab");
+fab.innerHTML=ico("up")+"Current Unit";
+const topbar=document.querySelector(".top-bar");
+function setTbh(){document.documentElement.style.setProperty("--tbh",topbar.offsetHeight+"px")}
+setTbh();window.addEventListener("resize",setTbh);
+/* Unit headers stick under the top bar while their unit scrolls; a soft shadow says "stuck" */
+function stuckCheck(){
+  const tb=topbar.offsetHeight;
+  document.querySelectorAll(".unit").forEach(u=>{
+    const h=u.querySelector(".uhead");
+    if(!u.classList.contains("open")){h.classList.remove("stuck");return}
+    const r=u.getBoundingClientRect();
+    h.classList.toggle("stuck",r.top<tb-1&&r.bottom>tb+h.offsetHeight+24);
   });
 }
-document.addEventListener('keydown', e => {
-  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); document.getElementById('si').focus(); }
-  if (e.key === 'Escape') { const i = document.getElementById('si'); i.blur(); i.value = ''; filterL(''); }
-});
+let scrollTick=false;
+window.addEventListener("scroll",()=>{
+  if(scrollTick)return;scrollTick=true;
+  requestAnimationFrame(()=>{fab.classList.toggle("visible",window.scrollY>400);stuckCheck();scrollTick=false});
+},{passive:true});
+document.getElementById("units").addEventListener("click",()=>requestAnimationFrame(stuckCheck));
 
-// ── Jump ──
-function jumpC() {
-  const c = document.querySelector('.unit.current');
-  if (c) { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); if (!c.classList.contains('open')) c.classList.add('open'); }
+/* ══════════ Legend popover ══════════ */
+const helpBtn=document.getElementById("helpBtn"),help=document.getElementById("help");
+help.innerHTML=LEGEND_HTML;
+function setHelp(o){help.classList.toggle("open",o);helpBtn.setAttribute("aria-expanded",o)}
+helpBtn.addEventListener("click",e=>{e.stopPropagation();setHelp(!help.classList.contains("open"))});
+document.addEventListener("click",e=>{if(!e.target.closest("#help"))setHelp(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){setHelp(false);disarm()}});
+
+/* ══════════ Touch: answers need a second tap ══════════
+   No hover on a phone, so the first tap on any Answers link raises the
+   warning as a sheet with a Continue button. Continue (or a second tap
+   on the link) opens it. */
+const TOUCH=window.matchMedia("(hover: none)").matches;
+function disarm(){document.querySelectorAll(".tipwrap.armed").forEach(w=>w.classList.remove("armed"));document.body.classList.remove("armed")}
+document.addEventListener("click",e=>{
+  const go=e.target.closest(".tgo");
+  if(go){
+    e.preventDefault();e.stopPropagation();
+    const a=go.closest(".tipwrap")?.querySelector("a[data-warn]");
+    disarm();
+    if(a)window.open(a.href,"_blank","noopener");
+    return;
+  }
+  const a=e.target.closest("a[data-warn]");
+  if(a&&TOUCH){
+    const w=a.closest(".tipwrap");
+    if(w&&!w.classList.contains("armed")){e.preventDefault();e.stopPropagation();disarm();w.classList.add("armed");document.body.classList.add("armed");return}
+    disarm();return;
+  }
+  if(!e.target.closest(".tipwrap.armed"))disarm();
+},true);
+fab.addEventListener("click",()=>{document.getElementById("u"+currentUnit).scrollIntoView({behavior:"smooth"})});
+
+/* theme (persisted) */
+const dmBtn=document.getElementById("dmBtn");
+const stored=localStorage.getItem("mcv4u-theme");
+const startDark=stored?stored==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;
+document.documentElement.setAttribute("data-theme",startDark?"dark":"light");
+function isDark(){return document.documentElement.getAttribute("data-theme")==="dark"}
+function syncBtn(){dmBtn.innerHTML=isDark()?ico("sun")+" Light":ico("moon")+" Dark"}
+document.getElementById("siIco").innerHTML=ico("search");
+dmBtn.addEventListener("click",()=>{
+  const next=isDark()?"light":"dark";
+  const apply=()=>{
+    document.documentElement.setAttribute("data-theme",next);
+    localStorage.setItem("mcv4u-theme",next);
+    syncBtn();bgColors();
+  };
+  if(document.startViewTransition&&!REDUCE)document.startViewTransition(apply);else apply();
+});
+render();renderEssentials();renderHero();syncBtn();
+
+/* ══════════ Animated background: calculus and vectors, built slowly ══════════
+   Calm vignettes from the course, one idea each: a secant swings into the
+   tangent as h shrinks to 0; f and f′ trace together, each turning point of f
+   dropping onto a zero of f′; two vectors add head to tail; a cross product
+   rises out of the plane of its two vectors. Each fades in, builds slowly,
+   rests, and fades away. No clicks, no cursor play. */
+const cv=document.getElementById("bg"),cx=cv.getContext("2d");
+let W,H,DPR,RGB="15,118,110",ALPHA=.1;
+const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const MONO="11px 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace";
+function bgColors(){
+  const s=getComputedStyle(document.documentElement);
+  RGB=(s.getPropertyValue("--curve")||RGB).trim();
+  ALPHA=parseFloat(s.getPropertyValue("--curve-a"))||ALPHA;
+  if(reduce&&vigs.length)drawStatic();
+}
+function sizeBg(){
+  DPR=Math.min(window.devicePixelRatio||1,2);
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cx.setTransform(DPR,0,0,DPR,0,0);
+}
+const rnd=(a,b)=>a+Math.random()*(b-a);
+const clamp01=p=>Math.max(0,Math.min(1,p));
+const easeO=p=>1-Math.pow(1-clamp01(p),3);
+const easeIO=p=>{p=clamp01(p);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2};
+const col=a=>`rgba(${RGB},${Math.max(0,a)})`;
+const LINE=f=>Math.min(ALPHA*3,.36)*f;
+
+const T_IN=1400,T_OUT=2600,N_VIGS=3;
+const KINDS=["tangent","graphs","vectors","cross"];
+const vigs=[];
+
+function makeTangent(v){
+  const a=rnd(.24,.32),k=rnd(3,4.2),ph=rnd(0,6.28),tilt=rnd(-.2,.2);
+  v.f=t=>.5+a*Math.sin(k*t+ph)+tilt*(t-.5);
+  v.fp=t=>a*k*Math.cos(k*t+ph)+tilt;
+  v.t0=rnd(.38,.58);
+  v.h0=(Math.random()<.5?-1:1)*rnd(.3,.36);
+}
+function makeGraphs(v){
+  const t1=rnd(.18,.4),t2=rnd(.6,.82),K=Math.random()<.5?1:-1;
+  const F=t=>K*(t*t*t/3-(t1+t2)*t*t/2+t1*t2*t),Fp=t=>K*(t-t1)*(t-t2);
+  let lo=1e9,hi=-1e9,mp=0;
+  for(let i=0;i<=60;i++){const t=i/60,y=F(t);lo=Math.min(lo,y);hi=Math.max(hi,y);mp=Math.max(mp,Math.abs(Fp(t)))}
+  v.f=t=>.1+.8*(F(t)-lo)/(hi-lo||1);
+  v.fp=t=>.5+.4*Fp(t)/(mp||1);
+  v.turns=[t1,t2];
+}
+function makeVectors(v){
+  const au=rnd(-.15,.55),av=rnd(1.05,1.75),lu=rnd(.42,.55),lv=rnd(.34,.46);
+  let u=[Math.cos(au)*lu,Math.sin(au)*lu],w=[Math.cos(av)*lv,Math.sin(av)*lv];
+  const xs=[0,u[0],w[0],u[0]+w[0]],ys=[0,u[1],w[1],u[1]+w[1]];
+  const x0=Math.min(...xs),y0=Math.min(...ys),sx=Math.max(...xs)-x0,sy=Math.max(...ys)-y0;
+  const sc=Math.min((v.w-24)/(sx||1),(v.h-24)/(sy||1));
+  const ox=v.x+12-x0*sc+(v.w-24-sx*sc)/2,oy=v.y+v.h-12+y0*sc-(v.h-24-sy*sc)/2;
+  Object.assign(v,{o:[ox,oy],u:[u[0]*sc,-u[1]*sc],vv:[w[0]*sc,-w[1]*sc]});
+}
+function makeCross(v){
+  const a=[rnd(.85,1.05),rnd(-.35,-.1),0],b=[rnd(.05,.35),rnd(.85,1.1),0];
+  const z=a[0]*b[1]-a[1]*b[0];
+  /* oblique view: x right, y back at 30°, z up */
+  const P=(p,s)=>[p[0]+.5*p[1]*.866,-(p[2]+.5*p[1]*.5)].map(q=>q*s);
+  const pts=[[0,0,0],a,b,[a[0]+b[0],a[1]+b[1],0],[0,0,z*.75]];
+  const sx=[],sy=[];pts.forEach(p=>{const q=P(p,1);sx.push(q[0]);sy.push(q[1])});
+  const x0=Math.min(...sx),y0=Math.min(...sy),wx=Math.max(...sx)-x0,wy=Math.max(...sy)-y0;
+  const s=Math.min((v.w-30)/wx,(v.h-30)/wy);
+  const ox=v.x+15-x0*s+(v.w-30-wx*s)/2,oy=v.y+15-y0*s+(v.h-30-wy*s)/2;
+  v.S=p=>{const q=P(p,s);return[ox+q[0],oy+q[1]]};
+  Object.assign(v,{a,b,n:[0,0,z*.75]});
+}
+function overlaps(a,list){
+  return list.some(b=>b&&a.x<b.x+b.w+60&&a.x+a.w+60>b.x&&a.y<b.y+b.h+60&&a.y+a.h+60>b.y);
+}
+function spawn(i,now,delay){
+  const used=vigs.filter((v,j)=>v&&j!==i).map(v=>v.kind);
+  const pool=KINDS.filter(k=>!used.includes(k));
+  const kind=pool[Math.floor(Math.random()*pool.length)]||KINDS[i%KINDS.length];
+  const size={tangent:[rnd(180,250),rnd(120,160)],graphs:[rnd(170,230),rnd(150,190)],
+              vectors:[rnd(160,220),rnd(120,160)],cross:[rnd(170,220),rnd(140,180)]}[kind];
+  let v;
+  for(let tries=0;tries<14;tries++){
+    v={kind,w:size[0],h:size[1],x:rnd(16,Math.max(17,W-size[0]-16)),y:rnd(40,Math.max(41,H-size[1]-30))};
+    if(!overlaps(v,vigs.filter((_,j)=>j!==i)))break;
+  }
+  v.born=now+(delay||0);
+  v.build=rnd(8000,10500);
+  v.hold=rnd(5000,8000);
+  v.life=T_IN+v.build+v.hold+T_OUT;
+  ({tangent:makeTangent,graphs:makeGraphs,vectors:makeVectors,cross:makeCross})[kind](v);
+  return v;
 }
 
-// ── Scroll reveal ──
-const rObs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); rObs.unobserve(e.target); } });
-}, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-
-const fObs = new IntersectionObserver(([e]) => {
-  document.getElementById('fab').classList.toggle('visible', !e.isIntersecting);
-}, { threshold: 0.1 });
-
-document.addEventListener('DOMContentLoaded', () => {
-  const c = document.querySelector(`.unit[data-unit="${CURRENT_UNIT}"]`);
-  if (c) c.classList.add('open');
-
-  const done = CURRENT_UNIT - 1;
-  document.getElementById('pf').style.width = Math.round((done / TOTAL_UNITS) * 100) + '%';
-  document.getElementById('pt').textContent = `${done}/${TOTAL_UNITS}`;
-
-  document.querySelectorAll('.unit').forEach((u, i) => {
-    u.style.transitionDelay = `${i * 0.07}s`;
-    u.style.transitionDuration = '0.55s';
-    u.style.transitionTimingFunction = 'cubic-bezier(0.16, 1, 0.3, 1)';
-    u.style.transitionProperty = 'opacity, transform';
-    rObs.observe(u);
+/* 0..1 through the build, and the overall opacity for this moment */
+function phase(v,t){
+  const age=t-v.born;
+  if(v.fixed)return{p:1,f:1};
+  const f=age<T_IN?age/T_IN:age>v.life-T_OUT?(v.life-age)/T_OUT:1;
+  return{p:clamp01((age-T_IN*.4)/v.build),f:clamp01(f)};
+}
+function label(text,x,y,f){
+  cx.font="italic "+MONO;cx.fillStyle=col(Math.min(ALPHA*3.2,.34)*f);cx.fillText(text,x,y);
+}
+function dot(x,y,r,a){cx.beginPath();cx.arc(x,y,r,0,Math.PI*2);cx.fillStyle=col(a);cx.fill()}
+function arrow(x1,y1,x2,y2,a,w){
+  const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);
+  if(L<1)return;
+  cx.strokeStyle=col(a);cx.fillStyle=col(a);cx.lineWidth=w||1.8;cx.lineCap="round";
+  cx.beginPath();cx.moveTo(x1,y1);cx.lineTo(x2,y2);cx.stroke();
+  const ux=dx/L,uy=dy/L,hs=Math.min(9,L*.4);
+  cx.beginPath();cx.moveTo(x2,y2);
+  cx.lineTo(x2-ux*hs-uy*hs*.45,y2-uy*hs+ux*hs*.45);
+  cx.lineTo(x2-ux*hs+uy*hs*.45,y2-uy*hs-ux*hs*.45);
+  cx.closePath();cx.fill();
+}
+function trace(fn,px,py,t1){
+  cx.beginPath();
+  for(let i=0;i<=80;i++){
+    const t=t1*i/80;
+    i===0?cx.moveTo(px(t),py(fn(t))):cx.lineTo(px(t),py(fn(t)));
+  }
+  cx.stroke();
+}
+function drawTangent(v,p,f){
+  const px=t=>v.x+t*v.w,py=y=>v.y+v.h-y*v.h;
+  cx.strokeStyle=col(ALPHA*1.6*f);cx.lineWidth=1.2;cx.lineCap="round";
+  cx.beginPath();cx.moveTo(v.x,v.y);cx.lineTo(v.x,v.y+v.h);cx.lineTo(v.x+v.w,v.y+v.h);cx.stroke();
+  const cp=easeO(p/.3);
+  cx.strokeStyle=col(LINE(f));cx.lineWidth=2;trace(v.f,px,py,cp);
+  if(p<.32)return;
+  const k=clamp01((p-.32)/.06);
+  const h=v.h0*(1-easeIO((p-.42)/.46));
+  const t0=v.t0,t1=t0+h,y0=v.f(t0);
+  const m=Math.abs(h)>.002?(v.f(t1)-y0)/h:v.fp(t0);
+  cx.save();cx.beginPath();cx.rect(v.x,v.y-10,v.w,v.h+10);cx.clip();
+  cx.beginPath();cx.moveTo(px(-.1),py(y0+m*(-.1-t0)));cx.lineTo(px(1.1),py(y0+m*(1.1-t0)));
+  cx.strokeStyle=col(ALPHA*2*f*k);cx.lineWidth=1.4;cx.stroke();
+  cx.restore();
+  dot(px(t0),py(y0),3.2,ALPHA*3*f*k);
+  if(Math.abs(h)>.004)dot(px(t1),py(v.f(t1)),2.8,ALPHA*2.4*f*k*clamp01(Math.abs(h)/.03));
+  if(p>.42&&p<.9)label("h → 0",v.x+v.w-48,v.y+12,f*clamp01((p-.42)/.05)*clamp01((.9-p)/.05));
+  if(p>=.9)label("f′(a)",px(t0)+8,py(y0)-10,f*clamp01((p-.9)/.06));
+}
+function drawGraphs(v,p,f){
+  const gap=14,hh=(v.h-gap)/2,px=t=>v.x+t*v.w;
+  const pyT=y=>v.y+hh-y*hh,pyB=y=>v.y+hh+gap+hh-y*hh;
+  cx.strokeStyle=col(ALPHA*1.6*f);cx.lineWidth=1.2;cx.lineCap="round";
+  cx.beginPath();cx.moveTo(v.x,v.y+hh);cx.lineTo(v.x+v.w,v.y+hh);cx.stroke();
+  cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(v.x,pyB(.5));cx.lineTo(v.x+v.w,pyB(.5));cx.stroke();cx.setLineDash([]);
+  const tp=easeIO(p/.8);
+  cx.strokeStyle=col(LINE(f));cx.lineWidth=2;
+  trace(v.f,px,pyT,tp);trace(v.fp,px,pyB,tp);
+  v.turns.forEach(t=>{
+    const k=clamp01((tp-t)/.06);
+    if(k<=0)return;
+    cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(px(t),pyT(v.f(t)));cx.lineTo(px(t),pyB(.5)+(pyT(v.f(t))-pyB(.5))*(1-k));
+    cx.strokeStyle=col(ALPHA*1.6*f);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
+    dot(px(t),pyT(v.f(t)),2.8,ALPHA*2.6*f);
+    if(k>=1)dot(px(t),pyB(.5),2.8,ALPHA*2.6*f);
   });
-
-  if (c) fObs.observe(c);
+  if(p>.05){label("f",v.x-12,v.y+10,f);label("f′",v.x-14,v.y+hh+gap+10,f)}
+}
+function drawVectors(v,p,f){
+  const[ox,oy]=v.o,u=v.u,w=v.vv;
+  const U=[ox+u[0],oy+u[1]],Wt=[ox+w[0],oy+w[1]],R=[U[0]+w[0],U[1]+w[1]];
+  cx.strokeStyle=col(ALPHA*1.2*f);cx.lineWidth=1;
+  cx.beginPath();cx.moveTo(ox-8,oy);cx.lineTo(Math.max(U[0],R[0])+8,oy);cx.moveTo(ox,oy+8);cx.lineTo(ox,Math.min(Wt[1],R[1])-8);cx.stroke();
+  const pu=easeO(p/.2),pv=easeO((p-.2)/.2),ps=easeIO((p-.45)/.22),pr=easeO((p-.72)/.18);
+  if(pu>0)arrow(ox,oy,ox+u[0]*pu,oy+u[1]*pu,LINE(f),1.8);
+  if(pv>0){
+    const a=ps>0?ALPHA*1.4*f:LINE(f);
+    arrow(ox,oy,ox+w[0]*pv,oy+w[1]*pv,a,1.8);
+  }
+  if(ps>0)arrow(ox+u[0]*ps,oy+u[1]*ps,ox+u[0]*ps+w[0],oy+u[1]*ps+w[1],LINE(f),1.8);
+  if(pr>0)arrow(ox,oy,ox+(R[0]-ox)*pr,oy+(R[1]-oy)*pr,Math.min(ALPHA*3.6,.42)*f,2.4);
+  if(pr>=1){
+    cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(Wt[0],Wt[1]);cx.lineTo(R[0],R[1]);
+    cx.strokeStyle=col(ALPHA*1.4*f);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
+  }
+  if(pu>=1)label("u",ox+u[0]*.55+4,oy+u[1]*.55+14,f);
+  if(pv>=1&&ps<=0)label("v",ox+w[0]*.5-14,oy+w[1]*.5,f);
+  if(ps>=1)label("v",U[0]+w[0]*.5+6,U[1]+w[1]*.5,f);
+  if(pr>=1)label("u + v",R[0]+6,R[1]-4,f*clamp01((p-.9)/.06));
+}
+function drawCross(v,p,f){
+  const S=v.S,O=S([0,0,0]);
+  cx.setLineDash([2,4]);cx.strokeStyle=col(ALPHA*1.2*f);cx.lineWidth=1;
+  [[1.25,0,0],[0,1.25,0],[0,0,.9]].forEach(e=>{const q=S(e);cx.beginPath();cx.moveTo(O[0],O[1]);cx.lineTo(q[0],q[1]);cx.stroke()});
+  cx.setLineDash([]);
+  const pa=easeO(p/.2),pb=easeO((p-.2)/.2),pf=easeO((p-.45)/.2),pn=easeO((p-.7)/.22);
+  const A=S(v.a),B=S(v.b),AB=S([v.a[0]+v.b[0],v.a[1]+v.b[1],0]);
+  if(pf>0){
+    cx.beginPath();cx.moveTo(O[0],O[1]);cx.lineTo(A[0],A[1]);cx.lineTo(AB[0],AB[1]);cx.lineTo(B[0],B[1]);cx.closePath();
+    cx.fillStyle=col(ALPHA*.7*f*pf);cx.fill();
+    cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(A[0],A[1]);cx.lineTo(AB[0],AB[1]);cx.lineTo(B[0],B[1]);
+    cx.strokeStyle=col(ALPHA*1.4*f*pf);cx.lineWidth=1;cx.stroke();cx.setLineDash([]);
+  }
+  if(pa>0)arrow(O[0],O[1],O[0]+(A[0]-O[0])*pa,O[1]+(A[1]-O[1])*pa,LINE(f),1.8);
+  if(pb>0)arrow(O[0],O[1],O[0]+(B[0]-O[0])*pb,O[1]+(B[1]-O[1])*pb,LINE(f),1.8);
+  if(pn>0){const N=S([0,0,v.n[2]*pn]);arrow(O[0],O[1],N[0],N[1],Math.min(ALPHA*3.6,.42)*f,2.4)}
+  if(pa>=1)label("a",A[0]+4,A[1]+12,f);
+  if(pb>=1)label("b",B[0]+6,B[1]+2,f);
+  if(pn>=1){const N=S(v.n);label("a × b",N[0]+8,N[1]+4,f*clamp01((p-.92)/.06))}
+}
+function drawVig(v,t){
+  if(t<v.born)return true;
+  if(!v.fixed&&t-v.born>v.life)return false;
+  const{p,f}=phase(v,t);
+  if(f<=0)return true;
+  ({tangent:drawTangent,graphs:drawGraphs,vectors:drawVectors,cross:drawCross})[v.kind](v,p,f);
+  return true;
+}
+function draw(t){
+  cx.clearRect(0,0,W,H);
+  for(let i=0;i<vigs.length;i++){
+    if(!drawVig(vigs[i],t))vigs[i]=spawn(i,t,900+Math.random()*2600);
+  }
+}
+let bgRaf=0;
+function loop(now){draw(now);bgRaf=requestAnimationFrame(loop)}
+document.addEventListener("visibilitychange",()=>{
+  if(reduce)return;
+  if(document.hidden){cancelAnimationFrame(bgRaf);bgRaf=0}
+  else if(!bgRaf)bgRaf=requestAnimationFrame(loop);
 });
+sizeBg();bgColors();
+/* open mid-show: the first vignettes start at staggered stages */
+for(let i=0;i<N_VIGS;i++){
+  const v=spawn(i,performance.now(),0);
+  v.born-=v.life*i*.28;
+  vigs.push(v);
+}
+window.addEventListener("resize",()=>{sizeBg();if(reduce)drawStatic()});
+function drawStatic(){
+  vigs.forEach(v=>{v.fixed=true;v.born=-1e9});
+  draw(0);
+}
+if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
 </script>
 </body>
 </html>
