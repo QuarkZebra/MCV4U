@@ -314,12 +314,12 @@ const COURSE = {
       extras:[["Desmos 3D", "https://www.desmos.com/3d", "doc"]]},
     {d:51, iso:"2027-04-23", topic:"Operations in Cartesian form", num:"5.7",
       /* 2026 textbook HW: §6.6/6.7 p. 324 #4, 5, 7b, 15 · p. 332 #3, 5b, 8 · Extra: p. 324 #1, 2, 11 · p. 332 #2, 4ac, 14 */
-      note:D("19rXCTLkp7WzBsUhZDATJjaCm4pCDBTY3"),
-      ans:"", /* key: D("1W7eeUL7EGnRdWyHCN50xDkWcQurP1vSY") */
+      note:D("130rrSPxQ7lG1m-fJrDwyRjoci7OeTV0m"),
+      ans:"", /* key: D("1iF4YVxZrnpkel4OOj3exKtxsepLHetqe") */
       extras:[]},
-    {d:52, iso:"2027-04-26", flag:"pquiz", covers:"5.2–5.7", topic:"", noteLabel:"Vectors Practice Quiz",
-      note:D("1eaz7WPvGQOa4xGlXK44w9S5DztQgV_J-"),
-      ans:"", /* key: D("1OdFa2HnNyPwCMbUe3uOKjEMoEc3YzeIS") */
+    {d:52, iso:"2027-04-26", flag:"pquiz", covers:"5.2–5.7", topic:"", noteLabel:"U5 Practice Quiz",
+      note:D("1zSoXhX2rlwRImRHLJigFIM5nzJl36cF9"),
+      ans:"", /* key: D("1SMze7E86ZjrBiPBgPatYJ-OSbC8w0m6v") */
       extras:[]},
     {d:53, iso:"2027-04-27", topic:"Linear Combinations", num:"5.8",
       /* 2026 textbook HW: §6.8 p. 340 #2, 6, 10, 11, 14 · Extra: p. 340 #1, 7b, 13a */
@@ -328,8 +328,8 @@ const COURSE = {
       extras:[["Linear Combinations, Span & Basis", "https://www.youtube.com/watch?v=k7RM-ot2NWY", "vid"]]},
     {d:54, iso:"2027-04-28", flag:"review", topic:"Unit 5 Review", noteLabel:"Unit 5 Review",
       /* 2026 textbook HW: p. 344 #1, 2a, 4, 10, 17 */
-      note:D("1IVdBAn7Q6SXoUgNSTnEqchtLjmGwT8A6"),
-      ans:"", /* key: D("1BtUGAzGb32LvxvC8k7x9SDOjuy-1AKrT") */
+      note:D("1LorOSp_yjQJNLpfVwugU3bwUrfdABaLj"),
+      ans:"", /* key: D("18lzoK7x1HIqu_Wjns1Y0oXGM1baVGTYj") */
       extras:[]},
     {d:55, iso:"2027-04-29", flag:"test", covers:"Unit 5", topic:"",
       extras:[]},
