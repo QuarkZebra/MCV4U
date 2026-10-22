@@ -339,8 +339,8 @@ const COURSE = {
   {name:"Vector Products", days:[
     {d:56, iso:"2027-04-30", topic:"Forces & Velocities", num:"6.1",
       /* 2026 textbook HW: §7.1/7.2 p. 362 #1, 3, 5, 6, 11 · p. 369 #1, 2, 4, 6, 10, 13 */
-      note:D("1Y3o3uNomn7e9T1PISWN4xqgeKq52G1yJ"),
-      ans:"", /* key: D("128Gg8daMCn314iIaG1rdREHDbmsJC6IL") */
+      note:D("19z368z4L5DzzLgYLDNkQe6nN5M_ED4_B"),
+      ans:"", /* key: D("1BB3H5ZNuX2Kkyq3nhWjqS71XbNtnXK_o") */
       extras:[]},
     {d:57, iso:"2027-05-03", topic:"Dot Product (geometric)", num:"6.2",
       /* 2026 textbook HW: §7.3 p. 377 #3, 5, 7c, 12a, 16 */
@@ -357,9 +357,9 @@ const COURSE = {
       note:D("14HcYUAHornTITrCqq3EQYQ1_yUoH1FFq"),
       ans:"", /* key: D("1FCJC6CUkd77DetdqhWUMUaO0-bwlDRTO") */
       extras:[]},
-    {d:60, iso:"2027-05-06", flag:"pquiz", covers:"6.1–6.4", topic:"", noteLabel:"Vector Products Practice Quiz",
-      note:D("1s-xR8x6GNVZLKuIrMDCHp6Q98qP6-2_C"),
-      ans:"", /* key: D("1D-56Dy_A0Tg1t7z19op3G-qNYuDnVfUQ") */
+    {d:60, iso:"2027-05-06", flag:"pquiz", covers:"6.1–6.4", topic:"", noteLabel:"U6 Practice Quiz",
+      note:D("1tomU-nisp9WZRB1-xcuF7FHiqLJJgnBD"),
+      ans:"", /* key: D("1IRGx-RTZtBjHwGlBT9Dx-LQgINUymWKN") */
       extras:[]},
     {d:61, iso:"2027-05-07", topic:"Cross Product: investigation", num:"6.5",
       /* 2026 textbook HW: §7.6 p. 407 #1, 4c, 5, 13 · Extra: p. 407 #4f, 7, 9ac */
@@ -374,10 +374,12 @@ const COURSE = {
       extras:[]},
     {d:63, iso:"2027-05-11", flag:"review", topic:"Unit 6 Review", noteLabel:"Unit 6 Review",
       /* 2026 textbook HW: p. 418 #1, 2ad, 5, 7, 9, 13, 16a, 22, 29, 32 */
-      note:D("1vzHt4iqVDE27-rS4AkJSVsKgNNn1PI2t"),
-      ans:"", /* key: D("1spIuoKHwoYn8qF7s04lxuHWSnXjEfWSO") */
+      note:D("1IamqqHaftma37qxTL66lA-tnmXdNfl8z"),
+      ans:"", /* key: D("13iehZzRYv3Km-tWBM41pVwbNX-uoFNDa") */
       extras:[["Play Vectors Connections", "https://mathbrown.com/Vectors-Connections/", "doc"]]},
-    {d:64, iso:"2027-05-12", flag:"review", topic:"Consolidation: which product, what output?",
+    {d:64, iso:"2027-05-12", flag:"review", topic:"Consolidation: which product, what output?", noteLabel:"Which Product?",
+      note:D("153dDLMdkK5t3ya2cEAuPgsoIA08Prqwd"),
+      ans:"", /* key: D("1CCCcOuxyC6Sq49c1eY-TSBeLgK3oQbzF") */
       extras:[]},
     {d:65, iso:"2027-05-13", flag:"test", covers:"Unit 6", topic:"",
       extras:[]},
