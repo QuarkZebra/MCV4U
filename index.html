@@ -1485,8 +1485,8 @@ if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
     }else comp.style.opacity=0;
     /* fast: ghosts along the path; a hard stop after a fast run bursts */
     if(sp>FAST&&!hide)ghost(mx,my,ang,len,c,380+sp*5);
-    pk=Math.max(sp,pk*.9);
-    if(pk>30&&sp<4&&!burst){
+    pk=Math.max(sp,pk*.94);
+    if(pk>26&&sp<5&&!burst){
       burst=true;
       for(let i=0;i<12;i++){const a=i/12*6.283+Math.random()*.4,v=4+Math.random()*4;ghost(mx,my,a,16,c,700,Math.cos(a)*v,Math.sin(a)*v,.75)}
     }
