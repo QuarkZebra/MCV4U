@@ -347,7 +347,7 @@ const COURSE = {
       note:D("16a9olqafo-mO-3WzPXljT8y3Blqk59gV"),
       ans:"", /* key: D("1YF-bUS_A7cCrbLy6tbUHQGNNDKtmFMGh") */
       extras:[["Dot Products & Duality", "https://www.youtube.com/watch?v=LyGKycYT2v0", "vid"]]},
-    {d:58, iso:"2027-05-04", topic:"Dot Product (algebraic); direction angles", num:"6.3",
+    {d:58, iso:"2027-05-04", topic:"Dot Product (algebraic)", num:"6.3",
       /* 2026 textbook HW: §7.4 p. 385 #1, 6d, 7a, 14, 19 */
       note:D("1AQtVpTuUfkwxJ00GJcdYXPIOrLqgns2V"),
       ans:"", /* key: D("1eMMSGMFeBkzZDw5PYKCSNTKLup3jaMy7") */
