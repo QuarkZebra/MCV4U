@@ -479,11 +479,15 @@ const COURSE = {
 
   /* ── VECTORS EXAM REVIEW ─────────────────────────────────── */
   {name:"Vectors Exam Review", noNumber:true, days:[
-    {d:85, iso:"2027-06-11", flag:"review", topic:"Vectors exam review 1: practice exam",
+    {d:85, iso:"2027-06-11", flag:"review", topic:"Vectors exam review 1: practice exam", noteLabel:"Vectors Practice Exam", ansLabel:"Solutions",
       /* 2026 textbook HW: p. 557 #1–36 */
+      note:D("1vIhJOygIGBJd8qO6h0sTzgKEzwWcw5kd"),
+      ans:"", /* key: D("1bByi7QDybPCtcDfbnk_QpKvVGVcDXyYq") */
       extras:[["Vectors Exam Review (2026)", D("19WVvGTQtPz26r5fAJ0HV48en8eEQ_bkn"), "doc"],
               ["Full Solutions", D("1-kEnOCKBLlQUsKkV5m0bNNJSbRFniKl4"), "ans"]]},
-    {d:86, iso:"2027-06-14", flag:"review", topic:"Vectors exam review 2: retrieval by question type",
+    {d:86, iso:"2027-06-14", flag:"review", topic:"Vectors exam review 2: retrieval by question type", noteLabel:"Vectors Review Stations", ansLabel:"Solutions",
+      note:D("1J3teaXoCgoeIO-76FoPt2VwcL1RMRLkH"),
+      ans:"", /* key: D("1slZ_3ragv3dgG_gBe3QnQUy4UbDnZKYz") */
       extras:[]},
     {d:87, iso:"2027-06-15", flag:"review", topic:"Vectors exam review 3",
       extras:[]},
