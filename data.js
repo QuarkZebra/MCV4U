@@ -387,12 +387,12 @@ const COURSE = {
 
   /* ── LINES & PLANES ──────────────────────────────────────── */
   {name:"Lines & Planes", days:[
-    {d:66, iso:"2027-05-14", topic:"Vector & Parametric Lines (R²)", num:"7.1",
+    {d:66, iso:"2027-05-14", topic:"Vector & Parametric Equations of a Line", num:"7.1",
       /* 2026 textbook HW: §8.1 p. 433 #1, 4, 5a, 10 · Extra: p. 433 #2, 7, 14 */
       note:D("1H-Az9ObAmC37KoU2Xlnt0jg7aIiDXB6u"),
       ans:"", /* key: D("1pp72mAc-piEiJZtRpEYo4fDExTi8OkFU") */
       extras:[]},
-    {d:67, iso:"2027-05-17", topic:"Cartesian Line", num:"7.2",
+    {d:67, iso:"2027-05-17", topic:"Cartesian Equation of a Line", num:"7.2",
       /* 2026 textbook HW: §8.2 p. 443 #1, 3c, 8, 14 · Extra: p. 443 #4ad, 5, 6 */
       note:D("1kdtV65VCTMD3oWUOHfIdeyE9qaRVQQYR"),
       ans:"", /* key: D("16QZxJiuzNGnsdUfav65xKjhmO35byquK") */
@@ -402,12 +402,13 @@ const COURSE = {
       note:D("1pbZo762a4oB7pvyoScG_xsiAgpHDxVyD"),
       ans:"", /* key: D("14iGZ1mG_0uwCssHSRCGInzFJgY9f_NNb") */
       extras:[]},
-    {d:69, iso:"2027-05-19", topic:"Vector & Parametric Plane", num:"7.4",
+    {d:69, iso:"2027-05-19", topic:"Vector & Parametric Equations of a Plane", num:"7.4",
       /* 2026 textbook HW: §8.4 p. 459 #3, 5, 7, 15 · Extra: p. 459 #1, 4a, 10 */
       note:D("1MHKUl1rMMMYyyIGzISoKwwOpTolSPoBW"),
       ans:"", /* key: D("1xMFIF9Ex8SkeKOreYJgSasR4-Xd5Rpn6") */
-      extras:[]},
-    {d:70, iso:"2027-05-20", topic:"Cartesian Plane", num:"7.5",
+      extras:[["Lines & Planes Practice Quiz", D("1jtRM6UcIRHVMGv7yEWCou6MEdradTr3d"), "doc"],
+              /* key: ["Lines & Planes Practice Quiz: Answers", D("1xFkzKmMtQTwcPdApwTUg5tCpmJscgcdD"), "ans"] */]},
+    {d:70, iso:"2027-05-20", topic:"Cartesian Equation of a Plane", num:"7.5",
       /* 2026 textbook HW: §8.5 p. 468 #1ab, 4a, 7, 14 · Extra: p. 468 #2ab, 8, 9a */
       note:D("11R6TkQ3N2C6sDaVUDIiwQlIiObN-ml28"),
       ans:"", /* key: D("1aSGpxO40G5XUKxEv1AVLEotj70K6TNav") */
@@ -417,14 +418,14 @@ const COURSE = {
       note:D("1NOf65TwjDI6eT1UZpQkHpTS-BDy2bAPw"),
       ans:"", /* key: D("1gVTWkuvSwrlP1y6HBeQsCJ71Bpd87ci0") */
       extras:[["Desmos 3D", "https://www.desmos.com/3d", "doc"]]},
-    {d:72, iso:"2027-05-25", flag:"review", topic:"Review: Chapter 8", noteLabel:"Lines & Planes Practice Quiz",
+    {d:72, iso:"2027-05-25", flag:"review", topic:"U7 Part 1 Review", noteLabel:"U7 Part 1 Review",
       /* 2026 textbook HW: p. 480 #2, 3a, 4, 8, 14d, 15a, 17, 22, 25, 34 */
-      note:D("1jtRM6UcIRHVMGv7yEWCou6MEdradTr3d"),
-      ans:"", /* key: D("1xFkzKmMtQTwcPdApwTUg5tCpmJscgcdD") */
+      note:D("1BLtz-xmlD32aDhkLVUhp3kE4eByfrzC_"),
+      ans:"", /* key: D("1eKAY8qg7R1vFG353soYjNmNad8YXZlRr") */
       extras:[]},
-    {d:73, iso:"2027-05-26", flag:"test", covers:"Unit 7 Part 1 (Chapter 8)", topic:"",
+    {d:73, iso:"2027-05-26", flag:"test", covers:"Unit 7 Part 1 (7.1–7.6)", topic:"",
       extras:[]},
-    {d:74, iso:"2027-05-27", topic:"Intersection of a Line & Plane", num:"7.7",
+    {d:74, iso:"2027-05-27", topic:"Intersection of a Line & a Plane", num:"7.7",
       /* 2026 textbook HW: §9.1 p. 496 #2b, 4a, 7a, 10 */
       note:D("1L5wtnDP0L-8XbQ0uCB1MLWi7J6rZtD5r"),
       ans:"", /* key: D("17Uh6kFEJFiN95f_Cm4G1zUhNx0EGOfxu") */
@@ -438,39 +439,41 @@ const COURSE = {
       /* 2026 textbook HW: §9.2 p. 507 #1, 2, 5b, 9, 12f, 14 */
       note:D("1NJ4H1tErFzQPHwVeWv4CkOOJYdkr49FO"),
       ans:"", /* key: D("1XNUrMLefq57BuvYLZ8-0psz0492czLEa") */
-      extras:[["7.10 Matrices", D("16s1cRp6btmhaaeEQ8PL7S58AIiPNFzJM"), "doc"],
-              ["Answers", D("1NXo0Agnm6-Ku95NhHLGuZeJPlpXQ6eDV"), "ans"]]},
-    {d:77, iso:"2027-06-01", topic:"Intersection of Two Planes", num:"7.11",
+      extras:[["Systems of Equations Challenge (optional)", D("1ZzJQKAh8vA5EyZfCWD70sXU3cLXGznjg"), "doc"]]},
+    {d:77, iso:"2027-06-01", topic:"Intersection of Two Planes", num:"7.10",
       /* 2026 textbook HW: §9.3 p. 516 #1, 2, 6c */
-      note:D("1ouHCkn0mhzQj0blP12YU53bozGj1qDDb"),
-      ans:"", /* key: D("1ObmyOAvETWbT0kYSSgTy81AOmhWSdout") */
+      note:D("1b6cL89eVkXPZA-2wjx4q4Wupx64_WlNS"),
+      ans:"", /* key: D("1n0YndJb59xqK8nYqOTsMeb5CGbEpaIzk") */
       extras:[]},
-    {d:78, iso:"2027-06-02", topic:"Practice: intersections", noteLabel:"Intersections Practice Quiz",
-      note:D("1GY0SJMRthqqEH--6xRXZ_fB-JG9JW0vd"),
-      ans:"", /* key: D("1s2voR_GVS8wKxtmjQ7I49a8ZCjY_ENDZ") */
-      extras:[["Solving Systems with Matrices", D("1Ejj91qxDeI6nDT7r3blniF30FBPf-nZJ"), "doc"],
-              ["Answers", D("1g_rL2p_o6e8xceZl-5zJ07brGlrI0rnH"), "ans"]]},
-    {d:79, iso:"2027-06-03", topic:"Intersection of Three Planes: the eight cases", num:"7.12",
+    {d:78, iso:"2027-06-02", flag:"pquiz", covers:"7.7–7.10", topic:"", noteLabel:"Intersections Practice Quiz",
+      note:D("1jT5wS9UOXrB7IdR7fKOBnzxm6ayqCsyD"),
+      ans:"", /* key: D("1cB2MeA_fXRIjVhxX6fMsKuozkKFAsgwj") */
+      extras:[]},
+    {d:79, iso:"2027-06-03", topic:"Intersection of Three Planes: the eight cases", num:"7.11",
       /* 2026 textbook HW: §9.4 p. 530 #5, 8a, 12ad, 15 */
-      note:D("1EywKEF5mRP_3bXqz6C4M3h6QVRUO2J63"),
-      ans:"", /* key: D("1d7T94IP4wBdsgEBUd-DsVDAKS_clSD5o") */
+      note:D("13tDGtxc96VLJ8ccs2-Vj2BhVxCrYCnCD"),
+      ans:"", /* key: D("12HNUZYSVPSt9hjhaOMgXPnwdTuOA_cU-") */
+      extras:[["Desmos 3D", "https://www.desmos.com/3d", "doc"]]},
+    {d:80, iso:"2027-06-04", topic:"Interpreting Three-Plane Systems", num:"7.12",
+      note:D("1D756MyaPF1_8C4w-Wjcp0R3wp3G2eCte"),
+      ans:"", /* key: D("18QVOki6Eqa8QSf8Ld_yWSMjAoZumN7vs") */
       extras:[]},
-    {d:80, iso:"2027-06-04", topic:"Three Planes practice",
-      extras:[["Systems of Equations Challenge", D("1ZzJQKAh8vA5EyZfCWD70sXU3cLXGznjg"), "doc"]]},
     {d:81, iso:"2027-06-07", topic:"Distance: Point to Line", num:"7.13",
-      /* 2026 textbook HW: p. 540 #1b, 4a · Extra: p. 540 #3a (2026 set these on the work-period day before this lesson) */
+      /* 2026 textbook HW: p. 540 #1b, 4a · Extra: p. 540 #3a */
       note:D("12MjR12kt3052d46u42Sv6QE-rgr_ha1s"),
       ans:"", /* key: D("1qFjh8FDSBFUbDVMq3gamZXJwsqybfZ7q") */
       extras:[]},
     {d:82, iso:"2027-06-08", topic:"Distance: Point to Plane + Skew Lines", num:"7.14",
-      /* 2026 textbook HW: §9.6 p. 549 #1, 2ae, 3, 5, 8 (2026 set these on the point-to-line day; the plan adds #7–8, skew lines) */
+      /* 2026 textbook HW: §9.6 p. 549 #1, 2ae, 3, 5, 7, 8 */
       note:D("1Yr_0zVlRrgYVDlz88ONT9vQ-akWDZMxo"),
       ans:"", /* key: D("1JoqYX3s0-YwqgYQFtfB3r5Bowbt02yPS") */
       extras:[]},
-    {d:83, iso:"2027-06-09", flag:"review", topic:"Review: Chapter 9",
+    {d:83, iso:"2027-06-09", flag:"review", topic:"U7 Part 2 Review", noteLabel:"U7 Part 2 Review",
       /* 2026 textbook HW: p. 552 #1–4, 7, 9a, 12a, 15, 18, 22 */
+      note:D("1E57-ZZjMLi-NH6bGR35ukSxU6EI1WAbs"),
+      ans:"", /* key: D("102QPotVQz6-ejOCxoZHymY9t8fPZCiNl") */
       extras:[]},
-    {d:84, iso:"2027-06-10", flag:"test", covers:"Unit 7 Part 2 (Chapter 9)", topic:"",
+    {d:84, iso:"2027-06-10", flag:"test", covers:"Unit 7 Part 2 (7.7–7.14)", topic:"",
       extras:[]},
   ]},
 
