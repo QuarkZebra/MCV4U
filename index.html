@@ -1431,7 +1431,7 @@ if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
    link's colour, and shows its subject: on a calculus link the slope of its
    direction reads out as f′; on a vectors link its components appear as
    dashed legs with the vector in component form; anywhere else just |v|.
-   Move fast and it leaves a trail of ghost vectors along the path with a
+   It is always one arrow as it moves, up to 480 px long when fast, with a
    speed readout; stop hard after a fast move and a burst of small vectors
    scatters from the tip. Phones and tablets, text boxes, and reduced-motion
    users keep the normal pointer. */
@@ -1440,8 +1440,8 @@ if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
   const svg=document.getElementById("vcur");
   const Q=c=>svg.querySelector(c);
   const glow=Q(".glow"),comp=Q(".comp"),halo=Q(".halo"),shaft=Q(".shaft"),head=Q(".head"),txt=Q("text"),gwrap=Q(".ghosts");
-  const L0=26,LMAX=240,GAIN=3.6,HEAD=13,FAST=14;
-  /* a pool of ghost arrows for the trail and the burst */
+  const L0=26,LMAX=480,GAIN=7.2,HEAD=13,FAST=14;   /* doubled 23 Oct 2026: the arrow may stretch to 480 px when moving */
+  /* a pool of ghost arrows for the burst */
   const pool=[],live=[];
   for(let i=0;i<72;i++){
     const g=document.createElementNS("http://www.w3.org/2000/svg","g");
@@ -1522,8 +1522,7 @@ if(reduce)drawStatic();else bgRaf=requestAnimationFrame(loop);
     if(kind==="vec"&&boost>.04){
       comp.setAttribute("points",`${tx},${ty} ${mx},${ty} ${mx},${my}`);comp.setAttribute("stroke",c);comp.style.opacity=boost*.85;
     }else comp.style.opacity=0;
-    /* fast: ghosts along the path; a hard stop after a fast run bursts */
-    if(sp>FAST&&!hide)ghost(mx,my,ang,len,c,380+sp*5);
+    /* a hard stop after a fast run bursts (the fast-move ghost trail went on 23 Oct 2026: one arrow only as it moves) */
     pk=Math.max(sp,pk*.94);
     if(pk>26&&sp<5&&!burst){burst=true;burstAt(mx,my)}
     if(pk<10)burst=false;
