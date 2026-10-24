@@ -72,7 +72,7 @@ const COURSE = {
   {name:"Introduction to Calculus", days:[
     {d:1, iso:"2027-02-01", topic:"Introduction to Calculus", num:"1.1",
       note:D("1ajuuuMcajyecMPlMl-T8G81n63AKI4EM"),
-      ans:"", /* key: D("1QAwtlBdgtuCOChwEkmdF5jMgjAsuYoot") */
+      ans:D("1QAwtlBdgtuCOChwEkmdF5jMgjAsuYoot"), /* key: D("1QAwtlBdgtuCOChwEkmdF5jMgjAsuYoot") */
       extras:[["Basic Skills Review", D("1aMuLCLJ0HEaUJA44qXr8Vd-gys5t6g85"), "skills"],
               ["Ms. Havrot’s Videos", "https://www.youtube.com/c/MsHavrotsCanadianUniversityMathPrerequisites/playlists", "vid"],
               ["TVO Learn: MCV4U", "https://tvolearn.com/collections/courses/products/mcv4u-calculus-and-vectors", "doc"]]},
